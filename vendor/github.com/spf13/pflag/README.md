@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/spf13/pflag.svg?branch=master)](https://travis-ci.org/spf13/pflag)
-[![Go Report Card](https://goreportcard.com/badge/github.com/spf13/pflag)](https://goreportcard.com/report/github.com/spf13/pflag)
-[![GoDoc](https://godoc.org/github.com/spf13/pflag?status.svg)](https://godoc.org/github.com/spf13/pflag)
+[![Build Status](https/travis-ci.org/spf13/pflag.svg?branch=master)](https/travis-ci.org/spf13/pflag)
+[![Go Report Card](https/goreportcard.com/badge/github.com/spf13/pflag)](https/goreportcard.com/report/github.com/spf13/pflag)
+[![GoDoc](https/godoc.org/github.com/spf13/pflag?status.svg)](https/godoc.org/github.com/spf13/pflag)
 
 ## Description
 
@@ -11,7 +11,7 @@ pflag is compatible with the [GNU extensions to the POSIX recommendations
 for command-line options][1]. For a more precise description, see the
 "Command-line flag syntax" section below.
 
-[1]: http://www.gnu.org/software/libc/manual/html_node/Argument-Syntax.html
+[1]: http/www.gnu.org/software/libc/manual/html_node/Argument-Syntax.html
 
 pflag is available under the same style of BSD license as the Go language,
 which can be found in the LICENSE file.
@@ -22,11 +22,11 @@ pflag is available using the standard `go get` command.
 
 Install by running:
 
-    go get github.com/spf13/pflag
+ go get github.com/spf13/pflag
 
 Run tests by running:
 
-    go test github.com/spf13/pflag
+ go test github.com/spf13/pflag
 
 ## Usage
 
@@ -57,7 +57,7 @@ If you like, you can bind the flag to a variable using the Var() functions.
 ``` go
 var flagvar int
 func init() {
-    flag.IntVar(&flagvar, "flagname", 1234, "help message for flagname")
+ flag.IntVar(&flagvar, "flagname", 1234, "help message for flagname")
 }
 ```
 
@@ -117,7 +117,7 @@ Shorthand letters can be used with single dashes on the command line.
 Boolean shorthand flags can be combined with other shorthand flags.
 
 The default set of command-line flags is controlled by
-top-level functions.  The FlagSet type allows one to define
+top-level functions. The FlagSet type allows one to define
 independent sets of flags, such as to implement subcommands
 in a command-line interface. The methods of FlagSet are
 analogous to the top-level functions for the command-line
@@ -138,16 +138,16 @@ flag.Lookup("flagname").NoOptDefVal = "4321"
 Would result in something like
 
 | Parsed Arguments | Resulting Value |
-| -------------    | -------------   |
-| --flagname=1357  | ip=1357         |
-| --flagname       | ip=4321         |
-| [nothing]        | ip=1234         |
+| ------------- | ------------- |
+| --flagname=1357 | ip=1357 |
+| --flagname | ip=4321 |
+| [nothing] | ip=1234 |
 
 ## Command line flag syntax
 
 ```
---flag    // boolean flags, or flags with no option default values
---flag x  // only on flags without a default value
+--flag // boolean flags, or flags with no option default values
+--flag x // only on flags without a default value
 --flag=x
 ```
 
@@ -195,7 +195,7 @@ func wordSepNormalizeFunc(f *pflag.FlagSet, name string) pflag.NormalizedName {
 	from := []string{"-", "_"}
 	to := "."
 	for _, sep := range from {
-		name = strings.Replace(name, sep, to, -1)
+ name = strings.Replace(name, sep, to, -1)
 	}
 	return pflag.NormalizedName(name)
 }
@@ -209,8 +209,8 @@ myFlagSet.SetNormalizeFunc(wordSepNormalizeFunc)
 func aliasNormalizeFunc(f *pflag.FlagSet, name string) pflag.NormalizedName {
 	switch name {
 	case "old-flag-name":
-		name = "new-flag-name"
-		break
+ name = "new-flag-name"
+ break
 	}
 	return pflag.NormalizedName(name)
 }
@@ -259,9 +259,9 @@ flags.PrintDefaults()
 ```
 **Output**:
 ```
-  -v, --verbose           verbose output
-      --coolflag string   it's really cool flag (default "yeaah")
-      --usefulflag int    sometimes it's very useful (default 777)
+ -v, --verbose verbose output
+ --coolflag string it's really cool flag (default "yeaah")
+ --usefulflag int sometimes it's very useful (default 777)
 ```
 
 
@@ -289,8 +289,8 @@ func main() {
 You can see the full reference documentation of the pflag package
 [at godoc.org][3], or through go's standard documentation system by
 running `godoc -http=:6060` and browsing to
-[http://localhost:6060/pkg/github.com/spf13/pflag][2] after
+[http/localhost:6060/pkg/github.com/spf13/pflag][2] after
 installation.
 
-[2]: http://localhost:6060/pkg/github.com/spf13/pflag
-[3]: http://godoc.org/github.com/spf13/pflag
+[2]: http/localhost:6060/pkg/github.com/spf13/pflag
+[3]: http/godoc.org/github.com/spf13/pflag

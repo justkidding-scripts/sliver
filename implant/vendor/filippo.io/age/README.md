@@ -1,8 +1,8 @@
-<p align="center"><img alt="The age logo, an wireframe of St. Peters dome in Rome, with the text: age, file encryption" width="600" src="https://user-images.githubusercontent.com/1225294/132245842-fda4da6a-1cea-4738-a3da-2dc860861c98.png"></p>
+<p align="center"><img alt="The age logo, an wireframe of St. Peters dome in Rome, with the text: age, file encryption" width="600" src="https/user-images.githubusercontent.com/1225294/132245842-fda4da6a-1cea-4738-a3da-2dc860861c98.png"></p>
 
-[![Go Reference](https://pkg.go.dev/badge/filippo.io/age.svg)](https://pkg.go.dev/filippo.io/age)
-[![man page](<https://img.shields.io/badge/age(1)-man%20page-lightgrey>)](https://filippo.io/age/age.1)
-[![C2SP specification](https://img.shields.io/badge/%C2%A7%23-specification-blueviolet)](https://age-encryption.org/v1)
+[![Go Reference](https/pkg.go.dev/badge/filippo.io/age.svg)](https/pkg.go.dev/filippo.io/age)
+[![man page](<https/img.shields.io/badge/age(1)-man%20page-lightgrey>)](https/filippo.io/age/age.1)
+[![C2SP specification](https/img.shields.io/badge/%C2%A7%23-specification-blueviolet)](https/age-encryption.org/v1)
 
 age is a simple, modern and secure file encryption tool, format, and Go library.
 
@@ -10,126 +10,126 @@ It features small explicit keys, no config options, and UNIX-style composability
 
 ```
 $ age-keygen -o key.txt
-Public key: age1ql3z7hjy54pw3hyww5ayyfg7zqgvc7w3j2elw8zmrj2kg5sfn9aqmcac8p
-$ tar cvz ~/data | age -r age1ql3z7hjy54pw3hyww5ayyfg7zqgvc7w3j2elw8zmrj2kg5sfn9aqmcac8p > data.tar.gz.age
+Public key: age1ql3z7hjy54pw3hyww5ayyfg7zqgvc7w3j2elw8zmrj2kg5sfn9aqmcac
+$ tar cvz ~/data | age -r age1ql3z7hjy54pw3hyww5ayyfg7zqgvc7w3j2elw8zmrj2kg5sfn9aqmcac > data.tar.gz.age
 $ age --decrypt -i key.txt data.tar.gz.age > data.tar.gz
 ```
 
-📜 The format specification is at [age-encryption.org/v1](https://age-encryption.org/v1). age was designed by [@Benjojo12](https://twitter.com/Benjojo12) and [@FiloSottile](https://twitter.com/FiloSottile).
+ The format specification is at [age-encryption.org/v1](https/age-encryption.org/v1). age was designed by [@Benjojo12](https/twitter.com/Benjojo12) and [@FiloSottile](https/twitter.com/FiloSottile).
 
-📬 Follow the maintenance of this project by subscribing to [Maintainer Dispatches](https://filippo.io/newsletter)!
+ Follow the maintenance of this project by subscribing to [Maintainer Dispatches](https/filippo.io/newsletter)!
 
-🦀 An alternative interoperable Rust implementation is available at [github.com/str4d/rage](https://github.com/str4d/rage).
+ An alternative interoperable Rust implementation is available at [github.com/str4d/rage](https/github.com/str4d/rage).
 
-🔑 Hardware PIV tokens such as YubiKeys are supported through the [age-plugin-yubikey](https://github.com/str4d/age-plugin-yubikey) plugin.
+ Hardware PIV tokens such as YubiKeys are supported through the [age-plugin-yubikey](https/github.com/str4d/age-plugin-yubikey) plugin.
 
-💬 The author pronounces it `[aɡe̞]`, like the Italian [“aghe”](https://translate.google.com/?sl=it&text=aghe).
+ The author pronounces it `[aɡe̞]`, like the Italian [“aghe”](https/translate.google.com/?sl=it&text=aghe).
 
 ## Installation
 
 <table>
-    <tr>
-        <td>Homebrew (macOS or Linux)</td>
-        <td>
-            <code>brew install age</code>
-        </td>
-    </tr>
-    <tr>
-        <td>MacPorts</td>
-        <td>
-            <code>port install age</code>
-        </td>
-    </tr>
-    <tr>
-        <td>Alpine Linux v3.15+</td>
-        <td>
-            <code>apk add age</code>
-        </td>
-    </tr>
-    <tr>
-        <td>Arch Linux</td>
-        <td>
-            <code>pacman -S age</code>
-        </td>
-    </tr>
-    <tr>
-        <td>Debian 11+ (Bullseye)</td>
-        <td>
-            <code>apt install age/bullseye-backports</code>
-            (<a href="https://backports.debian.org/Instructions/#index2h2">enable backports</a> for age v1.0.0+)
-        </td>
-    </tr>
-    <tr>
-        <td>Fedora 33+</td>
-        <td>
-            <code>dnf install age</code>
-        </td>
-    </tr>
-    <tr>
-        <td>Gentoo Linux</td>
-        <td>
-            <code>emerge app-crypt/age</code>
-        </td>
-    </tr>
-    <tr>
-        <td>NixOS / Nix</td>
-        <td>
-            <code>nix-env -i age</code>
-        </td>
-    </tr>
-    <tr>
-        <td>openSUSE Tumbleweed</td>
-        <td>
-            <code>zypper install age</code>
-        </td>
-    </tr>
-    <tr>
-        <td>Ubuntu 22.04+</td>
-        <td>
-            <code>apt install age</code>
-        </td>
-    </tr>
-    <tr>
-        <td>Void Linux</td>
-        <td>
-            <code>xbps-install age</code>
-        </td>
-    </tr>
-    <tr>
-        <td>FreeBSD</td>
-        <td>
-            <code>pkg install age</code> (security/age)
-        </td>
-    </tr>
-    <tr>
-        <td>OpenBSD 6.7+</td>
-        <td>
-            <code>pkg_add age</code> (security/age)
-        </td>
-    </tr>
-    <tr>
-        <td>Chocolatey (Windows)</td>
-        <td>
-            <code>choco install age.portable</code>
-        </td>
-    </tr>
-    <tr>
-        <td>Scoop (Windows)</td>
-        <td>
-            <code>scoop bucket add extras; scoop install age</code>
-        </td>
-    </tr>
+ <tr>
+ <td>Homebrew (macOS or Linux)</td>
+ <td>
+ <code>brew install age</code>
+ </td>
+ </tr>
+ <tr>
+ <td>MacPorts</td>
+ <td>
+ <code>port install age</code>
+ </td>
+ </tr>
+ <tr>
+ <td>Alpine Linux v3.15+</td>
+ <td>
+ <code>apk add age</code>
+ </td>
+ </tr>
+ <tr>
+ <td>Arch Linux</td>
+ <td>
+ <code>pacman -S age</code>
+ </td>
+ </tr>
+ <tr>
+ <td>Debian 11+ (Bullseye)</td>
+ <td>
+ <code>apt install age/bullseye-backports</code>
+ (<a href="https/backports.debian.org/Instructions/#index2h2">enable backports</a> for age v1.0.0+)
+ </td>
+ </tr>
+ <tr>
+ <td>Fedora 33+</td>
+ <td>
+ <code>dnf install age</code>
+ </td>
+ </tr>
+ <tr>
+ <td>Gentoo Linux</td>
+ <td>
+ <code>emerge app-crypt/age</code>
+ </td>
+ </tr>
+ <tr>
+ <td>NixOS / Nix</td>
+ <td>
+ <code>nix-env -i age</code>
+ </td>
+ </tr>
+ <tr>
+ <td>openSUSE Tumbleweed</td>
+ <td>
+ <code>zypper install age</code>
+ </td>
+ </tr>
+ <tr>
+ <td>Ubuntu 22.04+</td>
+ <td>
+ <code>apt install age</code>
+ </td>
+ </tr>
+ <tr>
+ <td>Void Linux</td>
+ <td>
+ <code>xbps-install age</code>
+ </td>
+ </tr>
+ <tr>
+ <td>FreeBSD</td>
+ <td>
+ <code>pkg install age</code> (security/age)
+ </td>
+ </tr>
+ <tr>
+ <td>OpenBSD 6.7+</td>
+ <td>
+ <code>pkg_add age</code> (security/age)
+ </td>
+ </tr>
+ <tr>
+ <td>Chocolatey (Windows)</td>
+ <td>
+ <code>choco install age.portable</code>
+ </td>
+ </tr>
+ <tr>
+ <td>Scoop (Windows)</td>
+ <td>
+ <code>scoop bucket add extras; scoop install age</code>
+ </td>
+ </tr>
 </table>
 
 On Windows, Linux, macOS, and FreeBSD you can use the pre-built binaries.
 
 ```
-https://dl.filippo.io/age/latest?for=linux/amd64
-https://dl.filippo.io/age/v1.0.0-rc.1?for=darwin/arm64
+https/dl.filippo.io/age/latest?for=linux/amd64
+https/dl.filippo.io/age/v1.0.0-rc.1?for=darwin/arm64
 ...
 ```
 
-If your system has [a supported version of Go](https://go.dev/dl/), you can build from source.
+If your system has [a supported version of Go](https/go.dev/dl/), you can build from source.
 
 ```
 go install filippo.io/age/cmd/...@latest
@@ -139,23 +139,23 @@ Help from new packagers is very welcome.
 
 ## Usage
 
-For the full documentation, read [the age(1) man page](https://filippo.io/age/age.1).
+For the full documentation, read [the age(1) man page](https/filippo.io/age/age.1).
 
 ```
 Usage:
-    age [--encrypt] (-r RECIPIENT | -R PATH)... [--armor] [-o OUTPUT] [INPUT]
-    age [--encrypt] --passphrase [--armor] [-o OUTPUT] [INPUT]
-    age --decrypt [-i PATH]... [-o OUTPUT] [INPUT]
+ age [--encrypt] (-r RECIPIENT | -R PATH)... [--armor] [-o OUTPUT] [INPUT]
+ age [--encrypt] --passphrase [--armor] [-o OUTPUT] [INPUT]
+ age --decrypt [-i PATH]... [-o OUTPUT] [INPUT]
 
 Options:
-    -e, --encrypt               Encrypt the input to the output. Default if omitted.
-    -d, --decrypt               Decrypt the input to the output.
-    -o, --output OUTPUT         Write the result to the file at path OUTPUT.
-    -a, --armor                 Encrypt to a PEM encoded format.
-    -p, --passphrase            Encrypt with a passphrase.
-    -r, --recipient RECIPIENT   Encrypt to the specified RECIPIENT. Can be repeated.
-    -R, --recipients-file PATH  Encrypt to recipients listed at PATH. Can be repeated.
-    -i, --identity PATH         Use the identity file at PATH. Can be repeated.
+ -e, --encrypt Encrypt the input to the output. Default if omitted.
+ -d, --decrypt Decrypt the input to the output.
+ -o, --output OUTPUT Write the result to the file at path OUTPUT.
+ -a, --armor Encrypt to a PEM encoded format.
+ -p, --passphrase Encrypt with a passphrase.
+ -r, --recipient RECIPIENT Encrypt to the specified RECIPIENT. Can be repeated.
+ -R, --recipients-file PATH Encrypt to recipients listed at PATH. Can be repeated.
+ -i, --identity PATH Use the identity file at PATH. Can be repeated.
 
 INPUT defaults to standard input, and OUTPUT defaults to standard output.
 If OUTPUT exists, it will be overwritten.
@@ -182,8 +182,8 @@ identity file symmetrically, instead or in addition to normal recipients.
 Files can be encrypted to multiple recipients by repeating `-r/--recipient`. Every recipient will be able to decrypt the file.
 
 ```
-$ age -o example.jpg.age -r age1ql3z7hjy54pw3hyww5ayyfg7zqgvc7w3j2elw8zmrj2kg5sfn9aqmcac8p \
-    -r age1lggyhqrw2nlhcxprm67z43rta597azn8gknawjehu9d9dl0jq3yqqvfafg example.jpg
+$ age -o example.jpg.age -r age1ql3z7hjy54pw3hyww5ayyfg7zqgvc7w3j2elw8zmrj2kg5sfn9aqmcac \
+ -r age1lggyhqrw2nlhcxprm67z43rta597azn8gknawjehu9d9dl0jq3yqqvfafg example.jpg
 ```
 
 #### Recipient files
@@ -193,7 +193,7 @@ Multiple recipients can also be listed one per line in one or more files passed 
 ```
 $ cat recipients.txt
 # Alice
-age1ql3z7hjy54pw3hyww5ayyfg7zqgvc7w3j2elw8zmrj2kg5sfn9aqmcac8p
+age1ql3z7hjy54pw3hyww5ayyfg7zqgvc7w3j2elw8zmrj2kg5sfn9aqmcac
 # Bob
 age1lggyhqrw2nlhcxprm67z43rta597azn8gknawjehu9d9dl0jq3yqqvfafg
 $ age -R recipients.txt example.jpg > example.jpg.age
@@ -245,7 +245,7 @@ Note that SSH key support employs more complex cryptography, and embeds a public
 Combining SSH key support and `-R`, you can easily encrypt a file to the SSH keys listed on a GitHub profile.
 
 ```
-$ curl https://github.com/benjojo.keys | age -R - example.jpg > example.jpg.age
+$ curl https/github.com/benjojo.keys | age -R - example.jpg > example.jpg.age
 ```
 
 Keep in mind that people might not protect SSH keys long-term, since they are revokable when used only for authentication, and that SSH keys held on YubiKeys can't be used to decrypt files.

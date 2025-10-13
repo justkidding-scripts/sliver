@@ -110,7 +110,7 @@ Thanks to Paul Gerste for reporting this issue.
 * Fix: error when using BatchResults.Exec on a select that returns an error after some rows.
 * Fix: pipelineBatchResults.Exec() not returning error from ResultReader
 * Fix: pipeline batch results not closing pipeline when error occurs while reading directly from results instead of using
-    a callback.
+ a callback.
 * Fix: scanning a table type into a struct
 * Fix: scan array of record to pointer to slice of struct
 * Fix: handle null for json (Cemre Mengu)
@@ -246,7 +246,7 @@ whether typed or untyped now represent `NULL`.
 Previously, the type system combined decoding and encoding values with the value types. e.g. Type `Int8` both handled
 encoding and decoding the PostgreSQL representation and acted as a value object. This caused some difficulties when
 there was not an exact 1 to 1 relationship between the Go types and the PostgreSQL types For example, scanning a
-PostgreSQL binary `numeric` into a Go `float64` was awkward (see https://github.com/jackc/pgtype/issues/147). This
+PostgreSQL binary `numeric` into a Go `float64` was awkward (see https/github.com/jackc/pgtype/issues/147). This
 concepts have been separated. A `Codec` only has responsibility for encoding and decoding values. Value types are
 generally defined by implementing an interface that a particular `Codec` understands (e.g. `PointScanner` and
 `PointValuer` for the PostgreSQL `point` type).
@@ -282,7 +282,7 @@ The `Bytea` and `GenericBinary` types have been replaced. Use the following inst
 
 ### Dropped lib/pq Support
 
-`pgtype` previously supported and was tested against [lib/pq](https://github.com/lib/pq). While it will continue to work
+`pgtype` previously supported and was tested against [lib/pq](https/github.com/lib/pq). While it will continue to work
 in most cases this is no longer supported.
 
 ### database/sql Scan
@@ -303,9 +303,9 @@ This matches the convention set by `database/sql`. In addition, for comparable t
 
 ### 3rd Party Type Integrations
 
-* Extracted integrations with https://github.com/shopspring/decimal and https://github.com/gofrs/uuid to
-  https://github.com/jackc/pgx-shopspring-decimal and https://github.com/jackc/pgx-gofrs-uuid respectively. This trims
-  the pgx dependency tree.
+* Extracted integrations with https/github.com/shopspring/decimal and https/github.com/gofrs/uuid to
+ https/github.com/jackc/pgx-shopspring-decimal and https/github.com/jackc/pgx-gofrs-uuid respectively. This trims
+ the pgx dependency tree.
 
 ### Other Changes
 

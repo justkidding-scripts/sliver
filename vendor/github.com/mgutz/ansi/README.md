@@ -33,16 +33,16 @@ fmt.Println(lime, "Bring back the 80s!", reset)
 Other examples
 
 ```go
-Color(s, "red")            // red
-Color(s, "red+d")          // red dim
-Color(s, "red+b")          // red bold
-Color(s, "red+B")          // red blinking
-Color(s, "red+u")          // red underline
-Color(s, "red+bh")         // red bold bright
-Color(s, "red:white")      // red on white
-Color(s, "red+b:white+h")  // red bold on white bright
-Color(s, "red+B:white+h")  // red blink on white bright
-Color(s, "off")            // turn off ansi codes
+Color(s, "red") // red
+Color(s, "red+d") // red dim
+Color(s, "red+b") // red bold
+Color(s, "red+B") // red blinking
+Color(s, "red+u") // red underline
+Color(s, "red+bh") // red bold bright
+Color(s, "red:white") // red on white
+Color(s, "red+b:white+h") // red bold on white bright
+Color(s, "red+B:white+h") // red blink on white bright
+Color(s, "off") // turn off ansi codes
 ```
 
 To view color combinations, from project directory in terminal.
@@ -107,12 +107,12 @@ Background Attributes
 
 ## References
 
-Wikipedia ANSI escape codes [Colors](http://en.wikipedia.org/wiki/ANSI_escape_code#Colors)
+Wikipedia ANSI escape codes [Colors](http/en.wikipedia.org/wiki/ANSI_escape_code#Colors)
 
-General [tips and formatting](http://misc.flogisoft.com/bash/tip_colors_and_formatting)
+General [tips and formatting](http/misc.flogisoft.com/bash/tip_colors_and_formatting)
 
-What about support on Windows? Use [colorable by mattn](https://github.com/mattn/go-colorable).
-Ansi and colorable are used by [logxi](https://github.com/mgutz/logxi) to support logging in
+What about support on Windows? Use [colorable by mattn](https/github.com/mattn/go-colorable).
+Ansi and colorable are used by [logxi](https/github.com/mgutz/logxi) to support logging in
 color on Windows.
 
 ## MIT License

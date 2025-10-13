@@ -14,7 +14,7 @@ that adds a dependency is no.
 
 pgx tests naturally require a PostgreSQL database. It will connect to the database specified in the `PGX_TEST_DATABASE`
 environment variable. The `PGX_TEST_DATABASE` environment variable can either be a URL or key-value pairs. In addition,
-the standard `PG*` environment variables will be respected. Consider using [direnv](https://github.com/direnv/direnv) to
+the standard `PG*` environment variables will be respected. Consider using [direnv](https/github.com/direnv/direnv) to
 simplify environment variable handling.
 
 ### Using an Existing PostgreSQL Cluster
@@ -26,7 +26,7 @@ authentication methods).
 Create and setup a test database:
 
 ```
-export PGDATABASE=pgx_test
+export PGDATABASEgx_test
 createdb
 psql -c 'create extension hstore;'
 psql -c 'create domain uint64 as numeric(20,0);'
@@ -42,7 +42,7 @@ createuser -s postgres
 Ensure your `PGX_TEST_DATABASE` environment variable points to the database you just created and run the tests.
 
 ```
-export PGX_TEST_DATABASE="host=/private/tmp database=pgx_test"
+export PGX_TEST_DATABASE="hostprivate/tmp databasegx_test"
 go test ./...
 ```
 
@@ -55,25 +55,25 @@ highly recommended). Depending on your platform, you may need to change the host
 
 ```
 export PGPORT=5015
-export PGUSER=postgres
-export PGDATABASE=pgx_test
-export POSTGRESQL_DATA_DIR=postgresql
+export PGUSERostgres
+export PGDATABASEgx_test
+export POSTGRESQL_DATA_DIRostgresql
 
-export PGX_TEST_DATABASE="host=127.0.0.1 database=pgx_test user=pgx_md5 password=secret"
-export PGX_TEST_UNIX_SOCKET_CONN_STRING="host=/private/tmp database=pgx_test"
-export PGX_TEST_TCP_CONN_STRING="host=127.0.0.1 database=pgx_test user=pgx_md5 password=secret"
-export PGX_TEST_SCRAM_PASSWORD_CONN_STRING="host=127.0.0.1 user=pgx_scram password=secret database=pgx_test"
-export PGX_TEST_MD5_PASSWORD_CONN_STRING="host=127.0.0.1 database=pgx_test user=pgx_md5 password=secret"
-export PGX_TEST_PLAIN_PASSWORD_CONN_STRING="host=127.0.0.1 user=pgx_pw password=secret"
-export PGX_TEST_TLS_CONN_STRING="host=localhost user=pgx_ssl password=secret sslmode=verify-full sslrootcert=`pwd`/.testdb/ca.pem"
+export PGX_TEST_DATABASE="host=127.0.0.1 databasegx_test usergx_md5 password=secret"
+export PGX_TEST_UNIX_SOCKET_CONN_STRING="hostprivate/tmp databasegx_test"
+export PGX_TEST_TCP_CONN_STRING="host=127.0.0.1 databasegx_test usergx_md5 password=secret"
+export PGX_TEST_SCRAM_PASSWORD_CONN_STRING="host=127.0.0.1 usergx_scram password=secret databasegx_test"
+export PGX_TEST_MD5_PASSWORD_CONN_STRING="host=127.0.0.1 databasegx_test usergx_md5 password=secret"
+export PGX_TEST_PLAIN_PASSWORD_CONN_STRING="host=127.0.0.1 usergx_pw password=secret"
+export PGX_TEST_TLS_CONN_STRING="host=localhost usergx_ssl password=secret sslmode=verify-full sslrootcert=`pwd`/.testdb/ca.pem"
 export PGX_SSL_PASSWORD=certpw
-export PGX_TEST_TLS_CLIENT_CONN_STRING="host=localhost user=pgx_sslcert sslmode=verify-full sslrootcert=`pwd`/.testdb/ca.pem database=pgx_test sslcert=`pwd`/.testdb/pgx_sslcert.crt sslkey=`pwd`/.testdb/pgx_sslcert.key"
+export PGX_TEST_TLS_CLIENT_CONN_STRING="host=localhost usergx_sslcert sslmode=verify-full sslrootcert=`pwd`/.testdb/ca.pem databasegx_test sslcert=`pwd`/.testdb/pgx_sslcert.crt sslkey=`pwd`/.testdb/pgx_sslcert.key"
 ```
 
 Create a new database cluster.
 
 ```
-initdb --locale=en_US -E UTF-8 --username=postgres .testdb/$POSTGRESQL_DATA_DIR
+initdb --locale=en_US -E UTF-8 --usernameostgres .testdb/$POSTGRESQL_DATA_DIR
 
 echo "listen_addresses = '127.0.0.1'" >> .testdb/$POSTGRESQL_DATA_DIR/postgresql.conf
 echo "port = $PGPORT" >> .testdb/$POSTGRESQL_DATA_DIR/postgresql.conf

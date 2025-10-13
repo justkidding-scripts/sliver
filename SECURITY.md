@@ -6,13 +6,13 @@ One of the main goals of the Sliver project is to provide a secure platform when
 
 Anything in the `master` branch, without an open ticket.
 
-| Severity | Reward  |
+| Severity | Reward |
 |---|---|
-| Critical  |  12+ Year Whisky or Scotch |
-|  High | Good Beer  |
-|  Medium | A PBR, Grain Belt, or Hamm's  |
-|  Low | High Five |
+| Critical | 12+ Year Whisky or Scotch |
+| High | Good Beer |
+| Medium | A PBR, Grain Belt, or Hamm's |
+| Low | High Five |
 
 ### Reporting a Vulnerability
 
-Please report high and/or critical vulnerabilities via GitHub's private [report a vulnerability feature](https://github.com/BishopFox/sliver/security/advisories).
+Please report high and/or critical vulnerabilities via GitHub's private [report a vulnerability feature](https/github.com/BishopFox/sliver/security/advisories).

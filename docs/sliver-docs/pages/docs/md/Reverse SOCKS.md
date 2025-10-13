@@ -8,14 +8,14 @@ An in-band reverse SOCKS5 proxy is supported in Sliver versions 1.5 and later. N
 sliver (UGLY_SCARIFICATION) > socks5 add
 
 [*] Started SOCKS5 127.0.0.1 1081
-⚠️  In-band SOCKS proxies can be a little unstable depending on protocol
+️ In-band SOCKS proxies can be a little unstable depending on protocol
 ```
 
 Simply upstream to `127.0.0.1:1081` from here, see `socks5 add --help` for more options.
 
 ## WireGuard SOCKS5
 
-In order to use `wg-socks` you'll need a WireGuard client, any client should work. However, we recommend using `wg-quick`, which is included in the `wireguard-tools` package available on most platforms (see [WireGuard](https://www.wireguard.com/install/) for more platforms):
+In order to use `wg-socks` you'll need a WireGuard client, any client should work. However, we recommend using `wg-quick`, which is included in the `wireguard-tools` package available on most platforms (see [WireGuard](https/www.wireguard.com/install/) for more platforms):
 
 - MacOS `brew install wireguard-tools`
 - Ubuntu/Kali `sudo apt install wireguard-tools`
@@ -30,9 +30,9 @@ sliver > wg
 
 sliver > jobs
 
-ID  Name  Protocol  Port
-==  ====  ========  ====
-1   wg    udp       53
+ID Name Protocol Port
+== ==== ======== ====
+1 wg udp 53
 ```
 
 Next, using Sliver you can create WireGuard client configuration using the `wg-config` command (you can use `--save` to write the configuration directly to a file):
@@ -66,9 +66,9 @@ Now that your machine is connected to the Sliver WireGuard listener, just wait f
 ```
 sliver > sessions
 
-ID  Name           Transport  Remote Address     Hostname     Username  Operating System  Last Check-in                  Health
-==  ====           =========  ==============     ========     ========  ================  =============                  ======
-1   STUCK_ARTICLE  wg         100.64.0.17:53565  MacBook-Pro  jdoe      darwin/amd64      Wed, 12 Apr 2021 19:21:00 CDT  [ALIVE]
+ID Name Transport Remote Address Hostname Username Operating System Last Check-in Health
+== ==== ========= ============== ======== ======== ================ ============= ======
+1 STUCK_ARTICLE wg 100.64.0.17:53565 MacBook-Pro jdoe darwin/amd64 Wed, 12 Apr 2021 1900 CDT [ALIVE]
 ```
 
 Interact with the session, and use `wg-socks` to create a SOCKS proxy!

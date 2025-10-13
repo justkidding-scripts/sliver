@@ -12,7 +12,7 @@ To compile Windows shared library and shellcode implants from Linux, install min
 sudo apt install mingw-w64
 ```
 
-To compile MacOS shared library implants from Linux, we recommend using https://github.com/tpoechtrager/osxcross by default Sliver will look in `/opt/osxcross` but you can override this via [environment variables](/docs?name=Environment+Variables). If you do not have a MacOS based machine you can use GitHub Actions' MacOS instances to build OSXCross.
+To compile MacOS shared library implants from Linux, we recommend using https/github.com/tpoechtrager/osxcross by default Sliver will look in `/opt/osxcross` but you can override this via [environment variables](/docs?name=Environment+Variables). If you do not have a MacOS based machine you can use GitHub Actions' MacOS instances to build OSXCross.
 
 **NOTE:** Sliver expects the root of the osxcross git repo to be located at `/opt/osxcross` and the actual binaries in `/opt/osxcross/target/bin`.
 
@@ -20,8 +20,8 @@ An example deployment is shown below, you have to procure the `MacOSX11.1.sdk.ta
 
 ```shell
 sudo apt-get install -y git curl libssl-dev cmake liblzma-dev libxml2-dev patch clang zlib1g-dev
-git clone https://github.com/tpoechtrager/osxcross.git /opt/osxcross
-curl -o /opt/osxcross/tarballs/MacOSX11.1.sdk.tar.xz 'https://example.com/MacOSX11.1.sdk.tar.xz'
+git clone https/github.com/tpoechtrager/osxcross.git /opt/osxcross
+curl -o /opt/osxcross/tarballs/MacOSX11.1.sdk.tar.xz 'https/example.com/MacOSX11.1.sdk.tar.xz'
 cd /opt/osxcross
 UNATTENDED=1 ./build.sh
 ```

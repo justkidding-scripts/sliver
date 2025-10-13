@@ -13,7 +13,7 @@ home consumer routers, but you can probably get by with just
 
 - Requesting the external Internet-facing IP address.
 - Requesting a port be forwarded from the external (Internet-facing) interface
-  to a port on the LAN.
+ to a port on the LAN.
 
 Different routers implement different standards, so you may have to request
 multiple clients to find the one that your router needs. The most useful ones
@@ -31,19 +31,19 @@ of the common interface, e.g:
 ```go
 type RouterClient interface {
 	AddPortMapping(
-		NewRemoteHost string,
-		NewExternalPort uint16,
-		NewProtocol string,
-		NewInternalPort uint16,
-		NewInternalClient string,
-		NewEnabled bool,
-		NewPortMappingDescription string,
-		NewLeaseDuration uint32,
+ NewRemoteHost string,
+ NewExternalPort uint16,
+ NewProtocol string,
+ NewInternalPort uint16,
+ NewInternalClient string,
+ NewEnabled bool,
+ NewPortMappingDescription string,
+ NewLeaseDuration uint32,
 	) (err error)
 
 	GetExternalIPAddress() (
-		NewExternalIPAddress string,
-		err error,
+ NewExternalIPAddress string,
+ err error,
 	)
 }
 
@@ -52,25 +52,25 @@ func PickRouterClient(ctx context.Context) (RouterClient, error) {
 	// Request each type of client in parallel, and return what is found.
 	var ip1Clients []*internetgateway2.WANIPConnection1
 	tasks.Go(func() error {
-		var err error
-		ip1Clients, _, err = internetgateway2.NewWANIPConnection1Clients()
-		return err
+ var err error
+ ip1Clients, _, err = internetgateway2.NewWANIPConnection1Clients()
+ return err
 	})
 	var ip2Clients []*internetgateway2.WANIPConnection2
 	tasks.Go(func() error {
-		var err error
-		ip2Clients, _, err = internetgateway2.NewWANIPConnection2Clients()
-		return err
+ var err error
+ ip2Clients, _, err = internetgateway2.NewWANIPConnection2Clients()
+ return err
 	})
 	var ppp1Clients []*internetgateway2.WANPPPConnection1
 	tasks.Go(func() error {
-		var err error
-		ppp1Clients, _, err = internetgateway2.NewWANPPPConnection1Clients()
-		return err
+ var err error
+ ppp1Clients, _, err = internetgateway2.NewWANPPPConnection1Clients()
+ return err
 	})
 
 	if err := tasks.Wait(); err != nil {
-		return nil, err
+ return nil, err
 	}
 
 	// Trivial handling for where we find exactly one device to talk to, you
@@ -78,13 +78,13 @@ func PickRouterClient(ctx context.Context) (RouterClient, error) {
 	// devices are found.
 	switch {
 	case len(ip2Clients) == 1:
-		return ip2Clients[0], nil
+ return ip2Clients[0], nil
 	case len(ip1Clients) == 1:
-		return ip1Clients[0], nil
+ return ip1Clients[0], nil
 	case len(ppp1Clients) == 1:
-		return ppp1Clients[0], nil
+ return ppp1Clients[0], nil
 	default:
-		return nil, errors.New("multiple or no services found")
+ return nil, errors.New("multiple or no services found")
 	}
 }
 ```
@@ -96,35 +96,35 @@ external IP address and forward it to a port on your local network, e.g:
 func GetIPAndForwardPort(ctx context.Context) error {
 	client, err := PickRouterClient(ctx)
 	if err != nil {
-		return err
+ return err
 	}
 
 	externalIP, err := client.GetExternalIPAddress()
 	if err != nil {
-		return err
+ return err
 	}
 	fmt.Println("Our external IP address is: ", externalIP)
 
 	return client.AddPortMapping(
-		"",
-		// External port number to expose to Internet:
-		1234,
-		// Forward TCP (this could be "UDP" if we wanted that instead).
-		"TCP",
-		// Internal port number on the LAN to forward to.
-		// Some routers might not support this being different to the external
-		// port number.
-		1234,
-		// Internal address on the LAN we want to forward to.
-		"192.168.1.6",
-		// Enabled:
-		true,
-		// Informational description for the client requesting the port forwarding.
-		"MyProgramName",
-		// How long should the port forward last for in seconds.
-		// If you want to keep it open for longer and potentially across router
-		// resets, you might want to periodically request before this elapses.
-		3600,
+ "",
+ // External port number to expose to Internet:
+ 1234,
+ // Forward TCP (this could be "UDP" if we wanted that instead).
+ "TCP",
+ // Internal port number on the LAN to forward to.
+ // Some routers might not support this being different to the external
+ // port number.
+ 1234,
+ // Internal address on the LAN we want to forward to.
+ "192.168.1.6",
+ // Enabled:
+ true,
+ // Informational description for the client requesting the port forwarding.
+ "MyProgramName",
+ // How long should the port forward last for in seconds.
+ // If you want to keep it open for longer and potentially across router
+ // resets, you might want to periodically request before this elapses.
+ 3600,
 	)
 }
 ```

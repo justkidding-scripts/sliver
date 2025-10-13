@@ -1,5 +1,5 @@
-Docs: https://godoc.org/github.com/josharian/intern
+Docs: https/godoc.org/github.com/josharian/intern
 
-See also [Go issue 5160](https://golang.org/issue/5160).
+See also [Go issue 5160](https/golang.org/issue/5160).
 
 License: MIT

@@ -1,57 +1,57 @@
 # Survey
 
-[![GoDoc](http://img.shields.io/badge/godoc-reference-5272B4.svg)](https://pkg.go.dev/github.com/AlecAivazis/survey/v2)
+[![GoDoc](http/img.shields.io/badge/godoc-reference-5272B4.svg)](https/pkg.go.dev/github.com/AlecAivazis/survey/v2)
 
 A library for building interactive and accessible prompts on terminals supporting ANSI escape sequences.
 
-<img width="550" src="https://thumbs.gfycat.com/VillainousGraciousKouprey-size_restricted.gif"/>
+<img width="550" src="https/thumbs.gfycat.com/VillainousGraciousKouprey-size_restricted.gif"/>
 
 ```go
 package main
 
 import (
-    "fmt"
-    "github.com/AlecAivazis/survey/v2"
+ "fmt"
+ "github.com/AlecAivazis/survey/v2"
 )
 
 // the questions to ask
 var qs = []*survey.Question{
-    {
-        Name:     "name",
-        Prompt:   &survey.Input{Message: "What is your name?"},
-        Validate: survey.Required,
-        Transform: survey.Title,
-    },
-    {
-        Name: "color",
-        Prompt: &survey.Select{
-            Message: "Choose a color:",
-            Options: []string{"red", "blue", "green"},
-            Default: "red",
-        },
-    },
-    {
-        Name: "age",
-        Prompt:   &survey.Input{Message: "How old are you?"},
-    },
+ {
+ Name: "name",
+ Prompt: &survey.Input{Message: "What is your name?"},
+ Validate: survey.Required,
+ Transform: survey.Title,
+ },
+ {
+ Name: "color",
+ Prompt: &survey.Select{
+ Message: "Choose a color:",
+ Options: []string{"red", "blue", "green"},
+ Default: "red",
+ },
+ },
+ {
+ Name: "age",
+ Prompt: &survey.Input{Message: "How old are you?"},
+ },
 }
 
 func main() {
-    // the answers will be written to this struct
-    answers := struct {
-        Name          string                  // survey will match the question and field names
-        FavoriteColor string `survey:"color"` // or you can tag fields to match a specific name
-        Age           int                     // if the types don't match, survey will convert it
-    }{}
+ // the answers will be written to this struct
+ answers := struct {
+ Name string // survey will match the question and field names
+ FavoriteColor string `survey:"color"` // or you can tag fields to match a specific name
+ Age int // if the types don't match, survey will convert it
+ }{}
 
-    // perform the questions
-    err := survey.Ask(qs, &answers)
-    if err != nil {
-        fmt.Println(err.Error())
-        return
-    }
+ // perform the questions
+ err := survey.Ask(qs, &answers)
+ if err != nil {
+ fmt.Println(err.Error())
+ return
+ }
 
-    fmt.Printf("%s chose %s.", answers.Name, answers.FavoriteColor)
+ fmt.Printf("%s chose %s.", answers.Name, answers.FavoriteColor)
 }
 ```
 
@@ -81,10 +81,10 @@ in this document will do both interchangeably:
 
 ```golang
 prompt := &Select{
-    Message: "Choose a color:",
-    Options: []string{"red", "blue", "green"},
-    // can pass a validator directly
-    Validate: survey.Required,
+ Message: "Choose a color:",
+ Options: []string{"red", "blue", "green"},
+ // can pass a validator directly
+ Validate: survey.Required,
 }
 
 // or define a default for the single call to `AskOne`
@@ -100,28 +100,28 @@ survey.Ask(questions, &answers, survey.WithValidator(survey.Required))
 
 ### Input
 
-<img src="https://thumbs.gfycat.com/LankyBlindAmericanpainthorse-size_restricted.gif" width="400px"/>
+<img src="https/thumbs.gfycat.com/LankyBlindAmericanpainthorse-size_restricted.gif" width="400px"/>
 
 ```golang
 name := ""
 prompt := &survey.Input{
-    Message: "ping",
+ Message: "ping",
 }
 survey.AskOne(prompt, &name)
 ```
 
 #### Suggestion Options
 
-<img src="https://i.imgur.com/Q7POpA1.gif" width="800px"/>
+<img src="https/i.imgur.com/Q7POpA1.gif" width="800px"/>
 
 ```golang
 file := ""
 prompt := &survey.Input{
-    Message: "inform a file to save:",
-    Suggest: func (toComplete string) []string {
-        files, _ := filepath.Glob(toComplete + "*")
-        return files
-    },
+ Message: "inform a file to save:",
+ Suggest: func (toComplete string) []string {
+ files, _ := filepath.Glob(toComplete + "*")
+ return files
+ },
 }
 }
 survey.AskOne(prompt, &file)
@@ -129,49 +129,49 @@ survey.AskOne(prompt, &file)
 
 ### Multiline
 
-<img src="https://thumbs.gfycat.com/ImperfectShimmeringBeagle-size_restricted.gif" width="400px"/>
+<img src="https/thumbs.gfycat.com/ImperfectShimmeringBeagle-size_restricted.gif" width="400px"/>
 
 ```golang
 text := ""
 prompt := &survey.Multiline{
-    Message: "ping",
+ Message: "ping",
 }
 survey.AskOne(prompt, &text)
 ```
 
 ### Password
 
-<img src="https://thumbs.gfycat.com/CompassionateSevereHypacrosaurus-size_restricted.gif" width="400px" />
+<img src="https/thumbs.gfycat.com/CompassionateSevereHypacrosaurus-size_restricted.gif" width="400px" />
 
 ```golang
 password := ""
 prompt := &survey.Password{
-    Message: "Please type your password",
+ Message: "Please type your password",
 }
 survey.AskOne(prompt, &password)
 ```
 
 ### Confirm
 
-<img src="https://thumbs.gfycat.com/UnkemptCarefulGermanpinscher-size_restricted.gif" width="400px"/>
+<img src="https/thumbs.gfycat.com/UnkemptCarefulGermanpinscher-size_restricted.gif" width="400px"/>
 
 ```golang
 name := false
 prompt := &survey.Confirm{
-    Message: "Do you like pie?",
+ Message: "Do you like pie?",
 }
 survey.AskOne(prompt, &name)
 ```
 
 ### Select
 
-<img src="https://thumbs.gfycat.com/GrimFilthyAmazonparrot-size_restricted.gif" width="450px"/>
+<img src="https/thumbs.gfycat.com/GrimFilthyAmazonparrot-size_restricted.gif" width="450px"/>
 
 ```golang
 color := ""
 prompt := &survey.Select{
-    Message: "Choose a color:",
-    Options: []string{"red", "blue", "green"},
+ Message: "Choose a color:",
+ Options: []string{"red", "blue", "green"},
 }
 survey.AskOne(prompt, &color)
 ```
@@ -200,14 +200,14 @@ The optional description text can be used to add extra information to each optio
 ```golang
 color := ""
 prompt := &survey.Select{
-    Message: "Choose a color:",
-    Options: []string{"red", "blue", "green"},
-    Description: func(value string, index int) string {
-        if value == "red" {
-            return "My favorite color"
-        }
-        return ""
-    },
+ Message: "Choose a color:",
+ Options: []string{"red", "blue", "green"},
+ Description: func(value string, index int) string {
+ if value == "red" {
+ return "My favorite color"
+ }
+ return ""
+ },
 }
 survey.AskOne(prompt, &color)
 
@@ -222,8 +222,8 @@ fmt.Println(color) //=> "red"
 ```golang
 days := []string{}
 prompt := &survey.MultiSelect{
-    Message: "What days do you prefer:",
-    Options: []string{"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"},
+ Message: "What days do you prefer:",
+ Options: []string{"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"},
 }
 survey.AskOne(prompt, &days)
 ```
@@ -251,13 +251,13 @@ Launches the user's preferred editor (defined by the \$VISUAL or \$EDITOR enviro
 temporary file. Once the user exits their editor, the contents of the temporary file are read in as
 the result. If neither of those are present, notepad (on Windows) or vim (Linux or Mac) is used.
 
-You can also specify a [pattern](https://golang.org/pkg/io/ioutil/#TempFile) for the name of the temporary file. This
+You can also specify a [pattern](https/golang.org/pkg/io/ioutil/#TempFile) for the name of the temporary file. This
 can be useful for ensuring syntax highlighting matches your usecase.
 
 ```golang
 prompt := &survey.Editor{
-    Message: "Shell code snippet",
-    FileName: "*.sh",
+ Message: "Shell code snippet",
+ FileName: "*.sh",
 }
 
 survey.AskOne(prompt, &content)
@@ -272,15 +272,15 @@ A custom filter function can also be provided to change this behavior:
 
 ```golang
 func myFilter(filterValue string, optValue string, optIndex int) bool {
-    // only include the option if it includes the filter and has length greater than 5
-    return strings.Contains(optValue, filterValue) && len(optValue) >= 5
+ // only include the option if it includes the filter and has length greater than 5
+ return strings.Contains(optValue, filterValue) && len(optValue) >= 5
 }
 
 // configure it for a specific prompt
 &Select{
-    Message: "Choose a color:",
-    Options: []string{"red", "blue", "green"},
-    Filter: myFilter,
+ Message: "Choose a color:",
+ Options: []string{"red", "blue", "green"},
+ Filter: myFilter,
 }
 
 // or define a default for all of the questions
@@ -296,9 +296,9 @@ However the user can prevent this from happening and keep the filter active for 
 ```golang
 // configure it for a specific prompt
 &Select{
-    Message:    "Choose a color:",
-    Options:    []string{"light-green", "green", "dark-green", "red"},
-    KeepFilter: true,
+ Message: "Choose a color:",
+ Options: []string{"light-green", "green", "dark-green", "red"},
+ KeepFilter: true,
 }
 
 // or define a default for all of the questions
@@ -314,14 +314,14 @@ response. Like usual, validators can be provided directly to the prompt or with 
 
 ```golang
 q := &survey.Question{
-    Prompt: &survey.Input{Message: "Hello world validation"},
-    Validate: func (val interface{}) error {
-        // since we are validating an Input, the assertion will always succeed
-        if str, ok := val.(string) ; !ok || len(str) > 10 {
-            return errors.New("This response cannot be longer than 10 characters.")
-        }
+ Prompt: &survey.Input{Message: "Hello world validation"},
+ Validate: func (val interface{}) error {
+ // since we are validating an Input, the assertion will always succeed
+ if str, ok := val.(string) ; !ok || len(str) > 10 {
+ return errors.New("This response cannot be longer than 10 characters.")
+ }
 	return nil
-    },
+ },
 }
 
 color := ""
@@ -336,24 +336,24 @@ survey.AskOne(prompt, &color, survey.WithValidator(survey.Required))
 `survey` comes prepackaged with a few validators to fit common situations. Currently these
 validators include:
 
-| name         | valid types    | description                                                      | notes                                                                                 |
+| name | valid types | description | notes |
 | ------------ | -------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| Required     | any            | Rejects zero values of the response type                         | Boolean values pass straight through since the zero value (false) is a valid response |
-| MinLength(n) | string         | Enforces that a response is at least the given length            |                                                                                       |
-| MaxLength(n) | string         | Enforces that a response is no longer than the given length      |                                                                                       |
-| MaxItems(n)  | []OptionAnswer | Enforces that a response has no more selections of the indicated |                                                                                       |
-| MinItems(n)  | []OptionAnswer | Enforces that a response has no less selections of the indicated |                                                                                       |
+| Required | any | Rejects zero values of the response type | Boolean values pass straight through since the zero value (false) is a valid response |
+| MinLength(n) | string | Enforces that a response is at least the given length | |
+| MaxLength(n) | string | Enforces that a response is no longer than the given length | |
+| MaxItems(n) | []OptionAnswer | Enforces that a response has no more selections of the indicated | |
+| MinItems(n) | []OptionAnswer | Enforces that a response has no less selections of the indicated | |
 
 ## Help Text
 
 All of the prompts have a `Help` field which can be defined to provide more information to your users:
 
-<img src="https://thumbs.gfycat.com/CloudyRemorsefulFossa-size_restricted.gif" width="400px" style="margin-top: 8px"/>
+<img src="https/thumbs.gfycat.com/CloudyRemorsefulFossa-size_restricted.gif" width="400px" style="margin-top: x"/>
 
 ```golang
 &survey.Input{
-    Message: "What is your phone number:",
-    Help:    "Phone number should include the area code",
+ Message: "What is your phone number:",
+ Help: "Phone number should include the area code",
 }
 ```
 
@@ -363,12 +363,12 @@ By default, users can select all of the multi-select options using the right arr
 
 ```golang
 import (
-    "github.com/AlecAivazis/survey/v2"
+ "github.com/AlecAivazis/survey/v2"
 )
 
 number := ""
 prompt := &survey.Input{
-    Message: "This question has the select all option removed",
+ Message: "This question has the select all option removed",
 }
 
 survey.AskOne(prompt, &number, survey.WithRemoveSelectAll())
@@ -378,12 +378,12 @@ Also by default, users can use the left arrow key to unselect all of the options
 
 ```golang
 import (
-    "github.com/AlecAivazis/survey/v2"
+ "github.com/AlecAivazis/survey/v2"
 )
 
 number := ""
 prompt := &survey.Input{
-    Message: "This question has the select all option removed",
+ Message: "This question has the select all option removed",
 }
 
 survey.AskOne(prompt, &number, survey.WithRemoveSelectNone())
@@ -397,13 +397,13 @@ looks for with `WithHelpInput`:
 
 ```golang
 import (
-    "github.com/AlecAivazis/survey/v2"
+ "github.com/AlecAivazis/survey/v2"
 )
 
 number := ""
 prompt := &survey.Input{
-    Message: "If you have this need, please give me a reasonable message.",
-    Help:    "I couldn't come up with one.",
+ Message: "If you have this need, please give me a reasonable message.",
+ Help: "I couldn't come up with one.",
 }
 
 survey.AskOne(prompt, &number, survey.WithHelpInput('^'))
@@ -412,37 +412,37 @@ survey.AskOne(prompt, &number, survey.WithHelpInput('^'))
 ## Changing the Icons
 
 Changing the icons and their color/format can be done by passing the `WithIcons` option. The format
-follows the patterns outlined [here](https://github.com/mgutz/ansi#style-format). For example:
+follows the patterns outlined [here](https/github.com/mgutz/ansi#style-format). For example:
 
 ```golang
 import (
-    "github.com/AlecAivazis/survey/v2"
+ "github.com/AlecAivazis/survey/v2"
 )
 
 number := ""
 prompt := &survey.Input{
-    Message: "If you have this need, please give me a reasonable message.",
-    Help:    "I couldn't come up with one.",
+ Message: "If you have this need, please give me a reasonable message.",
+ Help: "I couldn't come up with one.",
 }
 
 survey.AskOne(prompt, &number, survey.WithIcons(func(icons *survey.IconSet) {
-    // you can set any icons
-    icons.Question.Text = "⁇"
-    // for more information on formatting the icons, see here: https://github.com/mgutz/ansi#style-format
-    icons.Question.Format = "yellow+hb"
+ // you can set any icons
+ icons.Question.Text = "⁇"
+ // for more information on formatting the icons, see here: https/github.com/mgutz/ansi#style-format
+ icons.Question.Format = "yellow+hb"
 }))
 ```
 
 The icons and their default text and format are summarized below:
 
-| name           | text | format     | description                                                   |
+| name | text | format | description |
 | -------------- | ---- | ---------- | ------------------------------------------------------------- |
-| Error          | X    | red        | Before an error                                               |
-| Help           | i    | cyan       | Before help text                                              |
-| Question       | ?    | green+hb   | Before the message of a prompt                                |
-| SelectFocus    | >    | green      | Marks the current focus in `Select` and `MultiSelect` prompts |
-| UnmarkedOption | [ ]  | default+hb | Marks an unselected option in a `MultiSelect` prompt          |
-| MarkedOption   | [x]  | cyan+b     | Marks a chosen selection in a `MultiSelect` prompt            |
+| Error | X | red | Before an error |
+| Help | i | cyan | Before help text |
+| Question | ? | green+hb | Before the message of a prompt |
+| SelectFocus | > | green | Marks the current focus in `Select` and `MultiSelect` prompts |
+| UnmarkedOption | [ ] | default+hb | Marks an unselected option in a `MultiSelect` prompt |
+| MarkedOption | [x] | cyan+b | Marks a chosen selection in a `MultiSelect` prompt |
 
 ## Custom Types
 
@@ -450,7 +450,7 @@ survey will assign prompt answers to your custom types if they implement this in
 
 ```golang
 type Settable interface {
-    WriteAnswer(field string, value interface{}) error
+ WriteAnswer(field string, value interface{}) error
 }
 ```
 
@@ -458,28 +458,28 @@ Here is an example how to use them:
 
 ```golang
 type MyValue struct {
-    value string
+ value string
 }
 func (my *MyValue) WriteAnswer(name string, value interface{}) error {
-     my.value = value.(string)
+ my.value = value.(string)
 }
 
 myval := MyValue{}
 survey.AskOne(
-    &survey.Input{
-        Message: "Enter something:",
-    },
-    &myval
+ &survey.Input{
+ Message: "Enter something:",
+ },
+ &myval
 )
 ```
 
 ## Testing
 
-You can test your program's interactive prompts using [go-expect](https://github.com/Netflix/go-expect). The library
+You can test your program's interactive prompts using [go-expect](https/github.com/Netflix/go-expect). The library
 can be used to expect a match on stdout and respond on stdin. Since `os.Stdout` in a `go test` process is not a TTY,
 if you are manipulating the cursor or using `survey`, you will need a way to interpret terminal / ANSI escape sequences
 for things like `CursorLocation`. `vt10x.NewVT10XConsole` will create a `go-expect` console that also multiplexes
-stdio to an in-memory [virtual terminal](https://github.com/hinshun/vt10x).
+stdio to an in-memory [virtual terminal](https/github.com/hinshun/vt10x).
 
 For some examples, you can see any of the tests in this repo.
 
@@ -489,7 +489,7 @@ For some examples, you can see any of the tests in this repo.
 
 survey aims to support most terminal emulators; it expects support for ANSI escape sequences.
 This means that reading from piped stdin or writing to piped stdout is **not supported**,
-and likely to break your application in these situations. See [#337](https://github.com/AlecAivazis/survey/pull/337#issue-581351617)
+and likely to break your application in these situations. See [#337](https/github.com/AlecAivazis/survey/pull/337#issue-581351617)
 
 ### Why isn't Ctrl-C working?
 
@@ -503,7 +503,7 @@ If you want to stop the process, handle the returned error in your code:
 err := survey.AskOne(prompt, &myVar)
 if err != nil {
 	if err == terminal.InterruptErr {
-		log.Fatal("interrupted")
+ log.Fatal("interrupted")
 	}
 	...
 }

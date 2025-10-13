@@ -2,10 +2,10 @@
 
 The fantastic ORM library for Golang, aims to be developer friendly.
 
-[![go report card](https://goreportcard.com/badge/github.com/go-gorm/gorm "go report card")](https://goreportcard.com/report/github.com/go-gorm/gorm)
-[![test status](https://github.com/go-gorm/gorm/workflows/tests/badge.svg?branch=master "test status")](https://github.com/go-gorm/gorm/actions)
-[![MIT license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
-[![Go.Dev reference](https://img.shields.io/badge/go.dev-reference-blue?logo=go&logoColor=white)](https://pkg.go.dev/gorm.io/gorm?tab=doc)
+[![go report card](https/goreportcard.com/badge/github.com/go-gorm/gorm "go report card")](https/goreportcard.com/report/github.com/go-gorm/gorm)
+[![test status](https/github.com/go-gorm/gorm/workflows/tests/badge.svg?branch=master "test status")](https/github.com/go-gorm/gorm/actions)
+[![MIT license](https/img.shields.io/badge/license-MIT-brightgreen.svg)](https/opensource.org/licenses/MIT)
+[![Go.Dev reference](https/img.shields.io/badge/go.dev-reference-blue?logo=go&logoColor=white)](https/pkg.go.dev/gorm.io/gorm?tab=doc)
 
 ## Overview
 
@@ -26,19 +26,19 @@ The fantastic ORM library for Golang, aims to be developer friendly.
 
 ## Getting Started
 
-* GORM Guides [https://gorm.io](https://gorm.io)
-* Gen Guides [https://gorm.io/gen/index.html](https://gorm.io/gen/index.html)
+* GORM Guides [https/gorm.io](https/gorm.io)
+* Gen Guides [https/gorm.io/gen/index.html](https/gorm.io/gen/index.html)
 
 ## Contributing
 
-[You can help to deliver a better GORM, check out things you can do](https://gorm.io/contribute.html)
+[You can help to deliver a better GORM, check out things you can do](https/gorm.io/contribute.html)
 
 ## Contributors
 
-[Thank you](https://github.com/go-gorm/gorm/graphs/contributors) for contributing to the GORM framework!
+[Thank you](https/github.com/go-gorm/gorm/graphs/contributors) for contributing to the GORM framework!
 
 ## License
 
 © Jinzhu, 2013~time.Now
 
-Released under the [MIT License](https://github.com/go-gorm/gorm/blob/master/LICENSE)
+Released under the [MIT License](https/github.com/go-gorm/gorm/blob/master/LICENSE)

@@ -1,6 +1,6 @@
-# httphead.[go](https://golang.org)
+# httphead.[go](https/golang.org)
 
-[![GoDoc][godoc-image]][godoc-url] 
+[![GoDoc][godoc-image]][godoc-url]
 
 > Tiny HTTP header value parsing library in go.
 
@@ -11,7 +11,7 @@ This library contains low-level functions for scanning HTTP RFC2616 compatible h
 ## Install
 
 ```shell
-    go get github.com/gobwas/httphead
+ go get github.com/gobwas/httphead
 ```
 
 ## Example
@@ -34,30 +34,30 @@ of some key:
 
 	// We want to search key "foo" with an "a" parameter that equal to "2".
 	var (
-		foo = []byte(`foo`)
-		a   = []byte(`a`)
-		v   = []byte(`2`)
+ foo = []byte(`foo`)
+ a = []byte(`a`)
+ v = []byte(`2`)
 	)
 	var found bool
 	httphead.ScanOptions(header, func(i int, key, param, value []byte) Control {
-		if !bytes.Equal(key, foo) {
-			return ControlSkip
-		}
-		if !bytes.Equal(param, a) {
-			if bytes.Equal(value, v) {
-				// Found it!
-				found = true
-				return ControlBreak
-			}
-			return ControlSkip
-		}
-		return ControlContinue
+ if !bytes.Equal(key, foo) {
+ return ControlSkip
+ }
+ if !bytes.Equal(param, a) {
+ if bytes.Equal(value, v) {
+ // Found it!
+ found = true
+ return ControlBreak
+ }
+ return ControlSkip
+ }
+ return ControlContinue
 	})
 ```
 
 For more usage examples please see [docs][godoc-url] or package tests.
 
-[godoc-image]: https://godoc.org/github.com/gobwas/httphead?status.svg
-[godoc-url]: https://godoc.org/github.com/gobwas/httphead
-[travis-image]: https://travis-ci.org/gobwas/httphead.svg?branch=master
-[travis-url]: https://travis-ci.org/gobwas/httphead
+[godoc-image]: https/godoc.org/github.com/gobwas/httphead?status.svg
+[godoc-url]: https/godoc.org/github.com/gobwas/httphead
+[travis-image]: https/travis-ci.org/gobwas/httphead.svg?branch=master
+[travis-url]: https/travis-ci.org/gobwas/httphead

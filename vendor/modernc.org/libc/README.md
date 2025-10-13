@@ -6,9 +6,9 @@ This package is a continuation of the Crt package in modernc.org/crt/v3.
 
 Installation
 
-    $ go get [-u] modernc.org/libc
+ $ go get [-u] modernc.org/libc
 
-Documentation: [godoc.org/modernc.org/libc](http://godoc.org/modernc.org/libc)
+Documentation: [godoc.org/modernc.org/libc](http/godoc.org/modernc.org/libc)
 
 Building with `make` requires the following Go packages
 

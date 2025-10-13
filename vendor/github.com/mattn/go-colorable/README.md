@@ -1,9 +1,9 @@
 # go-colorable
 
-[![Build Status](https://github.com/mattn/go-colorable/workflows/test/badge.svg)](https://github.com/mattn/go-colorable/actions?query=workflow%3Atest)
-[![Codecov](https://codecov.io/gh/mattn/go-colorable/branch/master/graph/badge.svg)](https://codecov.io/gh/mattn/go-colorable)
-[![GoDoc](https://godoc.org/github.com/mattn/go-colorable?status.svg)](http://godoc.org/github.com/mattn/go-colorable)
-[![Go Report Card](https://goreportcard.com/badge/mattn/go-colorable)](https://goreportcard.com/report/mattn/go-colorable)
+[![Build Status](https/github.com/mattn/go-colorable/workflows/test/badge.svg)](https/github.com/mattn/go-colorable/actions?query=workflow%3Atest)
+[![Codecov](https/codecov.io/gh/mattn/go-colorable/branch/master/graph/badge.svg)](https/codecov.io/gh/mattn/go-colorable)
+[![GoDoc](https/godoc.org/github.com/mattn/go-colorable?status.svg)](http/godoc.org/github.com/mattn/go-colorable)
+[![Go Report Card](https/goreportcard.com/badge/mattn/go-colorable)](https/goreportcard.com/report/mattn/go-colorable)
 
 Colorable writer for windows.
 
@@ -12,12 +12,12 @@ This package is possible to handle escape sequence for ansi color on windows.
 
 ## Too Bad!
 
-![](https://raw.githubusercontent.com/mattn/go-colorable/gh-pages/bad.png)
+![](https/raw.githubusercontent.com/mattn/go-colorable/gh-pages/bad.png)
 
 
 ## So Good!
 
-![](https://raw.githubusercontent.com/mattn/go-colorable/gh-pages/good.png)
+![](https/raw.githubusercontent.com/mattn/go-colorable/gh-pages/good.png)
 
 ## Usage
 

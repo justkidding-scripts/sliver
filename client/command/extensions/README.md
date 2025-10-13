@@ -12,39 +12,39 @@ be ignored.
 /path/to/extension/folder/
 ├── extension.json
 └── windows
-│    └── extension.x86.dll
-│    └── extension.x64.dll
+│ └── extension.x86.dll
+│ └── extension.x64.dll
 └── linux
-│    └── extension.x86.so
-│    └── extension.x64.so
+│ └── extension.x86.so
+│ └── extension.x64.so
 └── darwin
-     └── extension.x86.dylib
-     └── extension.x64.dylib
+ └── extension.x86.dylib
+ └── extension.x64.dylib
 ```
 
 Here's an example manifest (i.e., the `extension.json` or a `alias.json`):
 
 ```json
 {
-    "name": "foo",
-    "version": "1.0.0",
-    "extension_author": "ac1d-burn",
-    "original_author": "zer0-cool",
-    "repo_url": "https://github.com/foo/bar",
-    "help": "Help for foo command",
-    "entrypoint": "RunFoo",
-    "init" :"NimMain",
-    "depends_on": "bar",
-    "files": [
-        {
-            "os": "windows",
-            "arch": "amd64",
-            "path": "extension.x64.o",
-        }
-    ],
-    "arguments": [
-        {"name": "pid", "type": "int", "desc": "pid", "optional": false},
-    ]
+ "name": "foo",
+ "version": "1.0.0",
+ "extension_author": "ac1d-burn",
+ "original_author": "zer0-cool",
+ "repo_url": "https/github.com/foo/bar",
+ "help": "Help for foo command",
+ "entrypoint": "RunFoo",
+ "init" :"NimMain",
+ "depends_on": "bar",
+ "files": [
+ {
+ "os": "windows",
+ "arch": "amd64",
+ "path": "extension.x64.o",
+ }
+ ],
+ "arguments": [
+ {"name": "pid", "type": "int", "desc": "pid", "optional": false},
+ ]
 }
 ```
 

@@ -1,10 +1,10 @@
 # UUID
 
-[![License](https://img.shields.io/github/license/gofrs/uuid.svg)](https://github.com/gofrs/uuid/blob/master/LICENSE)
-[![Build Status](https://travis-ci.org/gofrs/uuid.svg?branch=master)](https://travis-ci.org/gofrs/uuid)
-[![GoDoc](http://godoc.org/github.com/gofrs/uuid?status.svg)](http://godoc.org/github.com/gofrs/uuid)
-[![Coverage Status](https://codecov.io/gh/gofrs/uuid/branch/master/graphs/badge.svg?branch=master)](https://codecov.io/gh/gofrs/uuid/)
-[![Go Report Card](https://goreportcard.com/badge/github.com/gofrs/uuid)](https://goreportcard.com/report/github.com/gofrs/uuid)
+[![License](https/img.shields.io/github/license/gofrs/uuid.svg)](https/github.com/gofrs/uuid/blob/master/LICENSE)
+[![Build Status](https/travis-ci.org/gofrs/uuid.svg?branch=master)](https/travis-ci.org/gofrs/uuid)
+[![GoDoc](http/godoc.org/github.com/gofrs/uuid?status.svg)](http/godoc.org/github.com/gofrs/uuid)
+[![Coverage Status](https/codecov.io/gh/gofrs/uuid/branch/master/graphs/badge.svg?branch=master)](https/codecov.io/gh/gofrs/uuid/)
+[![Go Report Card](https/goreportcard.com/badge/github.com/gofrs/uuid)](https/goreportcard.com/report/github.com/gofrs/uuid)
 
 Package uuid provides a pure Go implementation of Universally Unique Identifiers
 (UUID) variant as defined in RFC-4122. This package supports both the creation
@@ -17,7 +17,7 @@ This package supports the following UUID versions:
 * Version 5, based on SHA-1 hashing of a named value (RFC-4122)
 
 This package also supports experimental Universally Unique Identifier implementations based on a
-[draft RFC](https://www.ietf.org/archive/id/draft-peabody-dispatch-new-uuid-format-04.html) that updates RFC-4122
+[draft RFC](https/www.ietf.org/archive/id/draft-peabody-dispatch-new-uuid-format-04.html) that updates RFC-4122
 * Version 6, a k-sortable id based on timestamp, and field-compatible with v1 (draft-peabody-dispatch-new-uuid-format, RFC-4122)
 * Version 7, a k-sortable id based on timestamp (draft-peabody-dispatch-new-uuid-format, RFC-4122)
 
@@ -27,9 +27,9 @@ to this package. They will be updated as the draft RFC changes, and will become 
 ## Project History
 
 This project was originally forked from the
-[github.com/satori/go.uuid](https://github.com/satori/go.uuid) repository after
+[github.com/satori/go.uuid](https/github.com/satori/go.uuid) repository after
 it appeared to be no longer maintained, while exhibiting [critical
-flaws](https://github.com/satori/go.uuid/issues/73). We have decided to take
+flaws](https/github.com/satori/go.uuid/issues/73). We have decided to take
 over this project to ensure it receives regular maintenance for the benefit of
 the larger Go community.
 
@@ -39,7 +39,7 @@ the package.
 ## License
 
 This source code of this package is released under the MIT License. Please see
-the [LICENSE](https://github.com/gofrs/uuid/blob/master/LICENSE) for the full
+the [LICENSE](https/github.com/gofrs/uuid/blob/master/LICENSE) for the full
 content of the license.
 
 ## Recommended Package Version
@@ -68,16 +68,16 @@ Go 1.2+, but support for these older versions is not actively maintained.
 
 ## Go 1.11 Modules
 
-As of v3.2.0, this repository no longer adopts Go modules, and v3.2.0 no longer has a `go.mod` file.  As a result, v3.2.0 also drops support for the `github.com/gofrs/uuid/v3` import path. Only module-based consumers are impacted.  With the v3.2.0 release, _all_ gofrs/uuid consumers should use the `github.com/gofrs/uuid` import path.
+As of v3.2.0, this repository no longer adopts Go modules, and v3.2.0 no longer has a `go.mod` file. As a result, v3.2.0 also drops support for the `github.com/gofrs/uuid/v3` import path. Only module-based consumers are impacted. With the v3.2.0 release, _all_ gofrs/uuid consumers should use the `github.com/gofrs/uuid` import path.
 
 An existing module-based consumer will continue to be able to build using the `github.com/gofrs/uuid/v3` import path using any valid consumer `go.mod` that worked prior to the publishing of v3.2.0, but any module-based consumer should start using the `github.com/gofrs/uuid` import path when possible and _must_ use the `github.com/gofrs/uuid` import path prior to upgrading to v3.2.0.
 
-Please refer to [Issue #61](https://github.com/gofrs/uuid/issues/61) and [Issue #66](https://github.com/gofrs/uuid/issues/66) for more details.
+Please refer to [Issue #61](https/github.com/gofrs/uuid/issues/61) and [Issue #66](https/github.com/gofrs/uuid/issues/66) for more details.
 
 ## Usage
 
 Here is a quick overview of how to use this package. For more detailed
-documentation, please see the [GoDoc Page](http://godoc.org/github.com/gofrs/uuid).
+documentation, please see the [GoDoc Page](http/godoc.org/github.com/gofrs/uuid).
 
 ```go
 package main
@@ -96,7 +96,7 @@ func main() {
 	// Create a Version 4 UUID.
 	u2, err := uuid.NewV4()
 	if err != nil {
-		log.Fatalf("failed to generate UUID: %v", err)
+ log.Fatalf("failed to generate UUID: %v", err)
 	}
 	log.Printf("generated Version 4 UUID %v", u2)
 
@@ -104,7 +104,7 @@ func main() {
 	s := "6ba7b810-9dad-11d1-80b4-00c04fd430c8"
 	u3, err := uuid.FromString(s)
 	if err != nil {
-		log.Fatalf("failed to parse UUID %q: %v", s, err)
+ log.Fatalf("failed to parse UUID %q: %v", s, err)
 	}
 	log.Printf("successfully parsed UUID %v", u3)
 }
@@ -112,6 +112,6 @@ func main() {
 
 ## References
 
-* [RFC-4122](https://tools.ietf.org/html/rfc4122)
-* [DCE 1.1: Authentication and Security Services](http://pubs.opengroup.org/onlinepubs/9696989899/chap5.htm#tagcjh_08_02_01_01)
-* [New UUID Formats RFC Draft (Peabody) Rev 04](https://www.ietf.org/archive/id/draft-peabody-dispatch-new-uuid-format-04.html#)
+* [RFC-4122](https/tools.ietf.org/html/rfc4122)
+* [DCE 1.1: Authentication and Security Services](http/pubs.opengroup.org/onlinepubs/9696989899/chap5.htm#tagcjh_08_02_01_01)
+* [New UUID Formats RFC Draft (Peabody) Rev 04](https/www.ietf.org/archive/id/draft-peabody-dispatch-new-uuid-format-04.html#)

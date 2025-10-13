@@ -8,11 +8,11 @@ privileges, so in most cases this code needs to be run as root.
 
 You can use go get command:
 
-    go get github.com/vishvananda/netns
+ go get github.com/vishvananda/netns
 
 Testing (requires root):
 
-    sudo -E go test github.com/vishvananda/netns
+ sudo -E go test github.com/vishvananda/netns
 
 ## Example ##
 
@@ -20,32 +20,32 @@ Testing (requires root):
 package main
 
 import (
-    "fmt"
-    "net"
-    "runtime"
+ "fmt"
+ "net"
+ "runtime"
 
-    "github.com/vishvananda/netns"
+ "github.com/vishvananda/netns"
 )
 
 func main() {
-    // Lock the OS Thread so we don't accidentally switch namespaces
-    runtime.LockOSThread()
-    defer runtime.UnlockOSThread()
+ // Lock the OS Thread so we don't accidentally switch namespaces
+ runtime.LockOSThread()
+ defer runtime.UnlockOSThread()
 
-    // Save the current network namespace
-    origns, _ := netns.Get()
-    defer origns.Close()
+ // Save the current network namespace
+ origns, _ := netns.Get()
+ defer origns.Close()
 
-    // Create a new network namespace
-    newns, _ := netns.New()
-    defer newns.Close()
+ // Create a new network namespace
+ newns, _ := netns.New()
+ defer newns.Close()
 
-    // Do something with the network namespace
-    ifaces, _ := net.Interfaces()
-    fmt.Printf("Interfaces: %v\n", ifaces)
+ // Do something with the network namespace
+ ifaces, _ := net.Interfaces()
+ fmt.Printf("Interfaces: %v\n", ifaces)
 
-    // Switch back to the original namespace
-    netns.Set(origns)
+ // Switch back to the original namespace
+ netns.Set(origns)
 }
 
 ```

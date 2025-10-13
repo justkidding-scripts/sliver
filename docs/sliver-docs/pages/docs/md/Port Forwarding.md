@@ -23,7 +23,7 @@ As of v1.5.27 Sliver also supports reverse port forwarding via the `rportfwd` co
 
 ## WireGuard Port Forwarding
 
-In order to use `wg-portfwd` you'll need a WireGuard client, any client should work. However, we recommend using `wg-quick`, which is included in the `wireguard-tools` package available on most platforms (see [WireGuard](https://www.wireguard.com/install/) for more platforms):
+In order to use `wg-portfwd` you'll need a WireGuard client, any client should work. However, we recommend using `wg-quick`, which is included in the `wireguard-tools` package available on most platforms (see [WireGuard](https/www.wireguard.com/install/) for more platforms):
 
 - MacOS `brew install wireguard-tools`
 - Ubuntu/Kali `sudo apt install wireguard-tools`
@@ -38,9 +38,9 @@ sliver > wg
 
 sliver > jobs
 
-ID  Name  Protocol  Port
-==  ====  ========  ====
-1   wg    udp       53
+ID Name Protocol Port
+== ==== ======== ====
+1 wg udp 53
 ```
 
 Next, using Sliver you can create WireGuard client configuration using the `wg-config` command (you can use `--save` to write the configuration directly to a file):
@@ -74,9 +74,9 @@ Now that your machine is connected to the Sliver WireGuard listener, just wait f
 ```
 sliver > sessions
 
-ID  Name           Transport  Remote Address     Hostname     Username  Operating System  Last Check-in                  Health
-==  ====           =========  ==============     ========     ========  ================  =============                  ======
-1   STUCK_ARTICLE  wg         100.64.0.17:53565  MacBook-Pro  jdoe      darwin/amd64      Wed, 12 Apr 2021 19:21:00 CDT  [ALIVE]
+ID Name Transport Remote Address Hostname Username Operating System Last Check-in Health
+== ==== ========= ============== ======== ======== ================ ============= ======
+1 STUCK_ARTICLE wg 100.64.0.17:53565 MacBook-Pro jdoe darwin/amd64 Wed, 12 Apr 2021 1900 CDT [ALIVE]
 ```
 
 Interact with the session, and use `wg-portfwd add` to create port forwards:

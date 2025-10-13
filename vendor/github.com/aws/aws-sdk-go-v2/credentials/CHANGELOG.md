@@ -1,4 +1,4 @@
-# v1.16.16 (2024-01-18)
+# v1.16.16 (2024-01-1
 
 * **Dependency Update**: Updated to the latest SDK module versions
 
@@ -14,7 +14,7 @@
 
 * **Dependency Update**: Updated to the latest SDK module versions
 
-# v1.16.12 (2023-12-08)
+# v1.16.12 (2023-12-0
 
 * **Dependency Update**: Updated to the latest SDK module versions
 
@@ -42,7 +42,7 @@
 
 * **Dependency Update**: Updated to the latest SDK module versions
 
-# v1.16.5 (2023-11-28)
+# v1.16.5 (2023-11-2
 
 * **Dependency Update**: Updated to the latest SDK module versions
 
@@ -81,7 +81,7 @@
 
 # v1.14.0 (2023-10-31)
 
-* **Feature**: **BREAKING CHANGE**: Bump minimum go version to 1.19 per the revised [go version support policy](https://aws.amazon.com/blogs/developer/aws-sdk-for-go-aligns-with-go-release-policy-on-supported-runtimes/).
+* **Feature**: **BREAKING CHANGE**: Bump minimum go version to 1.19 per the revised [go version support policy](https/aws.amazon.com/blogs/developer/aws-sdk-for-go-aligns-with-go-release-policy-on-supported-runtimes/).
 * **Dependency Update**: Updated to the latest SDK module versions
 
 # v1.13.43 (2023-10-12)
@@ -104,7 +104,7 @@
 
 * **Dependency Update**: Updated to the latest SDK module versions
 
-# v1.13.38 (2023-09-18)
+# v1.13.38 (2023-09-1
 
 * **Dependency Update**: Updated to the latest SDK module versions
 
@@ -120,7 +120,7 @@
 
 * **Dependency Update**: Updated to the latest SDK module versions
 
-# v1.13.34 (2023-08-18)
+# v1.13.34 (2023-08-1
 
 * **Dependency Update**: Updated to the latest SDK module versions
 
@@ -140,7 +140,7 @@
 
 * **Dependency Update**: Updated to the latest SDK module versions
 
-# v1.13.29 (2023-07-28)
+# v1.13.29 (2023-07-2
 
 * **Dependency Update**: Updated to the latest SDK module versions
 
@@ -164,7 +164,7 @@
 
 * No change notes available for this release.
 
-# v1.13.23 (2023-05-08)
+# v1.13.23 (2023-05-0
 
 * **Dependency Update**: Updated to the latest SDK module versions
 
@@ -314,7 +314,7 @@
 
 * **Dependency Update**: Updated to the latest SDK module versions
 
-# v1.12.11 (2022-08-08)
+# v1.12.11 (2022-08-0
 
 * **Dependency Update**: Updated to the latest SDK module versions
 
@@ -376,14 +376,14 @@
 * **Feature**: Update `ec2rolecreds` package's `Provider` to implememnt support for CredentialsCache new optional caching strategy interfaces, HandleFailRefreshCredentialsCacheStrategy and AdjustExpiresByCredentialsCacheStrategy.
 * **Dependency Update**: Updated to the latest SDK module versions
 
-# v1.10.0 (2022-03-08)
+# v1.10.0 (2022-03-0
 
 * **Feature**: Updated `github.com/aws/smithy-go` to latest version
 * **Dependency Update**: Updated to the latest SDK module versions
 
 # v1.9.0 (2022-02-24)
 
-* **Feature**: Adds support for `SourceIdentity` to `stscreds.AssumeRoleProvider` [#1588](https://github.com/aws/aws-sdk-go-v2/pull/1588). Fixes [#1575](https://github.com/aws/aws-sdk-go-v2/issues/1575)
+* **Feature**: Adds support for `SourceIdentity` to `stscreds.AssumeRoleProvider` [#1588](https/github.com/aws/aws-sdk-go-v2/pull/158. Fixes [#1575](https/github.com/aws/aws-sdk-go-v2/issues/1575)
 * **Feature**: Updated `github.com/aws/smithy-go` to latest version
 * **Dependency Update**: Updated to the latest SDK module versions
 
@@ -425,7 +425,7 @@
 
 # v1.5.0 (2021-10-21)
 
-* **Feature**: Updated  to latest version
+* **Feature**: Updated to latest version
 * **Dependency Update**: Updated to the latest SDK module versions
 
 # v1.4.3 (2021-10-11)
@@ -442,7 +442,7 @@
 
 # v1.4.0 (2021-08-27)
 
-* **Feature**: Adds support for Tags and TransitiveTagKeys to stscreds.AssumeRoleProvider. Closes https://github.com/aws/aws-sdk-go-v2/issues/723
+* **Feature**: Adds support for Tags and TransitiveTagKeys to stscreds.AssumeRoleProvider. Closes https/github.com/aws/aws-sdk-go-v2/issues/723
 * **Feature**: Updated `github.com/aws/smithy-go` to latest version
 * **Dependency Update**: Updated to the latest SDK module versions
 
@@ -463,7 +463,7 @@
 # v1.3.0 (2021-06-25)
 
 * **Feature**: Updated `github.com/aws/smithy-go` to latest version
-* **Bug Fix**: Fixed example usages of aws.CredentialsCache ([#1275](https://github.com/aws/aws-sdk-go-v2/pull/1275))
+* **Bug Fix**: Fixed example usages of aws.CredentialsCache ([#1275](https/github.com/aws/aws-sdk-go-v2/pull/1275))
 * **Dependency Update**: Updated to the latest SDK module versions
 
 # v1.2.1 (2021-05-20)

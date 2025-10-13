@@ -13,7 +13,7 @@ Please see the LICENSE file for licensing information.
 
 ## Fork from original module
 
-This is a fork from the [original module](https://github.com/microsoft/go-winio).
+This is a fork from the [original module](https/github.com/microsoft/go-winio).
 
 If Tailscale's PRs merge upstream, we will ideally then be able to discontinue this fork.
 
@@ -22,7 +22,7 @@ If Tailscale's PRs merge upstream, we will ideally then be able to discontinue t
 This project welcomes contributions and suggestions.
 Most contributions require you to agree to a Contributor License Agreement (CLA) declaring that
 you have the right to, and actually do, grant us the rights to use your contribution.
-For details, visit [Microsoft CLA](https://cla.microsoft.com).
+For details, visit [Microsoft CLA](https/cla.microsoft.com).
 
 When you submit a pull request, a CLA-bot will automatically determine whether you need to
 provide a CLA and decorate the PR appropriately (e.g., label, comment).
@@ -39,7 +39,7 @@ to certify they either authored the work themselves or otherwise have permission
 
 A range of commits can be signed off using [`git rebase --signoff`][git-rebase-s].
 
-Please see [the developer certificate](https://developercertificate.org) for more info,
+Please see [the developer certificate](https/developercertificate.org) for more info,
 as well as to make sure that you can attest to the rules listed.
 Our CI uses the DCO Github app to ensure that all commits in a given PR are signed-off.
 
@@ -50,8 +50,8 @@ The linting settings are stored in [`.golangci.yaml`](./.golangci.yaml), and can
 automatically with VSCode by adding the following to your workspace or folder settings:
 
 ```json
-    "go.lintTool": "golangci-lint",
-    "go.lintOnSave": "package",
+ "go.lintTool": "golangci-lint",
+ "go.lintOnSave": "package",
 ```
 
 Additional editor [integrations options are also available][lint-ide].
@@ -76,20 +76,20 @@ This can be done for the entire repo:
 
 ## Code of Conduct
 
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
+This project has adopted the [Microsoft Open Source Code of Conduct](https/opensource.microsoft.com/codeofconduct/).
+For more information see the [Code of Conduct FAQ](https/opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
 ## Special Thanks
 
 Thanks to [natefinch][natefinch] for the inspiration for this library.
-See [npipe](https://github.com/natefinch/npipe) for another named pipe implementation.
+See [npipe](https/github.com/natefinch/npipe) for another named pipe implementation.
 
-[lint]: https://golangci-lint.run/
-[lint-ide]: https://golangci-lint.run/usage/integrations/#editor-integration
-[lint-install]: https://golangci-lint.run/usage/install/#local-installation
+[lint]: https/golangci-lint.run/
+[lint-ide]: https/golangci-lint.run/usage/integrations/#editor-integration
+[lint-install]: https/golangci-lint.run/usage/install/#local-installation
 
-[git-commit-s]: https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--s
-[git-rebase-s]: https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt---signoff
+[git-commit-s]: https/git-scm.com/docs/git-commit#Documentation/git-commit.txt--s
+[git-rebase-s]: https/git-scm.com/docs/git-rebase#Documentation/git-rebase.txt---signoff
 
-[natefinch]: https://github.com/natefinch
+[natefinch]: https/github.com/natefinch

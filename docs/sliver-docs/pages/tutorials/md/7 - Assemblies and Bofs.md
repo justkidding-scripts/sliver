@@ -1,6 +1,6 @@
 # This course is intended for the 1.6 version of Sliver, which is not yet published
 
-The Sliver armory is used to install and maintain third party extensions and aliases within sliver. The full list of available extensions can be found at https://github.com/sliverarmory/armory, keep in mind this is community maintained so not all modules are necessarily up to date. 
+The Sliver armory is used to install and maintain third party extensions and aliases within sliver. The full list of available extensions can be found at https/github.com/sliverarmory/armory, keep in mind this is community maintained so not all modules are necessarily up to date.
 
 You can download all configured extensions/aliases using the armory command.
 
@@ -30,25 +30,25 @@ Let’s go ahead and run our first assembly.
 
 [*] seatbelt output:
 
-                        %&&@@@&&
-                        &&&&&&&%%%,                       #&&@@@@@@%%%%%%###############%
-                        &%&   %&%%                        &////(((&%%%%%#%################//((((###%%%%%%%%%%%%%%%
-%%%%%%%%%%%######%%%#%%####%  &%%**#                      @////(((&%%%%%%######################(((((((((((((((((((
-#%#%%%%%%%#######%#%%#######  %&%,,,,,,,,,,,,,,,,         @////(((&%%%%%#%#####################(((((((((((((((((((
-#%#%%%%%%#####%%#%#%%#######  %%%,,,,,,  ,,.   ,,         @////(((&%%%%%%%######################(#(((#(#((((((((((
-#####%%%####################  &%%......  ...   ..         @////(((&%%%%%%%###############%######((#(#(####((((((((
-#######%##########%#########  %%%......  ...   ..         @////(((&%%%%%#########################(#(#######((#####
-###%##%%####################  &%%...............          @////(((&%%%%%%%%##############%#######(#########((#####
-#####%######################  %%%..                       @////(((&%%%%%%%################
-                        &%&   %%%%%      Seatbelt         %////(((&%%%%%%%%#############*
-                        &%%&&&%%%%%        v1.1.1         ,(((&%%%%%%%%%%%%%%%%%,
-                         #%%%%##,
+ %&&@@@&&
+ &&&&&&&%%%, #&&@@@@@@%%%%%%###############%
+ &%& %&%% &////(((&%%%%%#%################//((((###%%%%%%%%%%%%%%%
+%%%%%%%%%%%######%%%#%%####% &%%**# @////(((&%%%%%%######################(((((((((((((((((((
+#%#%%%%%%%#######%#%%####### %&%,,,,,,,,,,,,,,,, @////(((&%%%%%#%#####################(((((((((((((((((((
+#%#%%%%%%#####%%#%#%%####### %%%,,,,,, ,,. ,, @////(((&%%%%%%%######################(#(((#(#((((((((((
+#####%%%#################### &%%...... ... .. @////(((&%%%%%%%###############%######((#(#(####((((((((
+#######%##########%######### %%%...... ... .. @////(((&%%%%%#########################(#(#######((#####
+###%##%%#################### &%%............... @////(((&%%%%%%%%##############%#######(#########((#####
+#####%###################### %%%.. @////(((&%%%%%%%################
+ &%& %%%%% Seatbelt %////(((&%%%%%%%%#############*
+ &%%&&&%%%%% v1.1.1 ,(((&%%%%%%%%%%%%%%%%%,
+ #%%%%##,
 
 ====== WindowsCredentialFiles ======
 
-  Folder : C:\Users\defaultuser0\AppData\Local\Microsoft\Credentials\
+ Folder : C:\Users\defaultuser0\AppData\Local\Microsoft\Credentials\
 
-   ...
+ ...
 ```
 
 As you can see Sliver ran the Seatbelt assembly and provided us with the output of our command.
@@ -63,34 +63,34 @@ Beacon object files are loaded using trustedsec’s coffloader. When you run a b
 [*] Successfully executed sa-whoami (coff-loader)
 [*] Got output:
 
-UserName		SID
+UserName SID
 ====================== ====================================
 test.local\tester
 
-GROUP INFORMATION                                 Type                     SID                                          Attributes
+GROUP INFORMATION Type SID Attributes
 ================================================= ===================== ============================================= ==================================================
-test.local\None                              Group                    S-1-5-21-3109228153-3872411817-1195593578-513 Mandatory group, Enabled by default, Enabled group,
-Everyone                                          Well-known group         S-1-1-0                                       Mandatory group, Enabled by default, Enabled group,
-NT AUTHORITY\Local account and member of Administrators groupWell-known group         S-1-5-114
-BUILTIN\Administrators                            Alias                    S-1-5-32-544
-BUILTIN\Performance Log Users                     Alias                    S-1-5-32-559                                  Mandatory group, Enabled by default, Enabled group,
-BUILTIN\Users                                     Alias                    S-1-5-32-545                                  Mandatory group, Enabled by default, Enabled group,
-NT AUTHORITY\INTERACTIVE                          Well-known group         S-1-5-4                                       Mandatory group, Enabled by default, Enabled group,
-CONSOLE LOGON                                     Well-known group         S-1-2-1                                       Mandatory group, Enabled by default, Enabled group,
-NT AUTHORITY\Authenticated Users                  Well-known group         S-1-5-11                                      Mandatory group, Enabled by default, Enabled group,
-NT AUTHORITY\This Organization                    Well-known group         S-1-5-15                                      Mandatory group, Enabled by default, Enabled group,
-NT AUTHORITY\Local account                        Well-known group         S-1-5-113                                     Mandatory group, Enabled by default, Enabled group,
-LOCAL                                             Well-known group         S-1-2-0                                       Mandatory group, Enabled by default, Enabled group,
-NT AUTHORITY\NTLM Authentication                  Well-known group         S-1-5-64-10                                   Mandatory group, Enabled by default, Enabled group,
-Mandatory Label\Medium Mandatory Level            Label                    S-1-16-8192                                   Mandatory group, Enabled by default, Enabled group,
+test.local\None Group S-1-5-21-3109228153-3872411817-1195593578-513 Mandatory group, Enabled by default, Enabled group,
+Everyone Well-known group S-1-1-0 Mandatory group, Enabled by default, Enabled group,
+NT AUTHORITY\Local account and member of Administrators groupWell-known group S-1-5-114
+BUILTIN\Administrators Alias S-1-5-32-544
+BUILTIN\Performance Log Users Alias S-1-5-32-559 Mandatory group, Enabled by default, Enabled group,
+BUILTIN\Users Alias S-1-5-32-545 Mandatory group, Enabled by default, Enabled group,
+NT AUTHORITY\INTERACTIVE Well-known group S-1-5-4 Mandatory group, Enabled by default, Enabled group,
+CONSOLE LOGON Well-known group S-1-2-1 Mandatory group, Enabled by default, Enabled group,
+NT AUTHORITY\Authenticated Users Well-known group S-1-5-11 Mandatory group, Enabled by default, Enabled group,
+NT AUTHORITY\This Organization Well-known group S-1-5-15 Mandatory group, Enabled by default, Enabled group,
+NT AUTHORITY\Local account Well-known group S-1-5-113 Mandatory group, Enabled by default, Enabled group,
+LOCAL Well-known group S-1-2-0 Mandatory group, Enabled by default, Enabled group,
+NT AUTHORITY\NTLM Authentication Well-known group S-1-5-64-10 Mandatory group, Enabled by default, Enabled group,
+Mandatory Label\Medium Mandatory Level Label S-1-16-8192 Mandatory group, Enabled by default, Enabled group,
 
-Privilege Name                Description                                       State
+Privilege Name Description State
 ============================= ================================================= ===========================
-SeShutdownPrivilege           Shut down the system                              Disabled
-SeChangeNotifyPrivilege       Bypass traverse checking                          Enabled
-SeUndockPrivilege             Remove computer from docking station              Disabled
-SeIncreaseWorkingSetPrivilege Increase a process working set                    Disabled
-SeTimeZonePrivilege           Change the time zone                              Disabled
+SeShutdownPrivilege Shut down the system Disabled
+SeChangeNotifyPrivilege Bypass traverse checking Enabled
+SeUndockPrivilege Remove computer from docking station Disabled
+SeIncreaseWorkingSetPrivilege Increase a process working set Disabled
+SeTimeZonePrivilege Change the time zone Disabled
 ```
 
 Since these payloads are run in-process, they have similar advantages and drawbacks as in-process assemblies, meaning no new processes are spawned on execution, but a crash risks losing the implant.

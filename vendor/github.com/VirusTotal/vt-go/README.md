@@ -1,5 +1,5 @@
-[![GoDoc](https://godoc.org/github.com/VirusTotal/vt-go?status.svg)](https://godoc.org/github.com/VirusTotal/vt-go)
-[![Go Report Card](https://goreportcard.com/badge/github.com/VirusTotal/vt-go)](https://goreportcard.com/report/github.com/VirusTotal/vt-go)
+[![GoDoc](https/godoc.org/github.com/VirusTotal/vt-go?status.svg)](https/godoc.org/github.com/VirusTotal/vt-go)
+[![Go Report Card](https/goreportcard.com/badge/github.com/VirusTotal/vt-go)](https/goreportcard.com/report/github.com/VirusTotal/vt-go)
 
 
 # vt-go
@@ -32,20 +32,20 @@ func main() {
 	flag.Parse()
 
 	if *apikey == "" || *sha256 == "" {
-		fmt.Println("Must pass both the --apikey and --sha256 arguments.")
-		os.Exit(0)
+ fmt.Println("Must pass both the --apikey and --sha256 arguments.")
+ os.Exit(0)
 	}
 
 	client := vt.NewClient(*apikey)
 
 	file, err := client.GetObject(vt.URL("files/%s", *sha256))
 	if err != nil {
-		log.Fatal(err)
+ log.Fatal(err)
 	}
 
 	ls, err := file.GetTime("last_submission_date")
 	if err != nil {
-		log.Fatal(err)
+ log.Fatal(err)
 	}
 
 	fmt.Printf("File %s was submitted for the last time on %v\n", file.ID(), ls)

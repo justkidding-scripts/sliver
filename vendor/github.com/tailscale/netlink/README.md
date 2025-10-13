@@ -1,6 +1,6 @@
 # netlink - netlink library for go #
 
-[![Build Status](https://app.travis-ci.com/vishvananda/netlink.svg?branch=master)](https://app.travis-ci.com/github/vishvananda/netlink) [![GoDoc](https://godoc.org/github.com/vishvananda/netlink?status.svg)](https://godoc.org/github.com/vishvananda/netlink)
+[![Build Status](https/app.travis-ci.com/vishvananda/netlink.svg?branch=master)](https/app.travis-ci.com/github/vishvananda/netlink) [![GoDoc](https/godoc.org/github.com/vishvananda/netlink?status.svg)](https/godoc.org/github.com/vishvananda/netlink)
 
 The netlink package provides a simple netlink library for go. Netlink
 is the interface a user-space program in linux uses to communicate with
@@ -12,7 +12,7 @@ to provide an api that is loosely modeled on the CLI provided by iproute2.
 Actions like `ip link add` will be accomplished via a similarly named
 function like AddLink(). This library began its life as a fork of the
 netlink functionality in
-[docker/libcontainer](https://github.com/docker/libcontainer) but was
+[docker/libcontainer](https/github.com/docker/libcontainer) but was
 heavily rewritten to improve testability, performance, and to add new
 functionality like ipsec xfrm handling.
 
@@ -20,15 +20,15 @@ functionality like ipsec xfrm handling.
 
 You can use go get command:
 
-    go get github.com/vishvananda/netlink
+ go get github.com/vishvananda/netlink
 
 Testing dependencies:
 
-    go get github.com/vishvananda/netns
+ go get github.com/vishvananda/netns
 
 Testing (requires root):
 
-    sudo -E go test github.com/vishvananda/netlink
+ sudo -E go test github.com/vishvananda/netlink
 
 ## Examples ##
 
@@ -38,20 +38,20 @@ Add a new bridge and add eth1 into it:
 package main
 
 import (
-    "fmt"
-    "github.com/vishvananda/netlink"
+ "fmt"
+ "github.com/vishvananda/netlink"
 )
 
 func main() {
-    la := netlink.NewLinkAttrs()
-    la.Name = "foo"
-    mybridge := &netlink.Bridge{LinkAttrs: la}
-    err := netlink.LinkAdd(mybridge)
-    if err != nil  {
-        fmt.Printf("could not add %s: %v\n", la.Name, err)
-    }
-    eth1, _ := netlink.LinkByName("eth1")
-    netlink.LinkSetMaster(eth1, mybridge)
+ la := netlink.NewLinkAttrs()
+ la.Name = "foo"
+ mybridge := &netlink.Bridge{LinkAttrs: la}
+ err := netlink.LinkAdd(mybridge)
+ if err != nil {
+ fmt.Printf("could not add %s: %v\n", la.Name, err)
+ }
+ eth1, _ := netlink.LinkByName("eth1")
+ netlink.LinkSetMaster(eth1, mybridge)
 }
 
 ```
@@ -66,13 +66,13 @@ Add a new ip address to loopback:
 package main
 
 import (
-    "github.com/vishvananda/netlink"
+ "github.com/vishvananda/netlink"
 )
 
 func main() {
-    lo, _ := netlink.LinkByName("lo")
-    addr, _ := netlink.ParseAddr("169.254.169.254/32")
-    netlink.AddrAdd(lo, addr)
+ lo, _ := netlink.LinkByName("lo")
+ addr, _ := netlink.ParseAddr("169.254.169.254/32")
+ netlink.AddrAdd(lo, addr)
 }
 
 ```

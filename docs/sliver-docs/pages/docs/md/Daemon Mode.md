@@ -10,19 +10,19 @@ There are two ways to start the server in daemon mode:
 ```
 $ cat ~/.sliver/configs/server.json
 {
-    "daemon_mode": true,
-    "daemon": {
-        "host": "",
-        "port": 31337
-    },
-    "logs": {
-        "level": 5,
-        "grpc_unary_payloads": false,
-        "grpc_stream_payloads": false
-    }
+ "daemon_mode": true,
+ "daemon": {
+ "host": "",
+ "port": 31337
+ },
+ "logs": {
+ "level": 5,
+ "grpc_unary_payloads": false,
+ "grpc_stream_payloads": false
+ }
 }
 ```
 
 #### systemd
 
-With this config you can easily setup a [systemd service](https://www.linode.com/docs/quick-answers/linux/start-service-at-boot/) or init script. See the [Linux install script](/docs?name=Linux+Install+Script) for an example.
+With this config you can easily setup a [systemd service](https/www.linode.com/docs/quick-answers/linux/start-service-at-boot/) or init script. See the [Linux install script](/docs?name=Linux+Install+Script) for an example.

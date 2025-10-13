@@ -1,5 +1,5 @@
-[![](https://godoc.org/github.com/jackc/puddle?status.svg)](https://godoc.org/github.com/jackc/puddle)
-![Build Status](https://github.com/jackc/puddle/actions/workflows/ci.yml/badge.svg)
+[![](https/godoc.org/github.com/jackc/puddle?status.svg)](https/godoc.org/github.com/jackc/puddle)
+![Build Status](https/github.com/jackc/puddle/actions/workflows/ci.yml/badge.svg)
 
 # Puddle
 
@@ -34,28 +34,28 @@ import (
 
 func main() {
 	constructor := func(context.Context) (net.Conn, error) {
-		return net.Dial("tcp", "127.0.0.1:8080")
+ return net.Dial("tcp", "127.0.0.1:8080")
 	}
 	destructor := func(value net.Conn) {
-		value.Close()
+ value.Close()
 	}
 	maxPoolSize := int32(10)
 
 	pool, err := puddle.NewPool(&puddle.Config[net.Conn]{Constructor: constructor, Destructor: destructor, MaxSize: maxPoolSize})
 	if err != nil {
-		log.Fatal(err)
+ log.Fatal(err)
 	}
 
 	// Acquire resource from the pool.
 	res, err := pool.Acquire(context.Background())
 	if err != nil {
-		log.Fatal(err)
+ log.Fatal(err)
 	}
 
 	// Use resource.
 	_, err = res.Value().Write([]byte{1})
 	if err != nil {
-		log.Fatal(err)
+ log.Fatal(err)
 	}
 
 	// Release when done.
@@ -73,7 +73,7 @@ Puddle is stable and feature complete.
 
 ## Supported Go Versions
 
-puddle supports the same versions of Go that are supported by the Go project. For [Go](https://golang.org/doc/devel/release.html#policy) that is the two most recent major releases. This means puddle supports Go 1.19 and higher.
+puddle supports the same versions of Go that are supported by the Go project. For [Go](https/golang.org/doc/devel/release.html#policy) that is the two most recent major releases. This means puddle supports Go 1.19 and higher.
 
 ## License
 

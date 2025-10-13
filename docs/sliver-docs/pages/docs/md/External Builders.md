@@ -3,20 +3,20 @@ Starting in v1.5.30 Sliver supports "external builders," which allow a Sliver se
 External builders can also be used to create custom modifications to the implant source code, or potentially replace the default Sliver implant entirely.
 
 ```
-          MacOS .dylib Implant Builds
-      ┌─────────────────────────────────────┐
-      │                                     │
-      ▼                                     │
-┌───────────┐                         ┌─────┴─────┐
-│ MacOS     │ Multiplayer             │ Linux     │
-│ Builder   ├────────────────────────►│ Server    │
-│           │                         │           │
-└───────────┘                         └───────────┘
-                                          ▲
-┌───────────┐                             │
-│Windows    │ Multiplayer                 │
-│ Operator  ├─────────────────────────────┘
-│           │
+ MacOS .dylib Implant Builds
+ ┌─────────────────────────────────────┐
+ │ │
+ ▼ │
+┌───────────┐ ┌─────┴─────┐
+│ MacOS │ Multiplayer │ Linux │
+│ Builder ├────────────────────────►│ Server │
+│ │ │ │
+└───────────┘ └───────────┘
+ ▲
+┌───────────┐ │
+│Windows │ Multiplayer │
+│ Operator ├─────────────────────────────┘
+│ │
 └───────────┘
 ```
 
@@ -32,9 +32,9 @@ Any `sliver-server` binary can be started as a builder process using [operator c
 
 When started as a builder, the Sliver process will mirror log output to stdout by default, however this can be disabled (see `sliver-server builder --help`).
 
-**⚠️ IMPORTANT:** Make sure the builder and server have identical `http-c2.json` configuration files to avoid incompatibility problems.
+**️ IMPORTANT:** Make sure the builder and server have identical `http-c2.json` configuration files to avoid incompatibility problems.
 
-**⚠️ IMPORTANT:** Builders must have unique names, by default the builder's hostname will be used, but this can be changed using the `--name` cli flag.
+**️ IMPORTANT:** Builders must have unique names, by default the builder's hostname will be used, but this can be changed using the `--name` cli flag.
 
 #### External Builds
 
@@ -43,23 +43,23 @@ Any operator can see which builders are connected to the server using the `build
 ```
 sliver > builders
 
- Name                            Operator   Templates   Platform       Compiler Targets
+ Name Operator Templates Platform Compiler Targets
 =============================== ========== =========== ============== ==========================
- molochs-MacBook-Pro-111.local   moloch     sliver      darwin/arm64   EXECUTABLE:linux/386
-                                                                       EXECUTABLE:linux/amd64
-                                                                       EXECUTABLE:windows/386
-                                                                       EXECUTABLE:windows/amd64
-                                                                       EXECUTABLE:darwin/amd64
-                                                                       EXECUTABLE:darwin/arm64
-                                                                       SHARED_LIB:windows/386
-                                                                       SHARED_LIB:windows/amd64
-                                                                       SHARED_LIB:darwin/amd64
-                                                                       SHARED_LIB:darwin/arm64
-                                                                       SHARED_LIB:linux/amd64
-                                                                       SERVICE:windows/386
-                                                                       SERVICE:windows/amd64
-                                                                       SHELLCODE:windows/386
-                                                                       SHELLCODE:windows/amd64
+ molochs-MacBook-Pro-111.local moloch sliver darwin/arm64 EXECUTABLE:linux/386
+ EXECUTABLE:linux/amd64
+ EXECUTABLE:windows/386
+ EXECUTABLE:windows/amd64
+ EXECUTABLE:darwin/amd64
+ EXECUTABLE:darwin/arm64
+ SHARED_LIB:windows/386
+ SHARED_LIB:windows/amd64
+ SHARED_LIB:darwin/amd64
+ SHARED_LIB:darwin/arm64
+ SHARED_LIB:linux/amd64
+ SERVICE:windows/386
+ SERVICE:windows/amd64
+ SHELLCODE:windows/386
+ SHELLCODE:windows/amd64
 ```
 
 Use the `--external-builder` flag to offload a `generate` or `generate beacon` command onto an external builder:
@@ -82,7 +82,7 @@ Currently external builds do not support DNS canaries.
 
 ## Implant Customization
 
-You are welcome to customize the implant source code under the terms of Sliver's [GPLv3 license](https://github.com/BishopFox/sliver/blob/master/LICENSE). While we plan to improve the workflow over time, currently the easiest way to operationalize changes to the implant source code is:
+You are welcome to customize the implant source code under the terms of Sliver's [GPLv3 license](https/github.com/BishopFox/sliver/blob/master/LICENSE). While we plan to improve the workflow over time, currently the easiest way to operationalize changes to the implant source code is:
 
 1. Fork the main Sliver Github repository
 1. Make modifications to the source code

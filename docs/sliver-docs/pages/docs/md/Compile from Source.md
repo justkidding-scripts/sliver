@@ -1,4 +1,4 @@
-You'll want to compile from a MacOS or Linux machine, compiling from native Windows in theory is possible, but none of the asset scripts are designed to run on Windows, you can cross-compile the Windows server/client binaries from a better operating system like Linux or MacOS. If you only have a Windows machine see "Windows Builds" below (TL;DR use WSL).
+You'll want to compile from a MacOS or Linux machine, compiling from native Windows in theory is possible, but none of the asset scripts are designed to run on Windows, you can cross-compile the Windows server/client binaries from a better operating system like Linux or MacOS. If you only have a Windows machine see "Windows Builds" below (TLR use WSL).
 
 # Sliver v1.6.x
 
@@ -12,7 +12,7 @@ You'll want to compile from a MacOS or Linux machine, compiling from native Wind
 ### Compiling
 
 ```
-$ git clone https://github.com/BishopFox/sliver.git
+$ git clone https/github.com/BishopFox/sliver.git
 $ cd sliver
 ```
 
@@ -60,7 +60,7 @@ If you want to modify any of the `.proto` files you'll need to setup a few addit
 
 First install your platform's version of `protoc` v3.19.4 or later:
 
-https://github.com/protocolbuffers/protobuf/releases/latest
+https/github.com/protocolbuffers/protobuf/releases/latest
 
 Ensure that correct `protoc` version is on your `$PATH`, you can check with a simple `protoc --version`
 
@@ -81,7 +81,7 @@ $ make pb
 
 # Sliver v1.5.x
 
-- When compiling v1.5.x use Go v1.20.7 you can check your version using `go version`. You can use the [Go Version Manager](https://github.com/moovweb/gvm) to install and manage multiple versions of Go.
+- When compiling v1.5.x use Go v1.20.7 you can check your version using `go version`. You can use the [Go Version Manager](https/github.com/moovweb/gvm) to install and manage multiple versions of Go.
 - `make`, `sed`, `tar`, `curl`, `zip`, `cut` commands; most of these are installed by default but you may need to install `make`, `curl`, and `zip` depending on your distribution. On MacOS you may need to install XCode and accompanying cli tools.
 
 ### Compiling
@@ -89,7 +89,7 @@ $ make pb
 First git clone the repository:
 
 ```
-$ git clone https://github.com/BishopFox/sliver.git
+$ git clone https/github.com/BishopFox/sliver.git
 $ cd sliver
 ```
 
@@ -140,4 +140,4 @@ The Docker build includes mingw and Metasploit, so it can take a while to build 
 - Kali/Ubuntu/Debian `sudo apt install mingw-w64`
 - MacOS `brew install mingw-w64`
 
-If all you have is a Windows machine, the easiest way to build Sliver is using [WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10) and following the Linux/cross-compile instructions above. To cross-compile a native Windows binary use `make windows-amd64` and copy it to your Windows file system (i.e. `/mnt/c/Users/foo/Desktop`) and run it using a terminal that supports ANSI sequences such as the [Windows Terminal](https://github.com/microsoft/terminal).
+If all you have is a Windows machine, the easiest way to build Sliver is using [WSL](https/docs.microsoft.com/en-us/windows/wsl/install-win10) and following the Linux/cross-compile instructions above. To cross-compile a native Windows binary use `make windows-amd64` and copy it to your Windows file system (i.e. `/mnt/c/Users/foo/Desktop`) and run it using a terminal that supports ANSI sequences such as the [Windows Terminal](https/github.com/microsoft/terminal).

@@ -7,7 +7,7 @@ This directory contains the protobuf message definitions and is organized in the
  * `clientpb` - These messages should _only_ be sent from the client to server or vice versa.
  * `sliverpb` - These message may be sent from the client to the server or from the server to the implant and vice versa. Not all messages defined in this file will appear in client<->server communication, some are specific to implant<->server.
  * `rpcpb` - gRPC service definitions
- 
+
 ## Naming
 
 The protobuf messages and service definitions follow a naming schemes.

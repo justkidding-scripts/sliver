@@ -1,4 +1,4 @@
-# Forked from https://gitlab.com/mjwhitta/win/
+# Forked from https/gitlab.com/mjwhitta/win/
 
 #### Changes
 
@@ -11,9 +11,9 @@
 
 # Win
 
-<a href="https://www.buymeacoffee.com/mjwhitta">🍪 Buy me a cookie</a>
+<a href="https/www.buymeacoffee.com/mjwhitta"> Buy me a cookie</a>
 
-[![Go Report Card](https://goreportcard.com/badge/gitlab.com/mjwhitta/win)](https://goreportcard.com/report/gitlab.com/mjwhitta/win)
+[![Go Report Card](https/goreportcard.com/badge/gitlab.com/mjwhitta/win)](https/goreportcard.com/report/gitlab.com/mjwhitta/win)
 
 ## What is this?
 
@@ -28,7 +28,7 @@ Windows service.
 
 **Note:** This is probably beta quality at best.
 
-[WinINet over WinHTTP]: https://docs.microsoft.com/en-us/windows/win32/wininet/wininet-vs-winhttp
+[WinINet over WinHTTP]: https/docs.microsoft.com/en-us/windows/win32/wininet/wininet-vs-winhttp
 
 ## How to install
 
@@ -46,74 +46,74 @@ Minimal example:
 package main
 
 import (
-    "fmt"
-    "io/ioutil"
+ "fmt"
+ "io/ioutil"
 
-    // "gitlab.com/mjwhitta/win/winhttp/http"
-    "gitlab.com/mjwhitta/win/wininet/http"
+ // "gitlab.com/mjwhitta/win/winhttp/http"
+ "gitlab.com/mjwhitta/win/wininet/http"
 )
 
 func main() {
-    var b []byte
-    var dst = "http://127.0.0.1:8080/asdf"
-    var e error
-    var headers = map[string]string{
-        "User-Agent": "testing, testing, 1, 2, 3...",
-    }
-    var req *http.Request
-    var res *http.Response
+ var b []byte
+ var dst = "http/127.0.0.1:8080/asdf"
+ var e error
+ var headers = map[string]string{
+ "User-Agent": "testing, testing, 1, 2, 3...",
+ }
+ var req *http.Request
+ var res *http.Response
 
-    http.DefaultClient.TLSClientConfig.InsecureSkipVerify = true
+ http.DefaultClient.TLSClientConfig.InsecureSkipVerify = true
 
-    if _, e = http.Get(dst); e != nil {
-        panic(e)
-    }
+ if _, e = http.Get(dst); e != nil {
+ panic(e)
+ }
 
-    req = http.NewRequest(http.MethodPost, dst, []byte("test"))
-    req.AddCookie(&http.Cookie{Name: "chocolatechip", Value: "tasty"})
-    req.AddCookie(&http.Cookie{Name: "oatmealraisin", Value: "gross"})
-    req.AddCookie(&http.Cookie{Name: "snickerdoodle", Value: "yummy"})
-    req.Headers = headers
+ req = http.NewRequest(http.MethodPost, dst, []byte("test"))
+ req.AddCookie(&http.Cookie{Name: "chocolatechip", Value: "tasty"})
+ req.AddCookie(&http.Cookie{Name: "oatmealraisin", Value: "gross"})
+ req.AddCookie(&http.Cookie{Name: "snickerdoodle", Value: "yummy"})
+ req.Headers = headers
 
-    if res, e = http.DefaultClient.Do(req); e != nil {
-        panic(e)
-    }
+ if res, e = http.DefaultClient.Do(req); e != nil {
+ panic(e)
+ }
 
-    if res.Body != nil {
-        if b, e = ioutil.ReadAll(res.Body); e != nil {
-            panic(e)
-        }
-    }
+ if res.Body != nil {
+ if b, e = ioutil.ReadAll(res.Body); e != nil {
+ panic(e)
+ }
+ }
 
-    fmt.Println(res.Status)
-    for k, vs := range res.Header {
-        for _, v := range vs {
-            fmt.Printf("%s: %s\n", k, v)
-        }
-    }
-    if len(b) > 0 {
-        fmt.Println(string(b))
-    }
+ fmt.Println(res.Status)
+ for k, vs := range res.Header {
+ for _, v := range vs {
+ fmt.Printf("%s: %s\n", k, v)
+ }
+ }
+ if len(b) > 0 {
+ fmt.Println(string(b))
+ }
 
-    if len(res.Cookies()) > 0 {
-        fmt.Println()
-        fmt.Println("# COOKIEJAR")
-    }
+ if len(res.Cookies()) > 0 {
+ fmt.Println()
+ fmt.Println("# COOKIEJAR")
+ }
 
-    for _, cookie := range res.Cookies() {
-        fmt.Printf("%s = %s\n", cookie.Name, cookie.Value)
-    }
+ for _, cookie := range res.Cookies() {
+ fmt.Printf("%s = %s\n", cookie.Name, cookie.Value)
+ }
 }
 ```
 
 ## Links
 
-- [Source](https://gitlab.com/mjwhitta/win)
+- [Source](https/gitlab.com/mjwhitta/win)
 
 ## TODO
 
 - Mirror `net/http` as close as possible
-    - CookieJar for the Client
-    - etc...
+ - CookieJar for the Client
+ - etc...
 - WinINet
-    - FTP client
+ - FTP client

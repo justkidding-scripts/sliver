@@ -12,11 +12,11 @@ package.
 Please see the LICENSE file for licensing information.
 
 This project has adopted the [Microsoft Open Source Code of
-Conduct](https://opensource.microsoft.com/codeofconduct/). For more information
+Conduct](https/opensource.microsoft.com/codeofconduct/). For more information
 see the [Code of Conduct
-FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact
+FAQ](https/opensource.microsoft.com/codeofconduct/faq/) or contact
 [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional
 questions or comments.
 
-Thanks to natefinch for the inspiration for this library. See https://github.com/natefinch/npipe
+Thanks to natefinch for the inspiration for this library. See https/github.com/natefinch/npipe
 for another named pipe implementation.

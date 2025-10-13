@@ -1,7 +1,7 @@
-[![Build Status](https://travis-ci.org/miekg/dns.svg?branch=master)](https://travis-ci.org/miekg/dns)
-[![Code Coverage](https://img.shields.io/codecov/c/github/miekg/dns/master.svg)](https://codecov.io/github/miekg/dns?branch=master)
-[![Go Report Card](https://goreportcard.com/badge/github.com/miekg/dns)](https://goreportcard.com/report/miekg/dns)
-[![](https://godoc.org/github.com/miekg/dns?status.svg)](https://godoc.org/github.com/miekg/dns)
+[![Build Status](https/travis-ci.org/miekg/dns.svg?branch=master)](https/travis-ci.org/miekg/dns)
+[![Code Coverage](https/img.shields.io/codecov/c/github/miekg/dns/master.svg)](https/codecov.io/github/miekg/dns?branch=master)
+[![Go Report Card](https/goreportcard.com/badge/github.com/miekg/dns)](https/goreportcard.com/report/miekg/dns)
+[![](https/godoc.org/github.com/miekg/dns?status.svg)](https/godoc.org/github.com/miekg/dns)
 
 # Alternative (more granular) approach to a DNS library
 
@@ -25,66 +25,66 @@ avoiding breaking changes wherever reasonable. We support the last two versions 
 
 A not-so-up-to-date-list-that-may-be-actually-current:
 
-* https://github.com/coredns/coredns
-* https://github.com/abh/geodns
-* https://github.com/baidu/bfe
-* http://www.statdns.com/
-* http://www.dnsinspect.com/
-* https://github.com/chuangbo/jianbing-dictionary-dns
-* http://www.dns-lg.com/
-* https://github.com/fcambus/rrda
-* https://github.com/kenshinx/godns
-* https://github.com/skynetservices/skydns
-* https://github.com/hashicorp/consul
-* https://github.com/DevelopersPL/godnsagent
-* https://github.com/duedil-ltd/discodns
-* https://github.com/StalkR/dns-reverse-proxy
-* https://github.com/tianon/rawdns
-* https://mesosphere.github.io/mesos-dns/
-* https://github.com/fcambus/statzone
-* https://github.com/benschw/dns-clb-go
-* https://github.com/corny/dnscheck for <http://public-dns.info/>
-* https://github.com/miekg/unbound
-* https://github.com/miekg/exdns
-* https://dnslookup.org
-* https://github.com/looterz/grimd
-* https://github.com/phamhongviet/serf-dns
-* https://github.com/mehrdadrad/mylg
-* https://github.com/bamarni/dockness
-* https://github.com/fffaraz/microdns
-* https://github.com/ipdcode/hades <https://jd.com>
-* https://github.com/StackExchange/dnscontrol/
-* https://www.dnsperf.com/
-* https://dnssectest.net/
-* https://github.com/oif/apex
-* https://github.com/jedisct1/dnscrypt-proxy
-* https://github.com/jedisct1/rpdns
-* https://github.com/xor-gate/sshfp
-* https://github.com/rs/dnstrace
-* https://blitiri.com.ar/p/dnss ([github mirror](https://github.com/albertito/dnss))
-* https://render.com
-* https://github.com/peterzen/goresolver
-* https://github.com/folbricht/routedns
-* https://domainr.com/
-* https://zonedb.org/
-* https://router7.org/
-* https://github.com/fortio/dnsping
-* https://github.com/Luzilla/dnsbl_exporter
-* https://github.com/bodgit/tsig
-* https://github.com/v2fly/v2ray-core (test only)
-* https://kuma.io/
-* https://www.misaka.io/services/dns
-* https://ping.sx/dig
-* https://fleetdeck.io/
-* https://github.com/markdingo/autoreverse
-* https://github.com/slackhq/nebula
-* https://addr.tools/
-* https://dnscheck.tools/
-* https://github.com/egbakou/domainverifier
-* https://github.com/semihalev/sdns
-* https://github.com/wintbiit/NineDNS
-* https://linuxcontainers.org/incus/
-* https://ifconfig.es
+* https/github.com/coredns/coredns
+* https/github.com/abh/geodns
+* https/github.com/baidu/bfe
+* http/www.statdns.com/
+* http/www.dnsinspect.com/
+* https/github.com/chuangbo/jianbing-dictionary-dns
+* http/www.dns-lg.com/
+* https/github.com/fcambus/rrda
+* https/github.com/kenshinx/godns
+* https/github.com/skynetservices/skydns
+* https/github.com/hashicorp/consul
+* https/github.com/DevelopersPL/godnsagent
+* https/github.com/duedil-ltd/discodns
+* https/github.com/StalkR/dns-reverse-proxy
+* https/github.com/tianon/rawdns
+* https/mesosphere.github.io/mesos-dns/
+* https/github.com/fcambus/statzone
+* https/github.com/benschw/dns-clb-go
+* https/github.com/corny/dnscheck for <http/public-dns.info/>
+* https/github.com/miekg/unbound
+* https/github.com/miekg/exdns
+* https/dnslookup.org
+* https/github.com/looterz/grimd
+* https/github.com/phamhongviet/serf-dns
+* https/github.com/mehrdadrad/mylg
+* https/github.com/bamarni/dockness
+* https/github.com/fffaraz/microdns
+* https/github.com/ipdcode/hades <https/jd.com>
+* https/github.com/StackExchange/dnscontrol/
+* https/www.dnsperf.com/
+* https/dnssectest.net/
+* https/github.com/oif/apex
+* https/github.com/jedisct1/dnscrypt-proxy
+* https/github.com/jedisct1/rpdns
+* https/github.com/xor-gate/sshfp
+* https/github.com/rs/dnstrace
+* https/blitiri.com.ar/p/dnss ([github mirror](https/github.com/albertito/dnss))
+* https/render.com
+* https/github.com/peterzen/goresolver
+* https/github.com/folbricht/routedns
+* https/domainr.com/
+* https/zonedb.org/
+* https/router7.org/
+* https/github.com/fortio/dnsping
+* https/github.com/Luzilla/dnsbl_exporter
+* https/github.com/bodgit/tsig
+* https/github.com/v2fly/v2ray-core (test only)
+* https/kuma.io/
+* https/www.misaka.io/services/dns
+* https/ping.sx/dig
+* https/fleetdeck.io/
+* https/github.com/markdingo/autoreverse
+* https/github.com/slackhq/nebula
+* https/addr.tools/
+* https/dnscheck.tools/
+* https/github.com/egbakou/domainverifier
+* https/github.com/semihalev/sdns
+* https/github.com/wintbiit/NineDNS
+* https/linuxcontainers.org/incus/
+* https/ifconfig.es
 
 
 Send pull request if you want to be listed here.
@@ -105,7 +105,7 @@ Send pull request if you want to be listed here.
 
 Have fun!
 
-Miek Gieben  -  2010-2012  -  <miek@miek.nl>
+Miek Gieben - 2010-2012 - <miek@miek.nl>
 DNS Authors 2012-
 
 # Building
@@ -113,8 +113,8 @@ DNS Authors 2012-
 This library uses Go modules and uses semantic versioning. Building is done with the `go` tool, so
 the following should work:
 
-    go get github.com/miekg/dns
-    go build github.com/miekg/dns
+ go get github.com/miekg/dns
+ go build github.com/miekg/dns
 
 ## Examples
 
@@ -174,7 +174,7 @@ Example programs can be found in the `github.com/miekg/exdns` repository.
 * 6895 - DNS IANA considerations
 * 6944 - DNSSEC DNSKEY Algorithm Status
 * 6975 - Algorithm Understanding in DNSSEC
-* 7043 - EUI48/EUI64 records
+* 7043 - EUI4EUI64 records
 * 7314 - DNS (EDNS) EXPIRE Option
 * 7477 - CSYNC RR
 * 7828 - edns-tcp-keepalive EDNS0 Option
@@ -191,7 +191,7 @@ Example programs can be found in the `github.com/miekg/exdns` repository.
 
 ## Loosely Based Upon
 
-* ldns - <https://nlnetlabs.nl/projects/ldns/about/>
-* NSD - <https://nlnetlabs.nl/projects/nsd/about/>
-* Net::DNS - <http://www.net-dns.org/>
-* GRONG - <https://github.com/bortzmeyer/grong>
+* ldns - <https/nlnetlabs.nl/projects/ldns/about/>
+* NSD - <https/nlnetlabs.nl/projects/nsd/about/>
+* Net:NS - <http/www.net-dns.org/>
+* GRONG - <https/github.com/bortzmeyer/grong>

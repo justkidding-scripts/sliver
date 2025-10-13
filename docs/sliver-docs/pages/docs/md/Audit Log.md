@@ -7,7 +7,7 @@ By default the audit log is located on the server at: `~/.sliver/logs/audit.json
 The audit log is stored in a newline delimited (one object per line) nested-JSON format designed to be primarily machine readable, an example entry is shown below:
 
 ```
-{"level":"info","msg":"{\"request\":\"{\\\"Port\\\":8888}\",\"method\":\"/rpcpb.SliverRPC/StartMTLSListener\"}","time":"2021-06-16T10:22:54-05:00"}
+{"level":"info","msg":"{\"request\":\"{\\\"Port\\\":8888}\",\"method\":\"/rpcpb.SliverRPC/StartMTLSListener\"}","time":"2021-06-16T1054-05:00"}
 ```
 
 **NOTE:** Due to limitations in the logging APIs the audit log contains nested JSON objects that may require additional parsing.

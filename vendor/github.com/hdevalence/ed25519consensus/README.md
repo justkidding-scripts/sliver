@@ -5,17 +5,17 @@ for consensus-critical contexts.
 
 Ed25519 signatures are widely used in consensus-critical contexts (e.g.,
 blockchains), where different nodes must agree on whether or not a given
-signature is valid.  However, Ed25519 does not clearly define criteria for
+signature is valid. However, Ed25519 does not clearly define criteria for
 signature validity, and even standards-conformant implementations are not
 required to agree on whether a signature is valid.
 
 Different Ed25519 implementations may not (and in practice, do not) agree on
-validation criteria in subtle edge cases.   This poses a double risk to the use
-of Ed25519 in consensus-critical contexts.  First, the presence of multiple
+validation criteria in subtle edge cases. This poses a double risk to the use
+of Ed25519 in consensus-critical contexts. First, the presence of multiple
 Ed25519 implementations may open the possibility of consensus divergence.
 Second, even when a single implementation is used, the protocol implicitly
 includes that particular version's validation criteria as part of the consensus
-rules.  However, if the implementation is not intended to be used in
+rules. However, if the implementation is not intended to be used in
 consensus-critical contexts, it may change validation criteria between releases.
 
 For instance, the initial implementation of Zcash consensus in zcashd inherited
@@ -40,4 +40,4 @@ Note that the ZIP215 rules ensure that individual and batch verification are
 guaranteed to give the same results, so unlike `ed25519.Verify`, `ed25519consensus.Verify` is
 compatible with batch verification.
 
-[ZIP215]: https://zips.z.cash/zip-0215
+[ZIP215]: https/zips.z.cash/zip-0215

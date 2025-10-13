@@ -1,12 +1,12 @@
 # Chroma — A general purpose syntax highlighter in pure Go
-[![Golang Documentation](https://godoc.org/github.com/alecthomas/chroma?status.svg)](https://godoc.org/github.com/alecthomas/chroma) [![CI](https://github.com/alecthomas/chroma/actions/workflows/ci.yml/badge.svg)](https://github.com/alecthomas/chroma/actions/workflows/ci.yml) [![Slack chat](https://img.shields.io/static/v1?logo=slack&style=flat&label=slack&color=green&message=gophers)](https://invite.slack.golangbridge.org/)
+[![Golang Documentation](https/godoc.org/github.com/alecthomas/chroma?status.svg)](https/godoc.org/github.com/alecthomas/chroma) [![CI](https/github.com/alecthomas/chroma/actions/workflows/ci.yml/badge.svg)](https/github.com/alecthomas/chroma/actions/workflows/ci.yml) [![Slack chat](https/img.shields.io/static/v1?logo=slack&style=flat&label=slack&color=green&message=gophers)](https/invite.slack.golangbridge.org/)
 
 > **NOTE:** As Chroma has just been released, its API is still in flux. That said, the high-level interface should not change significantly.
 
 Chroma takes source code and other structured text and converts it into syntax
 highlighted HTML, ANSI-coloured text, etc.
 
-Chroma is based heavily on [Pygments](http://pygments.org/), and includes
+Chroma is based heavily on [Pygments](http/pygments.org/), and includes
 translators for Pygments lexers and styles.
 
 <a id="markdown-table-of-contents" name="table-of-contents"></a>
@@ -18,14 +18,14 @@ translators for Pygments lexers and styles.
 2. [Supported languages](#supported-languages)
 3. [Try it](#try-it)
 4. [Using the library](#using-the-library)
-    1. [Quick start](#quick-start)
-    2. [Identifying the language](#identifying-the-language)
-    3. [Formatting the output](#formatting-the-output)
-    4. [The HTML formatter](#the-html-formatter)
+ 1. [Quick start](#quick-start)
+ 2. [Identifying the language](#identifying-the-language)
+ 3. [Formatting the output](#formatting-the-output)
+ 4. [The HTML formatter](#the-html-formatter)
 5. [More detail](#more-detail)
-    1. [Lexers](#lexers)
-    2. [Formatters](#formatters)
-    3. [Styles](#styles)
+ 1. [Lexers](#lexers)
+ 2. [Formatters](#formatters)
+ 3. [Styles](#styles)
 6. [Command-line interface](#command-line-interface)
 7. [What's missing compared to Pygments?](#whats-missing-compared-to-pygments)
 
@@ -35,7 +35,7 @@ translators for Pygments lexers and styles.
 ## Supported languages
 
 Prefix | Language
-:----: | --------
+ | --------
 A | ABAP, ABNF, ActionScript, ActionScript 3, Ada, Angular2, ANTLR, ApacheConf, APL, AppleScript, Arduino, Awk
 B | Ballerina, Base Makefile, Bash, Batchfile, BibTeX, Bicep, BlitzBasic, BNF, Brainfuck
 C | C, C#, C++, Caddyfile, Caddyfile Directives, Cap'n Proto, Cassandra CQL, Ceylon, CFEngine3, cfstatement, ChaiScript, Cheetah, Clojure, CMake, COBOL, CoffeeScript, Common Lisp, Coq, Crystal, CSS, Cython
@@ -69,15 +69,15 @@ displayed with `chroma --list`._
 <a id="markdown-try-it" name="try-it"></a>
 ## Try it
 
-Try out various languages and styles on the [Chroma Playground](https://swapoff.org/chroma/playground/).
+Try out various languages and styles on the [Chroma Playground](https/swapoff.org/chroma/playground/).
 
 <a id="markdown-using-the-library" name="using-the-library"></a>
 ## Using the library
 
 Chroma, like Pygments, has the concepts of
-[lexers](https://github.com/alecthomas/chroma/tree/master/lexers),
-[formatters](https://github.com/alecthomas/chroma/tree/master/formatters) and
-[styles](https://github.com/alecthomas/chroma/tree/master/styles).
+[lexers](https/github.com/alecthomas/chroma/tree/master/lexers),
+[formatters](https/github.com/alecthomas/chroma/tree/master/formatters) and
+[styles](https/github.com/alecthomas/chroma/tree/master/styles).
 
 Lexers convert source text into a stream of tokens, styles specify how token
 types are mapped to colours, and formatters convert tokens and styles into
@@ -110,27 +110,27 @@ written in. There are three primary ways to do that:
 
 1. Detect the language from its filename.
 
-    ```go
-    lexer := lexers.Match("foo.go")
-    ```
+ ```go
+ lexer := lexers.Match("foo.go")
+ ```
 
 3. Explicitly specify the language by its Chroma syntax ID (a full list is available from `lexers.Names()`).
 
-    ```go
-    lexer := lexers.Get("go")
-    ```
+ ```go
+ lexer := lexers.Get("go")
+ ```
 
 3. Detect the language from its content.
 
-    ```go
-    lexer := lexers.Analyse("package main\n\nfunc main()\n{\n}\n")
-    ```
+ ```go
+ lexer := lexers.Analyse("package main\n\nfunc main()\n{\n}\n")
+ ```
 
 In all cases, `nil` will be returned if the language can not be identified.
 
 ```go
 if lexer == nil {
-  lexer = lexers.Fallback
+ lexer = lexers.Fallback
 }
 ```
 
@@ -150,11 +150,11 @@ Once a language is identified you will need to pick a formatter and a style (the
 ```go
 style := styles.Get("swapoff")
 if style == nil {
-  style = styles.Fallback
+ style = styles.Fallback
 }
 formatter := formatters.Get("html")
 if formatter == nil {
-  formatter = formatters.Fallback
+ formatter = formatters.Fallback
 }
 ```
 
@@ -202,7 +202,7 @@ err := formatter.WriteCSS(w, style)
 <a id="markdown-lexers" name="lexers"></a>
 ### Lexers
 
-See the [Pygments documentation](http://pygments.org/docs/lexerdevelopment/)
+See the [Pygments documentation](http/pygments.org/docs/lexerdevelopment/)
 for details on implementing lexers. Most concepts apply directly to Chroma,
 but see existing lexer implementations for real examples.
 
@@ -212,12 +212,12 @@ the following:
 
 ```sh
 python3 _tools/pygments2chroma.py \
-  pygments.lexers.jvm.KotlinLexer \
-  > lexers/k/kotlin.go \
-  && gofmt -s -w lexers/k/kotlin.go
+ pygments.lexers.jvm.KotlinLexer \
+ > lexers/k/kotlin.go \
+ && gofmt -s -w lexers/k/kotlin.go
 ```
 
-See notes in [pygments-lexers.txt](https://github.com/alecthomas/chroma/blob/master/pygments-lexers.txt)
+See notes in [pygments-lexers.txt](https/github.com/alecthomas/chroma/blob/master/pygments-lexers.txt)
 for a list of lexers, and notes on some of the issues importing them.
 
 <a id="markdown-formatters" name="formatters"></a>
@@ -231,11 +231,11 @@ formatter outputs raw tokens. The latter is useful for debugging lexers.
 <a id="markdown-styles" name="styles"></a>
 ### Styles
 
-Chroma styles use the [same syntax](http://pygments.org/docs/styles/) as Pygments.
+Chroma styles use the [same syntax](http/pygments.org/docs/styles/) as Pygments.
 
 All Pygments styles have been converted to Chroma using the `_tools/style.py` script.
 
-When you work with one of [Chroma's styles](https://github.com/alecthomas/chroma/tree/master/styles), know that the `chroma.Background` token type provides the default style for tokens. It does so by defining a foreground color and background color.
+When you work with one of [Chroma's styles](https/github.com/alecthomas/chroma/tree/master/styles), know that the `chroma.Background` token type provides the default style for tokens. It does so by defining a foreground color and background color.
 
 For example, this gives each token name not defined in the style a default color of `#f8f8f8` and uses `#000000` for the highlighted code block's background:
 
@@ -245,14 +245,14 @@ chroma.Background: "#f8f8f2 bg:#000000",
 
 Also, token types in a style file are hierarchical. For instance, when `CommentSpecial` is not defined, Chroma uses the token style from `Comment`. So when several comment tokens use the same color, you'll only need to define `Comment` and override the one that has a different color.
 
-For a quick overview of the available styles and how they look, check out the [Chroma Style Gallery](https://xyproto.github.io/splash/docs/).
+For a quick overview of the available styles and how they look, check out the [Chroma Style Gallery](https/xyproto.github.io/splash/docs/).
 
 <a id="markdown-command-line-interface" name="command-line-interface"></a>
 ## Command-line interface
 
 A command-line interface to Chroma is included.
 
-Binaries are available to install from [the releases page](https://github.com/alecthomas/chroma/releases).
+Binaries are available to install from [the releases page](https/github.com/alecthomas/chroma/releases).
 
 The CLI can be used as a preprocessor to colorise output of `less(1)`,
 see documentation for the `LESSOPEN` environment variable.
@@ -262,24 +262,24 @@ The `--fail` flag can be used to suppress output and return with exit status
 does not resolve a specific lexer to use for the given file. For example:
 
 ```shell
-export LESSOPEN='| p() { chroma --fail "$1" || cat "$1"; }; p "%s"'
+export LESSOPEN p() { chroma --fail "$1" || cat "$1"; }; p "%s"'
 ```
 
 Replace `cat` with your favourite fallback preprocessor.
 
 When invoked as `.lessfilter`, the `--fail` flag is automatically turned
 on under the hood for easy integration with [lesspipe shipping with
-Debian and derivatives](https://manpages.debian.org/lesspipe#USER_DEFINED_FILTERS);
+Debian and derivatives](https/manpages.debian.org/lesspipe#USER_DEFINED_FILTERS);
 for that setup the `chroma` executable can be just symlinked to `~/.lessfilter`.
 
 <a id="markdown-whats-missing-compared-to-pygments" name="whats-missing-compared-to-pygments"></a>
 ## What's missing compared to Pygments?
 
 - Quite a few lexers, for various reasons (pull-requests welcome):
-    - Pygments lexers for complex languages often include custom code to
-      handle certain aspects, such as Raku's ability to nest code inside
-      regular expressions. These require time and effort to convert.
-    - I mostly only converted languages I had heard of, to reduce the porting cost.
+ - Pygments lexers for complex languages often include custom code to
+ handle certain aspects, such as Raku's ability to nest code inside
+ regular expressions. These require time and effort to convert.
+ - I mostly only converted languages I had heard of, to reduce the porting cost.
 - Some more esoteric features of Pygments are omitted for simplicity.
 - Though the Chroma API supports content detection, very few languages support them.
-  I have plans to implement a statistical analyser at some point, but not enough time.
+ I have plans to implement a statistical analyser at some point, but not enough time.

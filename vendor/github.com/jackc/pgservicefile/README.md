@@ -1,5 +1,5 @@
-[![](https://godoc.org/github.com/jackc/pgservicefile?status.svg)](https://godoc.org/github.com/jackc/pgservicefile)
-[![Build Status](https://travis-ci.org/jackc/pgservicefile.svg)](https://travis-ci.org/jackc/pgservicefile)
+[![](https/godoc.org/github.com/jackc/pgservicefile?status.svg)](https/godoc.org/github.com/jackc/pgservicefile)
+[![Build Status](https/travis-ci.org/jackc/pgservicefile.svg)](https/travis-ci.org/jackc/pgservicefile)
 
 # pgservicefile
 

@@ -1,8 +1,8 @@
-# HuJSON - "Human JSON" ([JWCC](https://nigeltao.github.io/blog/2021/json-with-commas-comments.html))
+# HuJSON - "Human JSON" ([JWCC](https/nigeltao.github.io/blog/2021/json-with-commas-comments.html))
 
 The `github.com/tailscale/hujson` package implements
-the [JWCC](https://nigeltao.github.io/blog/2021/json-with-commas-comments.html) extension
-of [standard JSON](https://datatracker.ietf.org/doc/html/rfc8259).
+the [JWCC](https/nigeltao.github.io/blog/2021/json-with-commas-comments.html) extension
+of [standard JSON](https/datatracker.ietf.org/doc/html/rfc8259).
 
 The `JWCC` format permits two things over standard JSON:
 
@@ -13,7 +13,7 @@ All JSON is valid JWCC.
 
 For details, see the JWCC docs at:
 
-https://nigeltao.github.io/blog/2021/json-with-commas-comments.html
+https/nigeltao.github.io/blog/2021/json-with-commas-comments.html
 
 ## Visual Studio Code association
 
@@ -23,12 +23,12 @@ the following snippet to your Visual Studio Code configuration:
 
 ```json
 "files.associations": {
-    "*.hujson": "jsonc"
+ "*.hujson": "jsonc"
 },
 "json.schemas": [{
-    "fileMatch": ["*.hujson"],
-    "schema": {
-        "allowTrailingCommas": true
-    }
+ "fileMatch": ["*.hujson"],
+ "schema": {
+ "allowTrailingCommas": true
+ }
 }]
 ```

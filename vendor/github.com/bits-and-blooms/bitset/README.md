@@ -2,18 +2,18 @@
 
 *Go language library to map between non-negative integers and boolean values*
 
-[![Test](https://github.com/bits-and-blooms/bitset/workflows/Test/badge.svg)](https://github.com/willf/bitset/actions?query=workflow%3ATest)
-[![Go Report Card](https://goreportcard.com/badge/github.com/willf/bitset)](https://goreportcard.com/report/github.com/willf/bitset)
-[![PkgGoDev](https://pkg.go.dev/badge/github.com/bits-and-blooms/bitset?tab=doc)](https://pkg.go.dev/github.com/bits-and-blooms/bitset?tab=doc)
+[![Test](https/github.com/bits-and-blooms/bitset/workflows/Test/badge.svg)](https/github.com/willf/bitset/actions?query=workflow%3ATest)
+[![Go Report Card](https/goreportcard.com/badge/github.com/willf/bitset)](https/goreportcard.com/report/github.com/willf/bitset)
+[![PkgGoDev](https/pkg.go.dev/badge/github.com/bits-and-blooms/bitset?tab=doc)](https/pkg.go.dev/github.com/bits-and-blooms/bitset?tab=doc)
 
 
-This library is part of the [awesome go collection](https://github.com/avelino/awesome-go). It is used in production by several important systems:
+This library is part of the [awesome go collection](https/github.com/avelino/awesome-go). It is used in production by several important systems:
 
-* [beego](https://github.com/beego/beego)
-* [CubeFS](https://github.com/cubefs/cubefs)
-* [Amazon EKS Distro](https://github.com/aws/eks-distro)
-* [sourcegraph](https://github.com/sourcegraph/sourcegraph)
-* [torrent](https://github.com/anacrolix/torrent)
+* [beego](https/github.com/beego/beego)
+* [CubeFS](https/github.com/cubefs/cubefs)
+* [Amazon EKS Distro](https/github.com/aws/eks-distro)
+* [sourcegraph](https/github.com/sourcegraph/sourcegraph)
+* [torrent](https/github.com/anacrolix/torrent)
 
 
 ## Description
@@ -46,31 +46,31 @@ func main() {
 	var b bitset.BitSet
 	// play some Go Fish
 	for i := 0; i < 100; i++ {
-		card1 := uint(rand.Intn(52))
-		card2 := uint(rand.Intn(52))
-		b.Set(card1)
-		if b.Test(card2) {
-			fmt.Println("Go Fish!")
-		}
-		b.Clear(card1)
+ card1 := uint(rand.Intn(52))
+ card2 := uint(rand.Intn(52))
+ b.Set(card1)
+ if b.Test(card2) {
+ fmt.Println("Go Fish!")
+ }
+ b.Clear(card1)
 	}
 
 	// Chaining
 	b.Set(10).Set(11)
 
 	for i, e := b.NextSet(0); e; i, e = b.NextSet(i + 1) {
-		fmt.Println("The following bit is set:", i)
+ fmt.Println("The following bit is set:", i)
 	}
 	if b.Intersection(bitset.New(100).Set(10)).Count() == 1 {
-		fmt.Println("Intersection works.")
+ fmt.Println("Intersection works.")
 	} else {
-		fmt.Println("Intersection doesn't work???")
+ fmt.Println("Intersection doesn't work???")
 	}
 }
 ```
 
 
-Package documentation is at: https://pkg.go.dev/github.com/bits-and-blooms/bitset?tab=doc
+Package documentation is at: https/pkg.go.dev/github.com/bits-and-blooms/bitset?tab=doc
 
 ## Serialization
 
@@ -78,18 +78,18 @@ Package documentation is at: https://pkg.go.dev/github.com/bits-and-blooms/bitse
 You may serialize a bitset safely and portably to a stream
 of bytes as follows:
 ```Go
-    const length = 9585
+ const length = 9585
 	const oneEvery = 97
 	bs := bitset.New(length)
 	// Add some bits
 	for i := uint(0); i < length; i += oneEvery {
-		bs = bs.Set(i)
+ bs = bs.Set(i)
 	}
 
 	var buf bytes.Buffer
 	n, err := bs.WriteTo(&buf)
 	if err != nil {
-		// failure
+ // failure
 	}
 	// Here n == buf.Len()
 ```
@@ -100,7 +100,7 @@ You can later deserialize the result as follows:
 	bs = bitset.New()
 	n, err = bs.ReadFrom(&buf)
 	if err != nil {
-		// error
+ // error
 	}
 	// n is the number of bytes read
 ```
@@ -109,11 +109,11 @@ The `ReadFrom` function attempts to read the data into the existing
 BitSet instance, to minimize memory allocations.
 
 
-*Performance tip*: 
-When reading and writing to a file or a network connection, you may get better performance by 
+*Performance tip*:
+When reading and writing to a file or a network connection, you may get better performance by
 wrapping your streams with `bufio` instances.
 
-E.g., 
+E.g.,
 ```Go
 	f, err := os.Create("myfile")
 	w := bufio.NewWriter(f)
@@ -125,12 +125,12 @@ E.g.,
 
 ## Memory Usage
 
-The memory usage of a bitset using `N` bits is at least `N/8` bytes. The number of bits in a bitset is at least as large as one plus the greatest bit index you have accessed. Thus it is possible to run out of memory while using a bitset. If you have lots of bits, you might prefer compressed bitsets, like the [Roaring bitmaps](http://roaringbitmap.org) and its [Go implementation](https://github.com/RoaringBitmap/roaring).
+The memory usage of a bitset using `N` bits is at least `N/8` bytes. The number of bits in a bitset is at least as large as one plus the greatest bit index you have accessed. Thus it is possible to run out of memory while using a bitset. If you have lots of bits, you might prefer compressed bitsets, like the [Roaring bitmaps](http/roaringbitmap.org) and its [Go implementation](https/github.com/RoaringBitmap/roaring).
 
 The `roaring` library allows you to go back and forth between compressed Roaring bitmaps and the conventional bitset instances:
 ```Go
-			mybitset := roaringbitmap.ToBitSet()
-			newroaringbitmap := roaring.FromBitSet(mybitset)
+ mybitset := roaringbitmap.ToBitSet()
+ newroaringbitmap := roaring.FromBitSet(mybitset)
 ```
 
 
@@ -148,7 +148,7 @@ go get github.com/bits-and-blooms/bitset
 
 ## Contributing
 
-If you wish to contribute to this project, please branch and issue a pull request against master ("[GitHub Flow](https://guides.github.com/introduction/flow/)")
+If you wish to contribute to this project, please branch and issue a pull request against master ("[GitHub Flow](https/guides.github.com/introduction/flow/)")
 
 ## Running all tests
 

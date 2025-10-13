@@ -14,7 +14,7 @@
 Users on older versions of Go must use v1.2.0.**
 
 - [Improvement]: drop support for older versions of Go so we can begin using
-  modern versions of `x/sys` and other dependencies.
+ modern versions of `x/sys` and other dependencies.
 
 ## v1.2.0
 
@@ -22,7 +22,7 @@ Users on older versions of Go must use v1.2.0.**
 below.**
 
 - [Improvement]: pruned Go module dependencies via package `netlink` v1.6.0 and
-  removing tool version pins.
+ removing tool version pins.
 
 ## v1.1.0
 
@@ -30,7 +30,7 @@ below.**
 Users on older versions must use v1.0.0.**
 
 - [Improvement]: modernization of various parts of the code and documentation in
-  prep for future work.
+ prep for future work.
 
 ## v1.0.0
 

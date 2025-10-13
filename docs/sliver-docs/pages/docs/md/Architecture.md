@@ -10,19 +10,19 @@ There are four major components to the Sliver ecosystem:
 - **Implant -** The implant is the actual malicious code run on the target system you want remote access to.
 
 ```
-             In         ┌───────────────┐ C2
-┌─────────┐  Memory     │               │ Protocol ┌─────────┐
-│ Server  ├────────────►│ Sliver Server ├─────────►│ Implant │
-│ Console │             │               │          └─────────┘
-└─────────┘             └───────────────┘
-                               ▲
-                               │
-                               │gRPC/mTLS
-                               │
-                          ┌────┴────┐
-                          │ Sliver  │
-                          │ Client  │
-                          └─────────┘
+ In ┌───────────────┐ C2
+┌─────────┐ Memory │ │ Protocol ┌─────────┐
+│ Server ├────────────►│ Sliver Server ├─────────►│ Implant │
+│ Console │ │ │ └─────────┘
+└─────────┘ └───────────────┘
+ ▲
+ │
+ │gRPC/mTLS
+ │
+ ┌────┴────┐
+ │ Sliver │
+ │ Client │
+ └─────────┘
 ```
 
 By implementing all functionality over this gRPC interface, and only differing the in-memory/mTLS connection types the client code doesn't "know" if it's running in the server console or the client console. Due to this, a single command implementation will work in both the server console and over the network in multiplayer mode.

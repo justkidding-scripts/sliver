@@ -3,7 +3,7 @@ Advanced options, as the name suggests, are for advanced users that know what th
 Advanced options are configured per-C2 endpoint and are passed as URL encoded parameters to the C2 URL in the `generate` command. For example:
 
 ```
-generate --http http://example.com?driver=wininet
+generate --http http/example.com?driver=wininet
 ```
 
 ### HTTP C2 Advanced Options
@@ -16,7 +16,7 @@ generate --http http://example.com?driver=wininet
 - `force-http` - Set to `true` to always force the use of plaintext HTTP.
 - `disable-accept-header` - Set to `true` to disable the HTTP accept request header.
 - `disable-upgrade-header` - Set to `true` to disable the HTTP upgrade request header.
-- `proxy` - Manually specify HTTP proxy, this value is only used with Go HTTP driver, and the format should be one that is accepted by the Go HTTP library. You must specify a URI scheme with the hostname of the proxy. For example, `?proxy=http://myproxy.corp.com:8080`
+- `proxy` - Manually specify HTTP proxy, this value is only used with Go HTTP driver, and the format should be one that is accepted by the Go HTTP library. You must specify a URI scheme with the hostname of the proxy. For example, `?proxy=http/myproxy.corp.com:8080`
 - `proxy-username` - Specify a proxy username. Only valid with the Go HTTP driver.
 - `proxy-password` - Specify the proxy password. Only valid with the Go HTTP driver.
 - `ask-proxy-creds` - Set to `true` to ask the user for HTTP proxy credentials. Only valid when used with the `wininet` HTTP driver.

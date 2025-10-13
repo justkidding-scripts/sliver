@@ -29,7 +29,7 @@ sliver > dns --domains 1.example.com.
 
 ### DNS Canaries
 
-DNS Canaries are unique per-binary domains that are optionally inserted during the string obfuscation process. These domains are not actually used by the implant code and are deliberately _not obfuscated_ so that they show up if someone runs `strings` on the implant. If these domains are ever resolved (and you have a `dns` listener running) you'll get an alert telling which specific file was discovered by the blue team.
+DNS Canaries are unique per-binary domains that are optionally inserted during the string obfuscation process. These domains are not actually used by the implant code and are deliberately _not obfuscated_ so that they show up if someone runs `strings` on the implant. If these domains are ever resolved (and you have a `dns` listener running) you'll get an alert telling which specific file was discovered by the .
 
 Example `generate` command with canaries, make sure to use the FQDN:
 
@@ -69,9 +69,9 @@ For example glossing over some details, if a DNS client attempts to `foo.1.examp
 
 ```
 [implant] <--> [resolver]
-                  |<------> [.]
-                  |<------> [.com.]
-                  |<------> [example.com.] (attacker controlled)
+ |<------> [.]
+ |<------> [.com.]
+ |<------> [example.com.] (attacker controlled)
 ```
 
 This allows an implant to establish a connection to an attacker controlled host even when the implant cannot route TCP or UDP traffic to the internet. The tradeoff is that DNS queries are generally very small, in fact if we're lucky we can maybe encode around ~175 bytes per query (more on that later). So if you want to download a 2Mb file then we're gonna have to send _a lot of_ queries, this means that DNS communication is going to be _slow_ (~30Kbps) even at the best of times.
@@ -87,24 +87,24 @@ So if we want to build a "fast" DNS tunnel, we need to be able to pack as much d
 So how much data can we stuff into a DNS query? Well let's take a look at what goes into a DNS query, a DNS query contains some header fields and then a "questions" section, a single query may contain multiple questions. For example, we can ask "is there an A record for example.com" (an A records contain IPv4 addresses). Now, we can encode a handful of bits into some of the header fields and a couple other sections like the Type/Class, but by far the largest field is `QNAME`, which contains the domain we're asking a question about:
 
 ```
-                                    1  1  1  1  1  1
-      0  1  2  3  4  5  6  7  8  9  0  1  2  3  4  5
-    +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
-    |                                               |
-    /                     QNAME                     /
-    /                                               /
-    +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
-    |                     QTYPE                     |
-    +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
-    |                     QCLASS                    |
-    +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+ 1 1 1 1 1 1
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5
+ +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+ | |
+ / QNAME /
+ / /
+ +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+ | QTYPE |
+ +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+ | QCLASS |
+ +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
 ```
 
 Thus we'll focus on encoding data into the `QNAME` (the domain), domains can be up to 254 characters in length and may only contain ASCII `a-z`, `A-Z`, `0-9`, `-`, but `-` may not appear at the beginning of a name, and of course `.` separators. Each subdomain is separated by a `.` and may be up to 63 characters in length. However, DNS is a case-insensitive protocol thus `a` and `A` are considered equal from DNS' standpoint. Now as I said before the spec is really more guidelines than rules, so both `a` and `A` are technically allowed they're just considered equal in DNS' semantics.
 
-Now we want to send arbitrary binary data but DNS does not allow binary data in the `QNAME` so we need to encode binary data into the allowed character set. Typically of course to encode arbitrary binary data into ASCII we'd use [Base64](https://en.wikipedia.org/wiki/Base64) encoding, but DNS only allows 62 distinct characters (`a-z`, `A-Z`, `0-9`) so Base64 cannot be used. Additionally, we must consider that to Base64 `a` and `A` are distinct values whereas to DNS they are not. So it may not always be safe to use a case-sensitive encoding like Base64 if some rude resolver were to convert all the characters in one of our `QNAME`s to lower case. As far as DNS is concerned this is just fine, but it would corrupt the bytes decoded by the server.
+Now we want to send arbitrary binary data but DNS does not allow binary data in the `QNAME` so we need to encode binary data into the allowed character set. Typically of course to encode arbitrary binary data into ASCII we'd use [Base64](https/en.wikipedia.org/wiki/Base64) encoding, but DNS only allows 62 distinct characters (`a-z`, `A-Z`, `0-9`) so Base64 cannot be used. Additionally, we must consider that to Base64 `a` and `A` are distinct values whereas to DNS they are not. So it may not always be safe to use a case-sensitive encoding like Base64 if some rude resolver were to convert all the characters in one of our `QNAME`s to lower case. As far as DNS is concerned this is just fine, but it would corrupt the bytes decoded by the server.
 
-To workaround this problem many DNS C2 implementations instead use hexadecimal encoding, which is not case-sensitive and uses only characters (`0-9`, `A-F`), which are allowed in a `QNAME`, to transfer data back and forth from the server. The issue with this is that hexadecimal is a very inefficient encoding, resulting in a x2 size (takes two bytes to encode one byte), and since we want to minimize the number of queries we need to send this isn't a great option. Instead we could use [Base32](https://en.wikipedia.org/wiki/Base32), which is also case-insensitive but uses more characters to display bytes and thus is more efficient at around x1.6 size. Even better yet would be [Base58](https://en.wikipedia.org/wiki/Binary-to-text_encoding#Base58), which is case sensitive like Base64 but only uses chars allowed in a `QNAME`, at a little over x1.33 message size, but we cannot always rely on being able to use Base58 if we encounter a rude resolver.
+To workaround this problem many DNS C2 implementations instead use hexadecimal encoding, which is not case-sensitive and uses only characters (`0-9`, `A-F`), which are allowed in a `QNAME`, to transfer data back and forth from the server. The issue with this is that hexadecimal is a very inefficient encoding, resulting in a x2 size (takes two bytes to encode one byte), and since we want to minimize the number of queries we need to send this isn't a great option. Instead we could use [Base32](https/en.wikipedia.org/wiki/Base32), which is also case-insensitive but uses more characters to display bytes and thus is more efficient at around x1.6 size. Even better yet would be [Base58](https/en.wikipedia.org/wiki/Binary-to-text_encoding#Base5, which is case sensitive like Base64 but only uses chars allowed in a `QNAME`, at a little over x1.33 message size, but we cannot always rely on being able to use Base58 if we encounter a rude resolver.
 
 Sliver's solution to this problem is to first try to detect if Base58 can be used to reliably encode data, and if a problem is detected then fallback to Base32. I call this process "fingerprinting" the resolver.
 
@@ -112,7 +112,7 @@ Sliver's solution to this problem is to first try to detect if Base58 can be use
 
 The most common DNS query is an `A` record asking for the IPv4 address associated with some domain name. An IPv4 address is a 4-byte value typically displayed as four octets in Base10 e.g. `192.168.1.1`, but to DNS this is just an arbitrary 4-byte (32-bit) value.
 
-In order to detect if a resolver corrupted any bytes in our message the authoritative name server encodes the [CRC32](https://en.wikipedia.org/wiki/Cyclic_redundancy_check) of the data it received in the IP address of any `A` record that it receives. The implant first generates random bytes and then for each resolver on a host we try to resolve these random bytes and check to see if the CRC32 calculated by the server matches the CRC32 of the data we sent. If any mismatches occur Base32 is used instead of Base58.
+In order to detect if a resolver corrupted any bytes in our message the authoritative name server encodes the [CRC32](https/en.wikipedia.org/wiki/Cyclic_redundancy_check) of the data it received in the IP address of any `A` record that it receives. The implant first generates random bytes and then for each resolver on a host we try to resolve these random bytes and check to see if the CRC32 calculated by the server matches the CRC32 of the data we sent. If any mismatches occur Base32 is used instead of Base58.
 
 ### Bytes Per Query
 
@@ -124,7 +124,7 @@ First we calculate how many characters of the total domain can be used to encode
 254 - len(parent) - (1 + (254-len(parent))/64)
 ```
 
-This "subdata space" is the maximum number of characters our encoder (Base32 or Base58) can output per message. So the bytes per message are essentially `n` bytes encoded length must be equal to or less than the subdata space. Its important to note that adding a single byte input to either Base32 or Base58 may result in +2 output characters due to the inefficiencies in the encoders.
+This "subdata space" is the maximum number of characters our encoder (Base32 or Base5 can output per message. So the bytes per message are essentially `n` bytes encoded length must be equal to or less than the subdata space. Its important to note that adding a single byte input to either Base32 or Base58 may result in +2 output characters due to the inefficiencies in the encoders.
 
 ### Parallel Send/Recv
 
@@ -134,12 +134,12 @@ To account for this, Sliver wraps the message of `n` bytes in a protobuf message
 
 ```protobuf
 message DNSMessage {
-    DNSMessageType Type = 1; // An enum type
-    uint32 ID = 2; // 8 bit message id + 24 bit dns session ID
-    uint32 Start = 3; // These bytes of `Data` start at
-    uint32 Stop = 4; // These bytes of `Data` stop at
-    uint32 Size = 5; // Total message size (e.g. last message Stop = Size)
-    bytes Data = 6; // Actual data
+ DNSMessageType Type = 1; // An enum type
+ uint32 ID = 2; // 8 bit message id + 24 bit dns session ID
+ uint32 Start = 3; // These bytes of `Data` start at
+ uint32 Stop = 4; // These bytes of `Data` stop at
+ uint32 Size = 5; // Total message size (e.g. last message Stop = Size)
+ bytes Data = 6; // Actual data
 }
 ```
 

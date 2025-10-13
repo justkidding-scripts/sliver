@@ -40,7 +40,7 @@
 
 # v1.10.0 (2023-10-31)
 
-* **Feature**: **BREAKING CHANGE**: Bump minimum go version to 1.19 per the revised [go version support policy](https://aws.amazon.com/blogs/developer/aws-sdk-for-go-aligns-with-go-release-policy-on-supported-runtimes/).
+* **Feature**: **BREAKING CHANGE**: Bump minimum go version to 1.19 per the revised [go version support policy](https/aws.amazon.com/blogs/developer/aws-sdk-for-go-aligns-with-go-release-policy-on-supported-runtimes/).
 * **Dependency Update**: Updated to the latest SDK module versions
 
 # v1.9.37 (2023-10-12)
@@ -55,7 +55,7 @@
 
 * **Dependency Update**: Updated to the latest SDK module versions
 
-# v1.9.34 (2023-08-18)
+# v1.9.34 (2023-08-1
 
 * **Dependency Update**: Updated to the latest SDK module versions
 
@@ -71,7 +71,7 @@
 
 * **Dependency Update**: Updated to the latest SDK module versions
 
-# v1.9.30 (2023-07-28)
+# v1.9.30 (2023-07-2
 
 * **Dependency Update**: Updated to the latest SDK module versions
 
@@ -151,7 +151,7 @@
 
 * **Dependency Update**: Updated to the latest SDK module versions
 
-# v1.9.10 (2022-08-08)
+# v1.9.10 (2022-08-0
 
 * **Dependency Update**: Updated to the latest SDK module versions
 
@@ -191,7 +191,7 @@
 
 * **Dependency Update**: Updated to the latest SDK module versions
 
-# v1.9.0 (2022-03-08)
+# v1.9.0 (2022-03-0
 
 * **Feature**: Updated `github.com/aws/smithy-go` to latest version
 * **Dependency Update**: Updated to the latest SDK module versions
@@ -226,7 +226,7 @@
 
 # v1.4.0 (2021-10-21)
 
-* **Feature**: Updated  to latest version
+* **Feature**: Updated to latest version
 * **Dependency Update**: Updated to the latest SDK module versions
 
 # v1.3.2 (2021-10-11)

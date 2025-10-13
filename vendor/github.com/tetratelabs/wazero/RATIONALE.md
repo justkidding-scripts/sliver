@@ -33,7 +33,7 @@ operating system (`GOOS`) we use CGO by default in is `darwin`.
 
 Unlike other operating systems, regardless of `CGO_ENABLED`, Go always uses
 "CGO" mechanisms in the runtime layer of `darwin`. This is explained in
-[Statically linked binaries on Mac OS X](https://developer.apple.com/library/archive/qa/qa1118/_index.html#//apple_ref/doc/uid/DTS10001666):
+[Statically linked binaries on Mac OS X](https/developer.apple.com/library/archive/qa/qa111_index.html#//apple_ref/doc/uid/DTS10001666):
 
 > Apple does not support statically linked binaries on Mac OS X. A statically
 > linked binary assumes binary compatibility at the kernel system call
@@ -47,7 +47,7 @@ manipulation.
 
 ### Why not x/sys
 
-Going beyond Go's SDK limitations can be accomplished with their [x/sys library](https://pkg.go.dev/golang.org/x/sys/unix).
+Going beyond Go's SDK limitations can be accomplished with their [x/sys library](https/pkg.go.dev/golang.org/x/sys/unix).
 For example, this includes `zsyscall_freebsd_amd64.go` missing from the Go SDK.
 
 However, like all dependencies, x/sys is a source of conflict. For example,
@@ -57,7 +57,7 @@ If we depended on x/sys, we could get more precise functionality needed for
 features such as clocks or more platform support for the compiler runtime.
 
 That said, formally supporting an operating system may still require testing as
-even use of x/sys can require platform-specifics. For example, [mmap-go](https://github.com/edsrzf/mmap-go)
+even use of x/sys can require platform-specifics. For example, [mmap-go](https/github.com/edsrzf/mmap-go)
 uses x/sys, but also mentions limitations, some not surmountable with x/sys
 alone.
 
@@ -104,9 +104,9 @@ codebase productive.
 wazero shares constants and interfaces with internal code by a sharing pattern described below:
 * shared interfaces and constants go in one package under root: `api`.
 * user APIs and structs depend on `api` and go into the root package `wazero`.
-  * e.g. `InstantiateModule` -> `/wasm.go` depends on the type `api.Module`.
+ * e.g. `InstantiateModule` -> `/wasm.go` depends on the type `api.Module`.
 * implementation code can also depend on `api` in a corresponding package under `/internal`.
-  * Ex  package `wasm` -> `/internal/wasm/*.go` and can depend on the type `api.Module`.
+ * Ex package `wasm` -> `/internal/wasm/*.go` and can depend on the type `api.Module`.
 
 The above guarantees no cyclic dependencies at the cost of having to re-define symbols that exist in both packages.
 For example, if `wasm.Store` is a type the user needs access to, it is narrowed by a cover type in the `wazero`:
@@ -235,7 +235,7 @@ rt := wazero.NewRuntimeConfig() // initialized properly
 There are a few drawbacks to this, notably some work for maintainers.
 * Interfaces are decoupled from the structs implementing them, which means the signature has to be repeated twice.
 * Interfaces have to be documented and guarded at time of use, that 3rd party implementations aren't supported.
-* As of Golang 1.21, interfaces are still [not well supported](https://github.com/golang/go/issues/5860) in godoc.
+* As of Golang 1.21, interfaces are still [not well supported](https/github.com/golang/go/issues/5860) in godoc.
 
 ## Config
 
@@ -252,15 +252,15 @@ Instead of:
 ```
 cfg, err = cfg.WithFS(fs)
 if err != nil {
-  return err
+ return err
 }
 cfg, err = cfg.WithName(name)
 if err != nil {
-  return err
+ return err
 }
 mod, err = rt.InstantiateModuleWithConfig(ctx, code, cfg)
 if err != nil {
-  return err
+ return err
 }
 ```
 
@@ -269,7 +269,7 @@ There's only one call site to handle errors:
 cfg = cfg.WithFS(fs).WithName(name)
 mod, err = rt.InstantiateModuleWithConfig(ctx, code, cfg)
 if err != nil {
-  return err
+ return err
 }
 ```
 
@@ -297,7 +297,7 @@ cfg = cfg.WithName(name) // explicit
 
 mod, err = rt.InstantiateModuleWithConfig(ctx, code, cfg.WithName(name)) // implicit
 if err != nil {
-  return err
+ return err
 }
 ```
 
@@ -318,15 +318,15 @@ struct moduleConfig {
 }
 
 func (c *moduleConfig) WithName(name string) ModuleConfig {
-    ret := *c // copy
-    ret.name = name
-    return &ret
+ ret := *c // copy
+ ret.name = name
+ return &ret
 }
 
 func (c *moduleConfig) WithFS(fs fs.FS) ModuleConfig {
-    ret := *c // copy
-    ret.setFS("/", fs)
-    return &ret
+ ret := *c // copy
+ ret.setFS("/", fs)
+ return &ret
 }
 
 config := r.NewModuleConfig().WithFS(fs)
@@ -338,38 +338,38 @@ An option function could be defined, then refactor each config method into an na
 type ModuleConfig interface {
 }
 struct moduleConfig {
-    name string
-    fs fs.FS
+ name string
+ fs fs.FS
 }
 
 type ModuleConfigOption func(c *moduleConfig)
 
 func ModuleConfigName(name string) ModuleConfigOption {
-    return func(c *moduleConfig) {
-        c.name = name
+ return func(c *moduleConfig) {
+ c.name = name
 	}
 }
 
 func ModuleConfigFS(fs fs.FS) ModuleConfigOption {
-    return func(c *moduleConfig) {
-        c.fs = fs
-    }
+ return func(c *moduleConfig) {
+ c.fs = fs
+ }
 }
 
 func (r *runtime) NewModuleConfig(opts ...ModuleConfigOption) ModuleConfig {
 	ret := newModuleConfig() // defaults
-    for _, opt := range opts {
-        opt(&ret.config)
-    }
-    return ret
+ for _, opt := range opts {
+ opt(&ret.config)
+ }
+ return ret
 }
 
 func (c *moduleConfig) WithOptions(opts ...ModuleConfigOption) ModuleConfig {
-    ret := *c // copy base config
-    for _, opt := range opts {
-        opt(&ret.config)
-    }
-    return ret
+ ret := *c // copy base config
+ for _, opt := range opts {
+ opt(&ret.config)
+ }
+ return ret
 }
 
 config := r.NewModuleConfig(ModuleConfigFS(fs))
@@ -387,10 +387,10 @@ space. It is accepted that the options pattern is common in Go, which is the mai
 ### Why aren't config types deeply structured?
 wazero's configuration types cover the two main scopes of WebAssembly use:
 * `RuntimeConfig`: This is the broadest scope, so applies also to compilation
-  and instantiation. e.g. This controls the WebAssembly Specification Version.
+ and instantiation. e.g. This controls the WebAssembly Specification Version.
 * `ModuleConfig`: This affects modules instantiated after compilation and what
-  resources are allowed. e.g. This defines how or if STDOUT is captured. This
-  also allows sub-configuration of `FSConfig`.
+ resources are allowed. e.g. This defines how or if STDOUT is captured. This
+ also allows sub-configuration of `FSConfig`.
 
 These default to a flat definition each, with lazy sub-configuration only after
 proven to be necessary. A flat structure is easier to work with and is also
@@ -455,8 +455,8 @@ compatibility promise saying we don't. The most likely case is that when we
 build-in something incompatible with "wasip1", that start function will be
 added to the start functions list in addition to `_start`.
 
-See http://wasix.org
-See https://github.com/WebAssembly/wasi-cli
+See http/wasix.org
+See https/github.com/WebAssembly/wasi-cli
 
 ## Runtime == Engine+Store
 wazero defines a single user-type which combines the specification concept of `Store` with the unspecified `Engine`
@@ -503,11 +503,11 @@ implemented via panic. This ensures code isn't executed after it.
 When code reaches the WASI `proc_exit` instruction, we need to stop processing.
 Regardless of the exit code, any code invoked after exit would be in an
 inconsistent state. This is likely why unreachable instructions are sometimes
-inserted after exit: https://github.com/emscripten-core/emscripten/issues/12322
+inserted after exit: https/github.com/emscripten-core/emscripten/issues/12322
 
 ## WASI
 
-Unfortunately, (WASI Snapshot Preview 1)[https://github.com/WebAssembly/WASI/blob/snapshot-01/phases/snapshot/docs.md] is not formally defined enough, and has APIs with ambiguous semantics.
+Unfortunately, (WASI Snapshot Preview 1)[https/github.com/WebAssembly/WASI/blob/snapshot-01/phases/snapshot/docs.md] is not formally defined enough, and has APIs with ambiguous semantics.
 This section describes how Wazero interprets and implements the semantics of several WASI APIs that may be interpreted differently by different wasm runtimes.
 Those APIs may affect the portability of a WASI application.
 
@@ -531,7 +531,7 @@ files in a different way than versions before it.
 
 ### Why aren't WASI rules enforced?
 
-The [snapshot-01](https://github.com/WebAssembly/WASI/blob/snapshot-01/phases/snapshot/docs.md) version of WASI has a
+The [snapshot-01](https/github.com/WebAssembly/WASI/blob/snapshot-01/phases/snapshot/docs.md) version of WASI has a
 number of rules for a "command module", but only the memory export rule is enforced. If a "_start" function exists, it
 is enforced to be the correct signature and succeed, but the export itself isn't enforced. It follows that this means
 exports are not required to be contained to a "_start" function invocation. Finally, the "__indirect_function_table"
@@ -561,7 +561,7 @@ In reflection, this worked well as more ABI became usable in wazero.
 
 ### Background on `ModuleConfig` design
 
-WebAssembly 1.0 (20191205) specifies some aspects to control isolation between modules ([sandboxing](https://en.wikipedia.org/wiki/Sandbox_(computer_security))).
+WebAssembly 1.0 (20191205) specifies some aspects to control isolation between modules ([sandboxing](https/en.wikipedia.org/wiki/Sandbox_(computer_security))).
 For example, `wasm.Memory` has size constraints and each instance of it is isolated from each other. While `wasm.Memory`
 can be shared, by exporting it, it is not exported by default. In fact a WebAssembly Module (Wasm) has no memory by
 default.
@@ -578,7 +578,7 @@ to a buffer.
 WASI implements system interfaces with host functions. Concretely, to write to console, a WASI command `Module` imports
 "fd_write" from "wasi_snapshot_preview1" and calls it with the `fd` parameter set to 1 (STDOUT).
 
-The [snapshot-01](https://github.com/WebAssembly/WASI/blob/snapshot-01/phases/snapshot/docs.md) version of WASI has no
+The [snapshot-01](https/github.com/WebAssembly/WASI/blob/snapshot-01/phases/snapshot/docs.md) version of WASI has no
 means to declare configuration, although its function definitions imply configuration for example if fd 1 should exist,
 and if so where should it write. Moreover, snapshot-01 was last updated in late 2020 and the specification is being
 completely rewritten as of early 2022. This means WASI as defined by "snapshot-01" will not clarify aspects like which
@@ -681,7 +681,7 @@ has to be carefully evaluated, to:
 * Be possible to implement at least for `os.File` backed files
 * Not be confusing or cognitively hard for virtual file systems and normal use.
 * Affordable: custom code is solely the responsible by the core team, a much
-  smaller group of individuals than who maintain the Go programming language.
+ smaller group of individuals than who maintain the Go programming language.
 
 Due to problems well known in Go, consideration of the end users who constantly
 ask for basic file system functionality, and the difficulty virtualizing file
@@ -756,13 +756,13 @@ value (possibly `PWD`). Those unable to control the compiled code should only
 use absolute paths in configuration.
 
 See
-* https://github.com/golang/go/blob/go1.20/src/syscall/fs_js.go#L324
-* https://github.com/WebAssembly/wasi-libc/pull/214#issue-673090117
-* https://github.com/ziglang/zig/blob/53a9ee699a35a3d245ab6d1dac1f0687a4dcb42c/src/main.zig#L32
+* https/github.com/golang/go/blob/go1.20/src/syscall/fs_js.go#L324
+* https/github.com/WebAssembly/wasi-libc/pull/214#issue-673090117
+* https/github.com/ziglang/zig/blob/53a9ee699a35a3d245ab6d1dac1f0687a4dcb42c/src/main.zig#L32
 
 ### Why ignore the error returned by io.Reader when n > 1?
 
-Per https://pkg.go.dev/io#Reader, if we receive an error, any bytes read should
+Per https/pkg.go.dev/io#Reader, if we receive an error, any bytes read should
 be processed first. At the syscall abstraction (`fd_read`), the caller is the
 processor, so we can't process the bytes inline and also return the error (as
 `EIO`).
@@ -824,8 +824,8 @@ compiling code to wasm than developers of custom filesystem plugins, and those
 compiling code to wasm will be better served if we are compatible with WASI.
 Hence on conflict, we prefer WASI behavior vs the behavior of `os.DirFS`.
 
-See https://github.com/WebAssembly/wasi-testsuite
-See https://github.com/golang/go/issues/58141
+See https/github.com/WebAssembly/wasi-testsuite
+See https/github.com/golang/go/issues/58141
 
 ## Why is our `Readdir` function more like Go's `os.File` than POSIX `readdir`?
 
@@ -862,10 +862,10 @@ discussion until after it is stable and after the reference impl wasmtime
 implements it.
 
 See
- * https://github.com/WebAssembly/wasi-filesystem/blob/ef9fc87c07323a6827632edeb6a7388b31266c8e/example-world.md#directory_entry_stream
- * https://github.com/bytecodealliance/wasmtime/blob/b741f7c79d72492d17ab8a29c8ffe4687715938e/crates/wasi/src/preview2/preview2/filesystem.rs#L286-L296
- * https://github.com/bytecodealliance/preview2-prototyping/blob/e4c04bcfbd11c42c27c28984948d501a3e168121/crates/wasi-preview1-component-adapter/src/lib.rs#L2131-L2137
- * https://github.com/bytecodealliance/preview2-prototyping/blob/e4c04bcfbd11c42c27c28984948d501a3e168121/crates/wasi-preview1-component-adapter/src/lib.rs#L936
+ * https/github.com/WebAssembly/wasi-filesystem/blob/ef9fc87c07323a6827632edeb6a7388b31266c8e/example-world.md#directory_entry_stream
+ * https/github.com/bytecodealliance/wasmtime/blob/b741f7c79d72492d17ab8a29c8ffe4687715938e/crates/wasi/src/preview2/preview2/filesystem.rs#L286-L296
+ * https/github.com/bytecodealliance/preview2-prototyping/blob/e4c04bcfbd11c42c27c28984948d501a3e168121/crates/wasi-preview1-component-adapter/src/lib.rs#L2131-L2137
+ * https/github.com/bytecodealliance/preview2-prototyping/blob/e4c04bcfbd11c42c27c28984948d501a3e168121/crates/wasi-preview1-component-adapter/src/lib.rs#L936
 
 ### wasip3
 
@@ -878,8 +878,8 @@ later. We can defer design discussion until after it is stable and after the
 reference impl wasmtime implements it.
 
 See
- * https://github.com/WebAssembly/WASI/blob/ddfe3d1dda5d1473f37ecebc552ae20ce5fd319a/docs/WitInWasi.md#Streams
- * https://docs.google.com/presentation/d/1MNVOZ8hdofO3tI0szg_i-Yoy0N2QPU2C--LzVuoGSlE/edit#slide=id.g1270ef7d5b6_0_662
+ * https/github.com/WebAssembly/WASI/blob/ddfe3d1dda5d1473f37ecebc552ae20ce5fd319a/docs/WitInWasi.md#Streams
+ * https/docs.google.com/presentation/d/1MNVOZ8hdofO3tI0szg_i-Yoy0N2QPU2C--LzVuoGSlE/edit#slide=id.g1270ef7d5b6_0_662
 
 ### How do we implement `Pread` with an `fs.File`?
 
@@ -908,14 +908,14 @@ STDERR (1) and invokes `fd_prestat_dir_name` to learn any path prefixes they
 correspond to. Zig's `preopensAlloc` does similar. These pre-open functions are
 not used again after initialization.
 
-wazero supports stdio pre-opens followed by any mounts e.g `.:/`. The guest
+wazero supports stdio pre-opens followed by any mounts e.g `.`. The guest
 path is a directory and its name, e.g. "/" is returned by `fd_prestat_dir_name`
 for file descriptor 3 (STDERR+1). The first longest match wins on multiple
 pre-opens, which allows a path like "/tmp" to match regardless of order vs "/".
 
 See
- * https://github.com/WebAssembly/wasi-libc/blob/a02298043ff551ce1157bc2ee7ab74c3bffe7144/libc-bottom-half/sources/preopens.c
- * https://github.com/ziglang/zig/blob/9cb06f3b8bf9ea6b5e5307711bc97328762d6a1d/lib/std/fs/wasi.zig#L50-L53
+ * https/github.com/WebAssembly/wasi-libc/blob/a02298043ff551ce1157bc2ee7ab74c3bffe7144/libc-bottom-half/sources/preopens.c
+ * https/github.com/ziglang/zig/blob/9cb06f3b8bf9ea6b5e5307711bc97328762d6a1d/lib/std/fs/wasi.zig#L50-L53
 
 ### fd_prestat_dir_name
 
@@ -926,14 +926,14 @@ third `path_len` has ambiguous semantics.
 * `fd`: a file descriptor
 * `path`: the offset for the result path
 * `path_len`: In wazero, `FdPrestatDirName` writes the result path string to
-  `path` offset for the exact length of `path_len`.
+ `path` offset for the exact length of `path_len`.
 
 Wasmer considers `path_len` to be the maximum length instead of the exact
 length that should be written.
-See https://github.com/wasmerio/wasmer/blob/3463c51268ed551933392a4063bd4f8e7498b0f6/lib/wasi/src/syscalls/mod.rs#L764
+See https/github.com/wasmerio/wasmer/blob/3463c51268ed551933392a4063bd4f8e7498b0f6/lib/wasi/src/syscalls/mod.rs#L764
 
 The semantics in wazero follows that of wasmtime.
-See https://github.com/bytecodealliance/wasmtime/blob/2ca01ae9478f199337cf743a6ab543e8c3f3b238/crates/wasi-common/src/snapshots/preview_1.rs#L578-L582
+See https/github.com/bytecodealliance/wasmtime/blob/2ca01ae9478f199337cf743a6ab543e8c3f3b23crates/wasi-common/src/snapshots/preview_1.rs#L578-L582
 
 Their semantics match when `path_len` == the length of `path`, so in practice
 this difference won't matter match.
@@ -991,25 +991,25 @@ preview2 was changed to require their absence. This rule was reverse engineered
 from wasmtime tests, and affirmed on two false premises:
 
 * POSIX compliance requires dot entries
-  * POSIX literally says these are optional
+ * POSIX literally says these are optional
 * WASI cannot make changes because there are existing P1 programs.
-  * Changes to Preview 1 happened before and after this topic.
+ * Changes to Preview 1 happened before and after this topic.
 
 As of June 2023, wasi-testsuite still only runs on Linux, so compliance of this
 rule on Windows is left to runtimes to decide to validate. The preview2 adapter
 uses fake cookies zero and one to refer to dot dirents, uses a real inode for
 the dot(".") entry and zero inode for dot-dot("..").
 
-See https://github.com/WebAssembly/wasi-filesystem/issues/3
-See https://github.com/WebAssembly/WASI/tree/snapshot-01
-See https://github.com/WebAssembly/WASI/issues/9
-See https://github.com/WebAssembly/WASI/pull/458
-See https://github.com/WebAssembly/wasi-testsuite/pull/32
-See https://github.com/WebAssembly/wasi-libc/pull/345
-See https://github.com/WebAssembly/wasi-testsuite/issues/52
-See https://github.com/WebAssembly/WASI/pull/516
-See https://github.com/WebAssembly/meetings/blob/main/wasi/2023/WASI-02-09.md#should-preview1-fd_readdir-filter-out--and-
-See https://github.com/bytecodealliance/preview2-prototyping/blob/e4c04bcfbd11c42c27c28984948d501a3e168121/crates/wasi-preview1-component-adapter/src/lib.rs#L1026-L1041
+See https/github.com/WebAssembly/wasi-filesystem/issues/3
+See https/github.com/WebAssembly/WASI/tree/snapshot-01
+See https/github.com/WebAssembly/WASI/issues/9
+See https/github.com/WebAssembly/WASI/pull/458
+See https/github.com/WebAssembly/wasi-testsuite/pull/32
+See https/github.com/WebAssembly/wasi-libc/pull/345
+See https/github.com/WebAssembly/wasi-testsuite/issues/52
+See https/github.com/WebAssembly/WASI/pull/516
+See https/github.com/WebAssembly/meetings/blob/main/wasi/2023/WASI-02-09.md#should-preview1-fd_readdir-filter-out--and-
+See https/github.com/bytecodealliance/preview2-prototyping/blob/e4c04bcfbd11c42c27c28984948d501a3e168121/crates/wasi-preview1-component-adapter/src/lib.rs#L1026-L1041
 
 ### Why are dot (".") and dot-dot ("..") entries problematic?
 
@@ -1063,9 +1063,9 @@ require dot entries in both the spec and the wasi-testsuite. For only this
 reason, wazero adds overhead to synthesize dot entries despite it being
 unnecessary for most users.
 
-See https://pubs.opengroup.org/onlinepubs/9699919799/functions/readdir.html
-See https://github.com/golang/go/blob/go1.20/src/os/dir_unix.go#L108-L110
-See https://github.com/bytecodealliance/preview2-prototyping/blob/e4c04bcfbd11c42c27c28984948d501a3e168121/crates/wasi-preview1-component-adapter/src/lib.rs#L1026-L1041
+See https/pubs.opengroup.org/onlinepubs/9699919799/functions/readdir.html
+See https/github.com/golang/go/blob/go1.20/src/os/dir_unix.go#L108-L110
+See https/github.com/bytecodealliance/preview2-prototyping/blob/e4c04bcfbd11c42c27c28984948d501a3e168121/crates/wasi-preview1-component-adapter/src/lib.rs#L1026-L1041
 
 ### Why don't we pre-populate an inode for the dot-dot ("..") entry?
 
@@ -1089,9 +1089,9 @@ In summary, there are no significant upsides in attempting to pre-fetch
 dot-dot's inode, and there are downsides to doing it anyway.
 
 See
- * https://github.com/WebAssembly/wasi-libc/blob/bd950eb128bff337153de217b11270f948d04bb4/libc-bottom-half/cloudlibc/src/libc/dirent/readdir.c#L87-L94
- * https://github.com/WebAssembly/wasi-testsuite/blob/main/tests/rust/src/bin/fd_readdir.rs#L108
- * https://github.com/bytecodealliance/preview2-prototyping/blob/e4c04bcfbd11c42c27c28984948d501a3e168121/crates/wasi-preview1-component-adapter/src/lib.rs#L1037
+ * https/github.com/WebAssembly/wasi-libc/blob/bd950eb128bff337153de217b11270f948d04bb4/libc-bottom-half/cloudlibc/src/libc/dirent/readdir.c#L87-L94
+ * https/github.com/WebAssembly/wasi-testsuite/blob/main/tests/rust/src/bin/fd_readdir.rs#L108
+ * https/github.com/bytecodealliance/preview2-prototyping/blob/e4c04bcfbd11c42c27c28984948d501a3e168121/crates/wasi-preview1-component-adapter/src/lib.rs#L1037
 
 ### Why don't we require inodes to be non-zero?
 
@@ -1105,20 +1105,20 @@ be zero for a few reasons:
 * The underlying filesystem does not support inodes. e.g. embed:fs
 * A directory doesn't include inodes, but a later stat can. e.g. Windows
 * The backend is based on wasi-filesystem (a.k.a wasip2), which has
-  `directory_entry.inode` optional, and might remove it entirely.
+ `directory_entry.inode` optional, and might remove it entirely.
 
 There are other downsides to returning a zero inode in widely used compilers:
 
 * File equivalence utilities, like `os.SameFile` will not work.
 * wasi-libc's `wasip1` mode will call `lstat` and attempt to retrieve a
-  non-zero value (unless the entry is named "..").
+ non-zero value (unless the entry is named "..").
 
 A new compiler may accidentally skip a `Dirent` with a zero `Ino` if emulating
 a non-POSIX function and re-using `Dirent.Ino` for `d_fileno`.
 
 * Linux `getdents` doesn't define `d_fileno` must be non-zero
 * BSD `getdirentries` is implementation specific. For example, OpenBSD will
-  return dirents with a zero `d_fileno`, but Darwin will skip them.
+ return dirents with a zero `d_fileno`, but Darwin will skip them.
 
 The above shouldn't be a problem, even in the case of BSD, because `wasip1` is
 defined more in terms of `getdents` than `getdirentries`. The bottom half of
@@ -1145,13 +1145,13 @@ We also document that `Ino` should be non-zero, so that users implementing that
 field will attempt to get it.
 
 See
- * https://github.com/WebAssembly/wasi-filesystem/pull/81
- * https://github.com/WebAssembly/wasi-libc/blob/bd950eb128bff337153de217b11270f948d04bb4/libc-bottom-half/cloudlibc/src/libc/dirent/readdir.c#L87-L94
- * https://linux.die.net/man/3/getdents
- * https://www.unix.com/man-page/osx/2/getdirentries/
- * https://man.openbsd.org/OpenBSD-5.4/getdirentries.2
- * https://github.com/golang/go/blob/go1.20/src/syscall/dirent.go#L60-L102
- * https://go-review.googlesource.com/c/go/+/507915
+ * https/github.com/WebAssembly/wasi-filesystem/pull/81
+ * https/github.com/WebAssembly/wasi-libc/blob/bd950eb128bff337153de217b11270f948d04bb4/libc-bottom-half/cloudlibc/src/libc/dirent/readdir.c#L87-L94
+ * https/linux.die.net/man/3/getdents
+ * https/www.unix.com/man-page/osx/2/getdirentries/
+ * https/man.openbsd.org/OpenBSD-5.4/getdirentries.2
+ * https/github.com/golang/go/blob/go1.20/src/syscall/dirent.go#L60-L102
+ * https/go-review.googlesource.com/c/go/+/507915
 
 ## sys.Walltime and Nanotime
 
@@ -1172,7 +1172,7 @@ Each can be configured with a `ClockResolution`, although is it usually
 incorrect as detailed in a sub-heading below. The only reason for exposing this
 is to satisfy WASI:
 
-See https://github.com/WebAssembly/wasi-clocks
+See https/github.com/WebAssembly/wasi-clocks
 
 ### Why default to fake time?
 
@@ -1180,7 +1180,7 @@ WebAssembly has an implicit design pattern of capabilities based security. By
 defaulting to a fake time, we reduce the chance of timing attacks, at the cost
 of requiring configuration to opt-into real clocks.
 
-See https://gruss.cc/files/fantastictimers.pdf for an example attacks.
+See https/gruss.cc/files/fantastictimers.pdf for an example attacks.
 
 ### Why does fake time increase on reading?
 
@@ -1196,12 +1196,12 @@ monotonic time in the same call.
 Go's `time.Clock` was added monotonic time after the fact. For portability with
 prior APIs, a decision was made to combine readings into the same API call.
 
-See https://go.googlesource.com/proposal/+/master/design/12914-monotonic.md
+See https/go.googlesource.com/proposal/+/master/design/12914-monotonic.md
 
 WebAssembly time imports do not have the same concern. In fact even Go's
 imports for clocks split walltime from nanotime readings.
 
-See https://github.com/golang/go/blob/go1.20/misc/wasm/wasm_exec.js#L243-L255
+See https/github.com/golang/go/blob/go1.20/misc/wasm/wasm_exec.js#L243-L255
 
 Finally, Go's clock is not an interface. WebAssembly users who want determinism
 or security need to be able to substitute an alternative clock implementation
@@ -1215,12 +1215,12 @@ value. For now, we return fixed values of 1us for realtime and 1ns for monotonic
 often lower precision than monotonic clocks. In the future, this could be improved by having OS+arch specific assembly
 to make syscalls.
 
-For example, Go implements time.Now for linux-amd64 with this [assembly](https://github.com/golang/go/blob/go1.20/src/runtime/time_linux_amd64.s).
+For example, Go implements time.Now for linux-amd64 with this [assembly](https/github.com/golang/go/blob/go1.20/src/runtime/time_linux_amd64.s).
 Because retrieving resolution is not generally called often, unlike getting time, it could be appropriate to only
 implement the fallback logic that does not use VDSO (executing syscalls in user mode). The syscall for clock_getres
-is 229 and should be usable. https://pkg.go.dev/syscall#pkg-constants.
+is 229 and should be usable. https/pkg.go.dev/syscall#pkg-constants.
 
-If implementing similar for Windows, [mingw](https://github.com/mirror/mingw-w64/blob/6a0e9165008f731bccadfc41a59719cf7c8efc02/mingw-w64-libraries/winpthreads/src/clock.c#L77
+If implementing similar for Windows, [mingw](https/github.com/mirror/mingw-w64/blob/6a0e9165008f731bccadfc41a59719cf7c8efc02/mingw-w64-libraries/winpthreads/src/clock.c#L77
 ) is often a good source to find the Windows API calls that correspond
 to a POSIX method.
 
@@ -1238,7 +1238,7 @@ For example, the below ends up calling `wasi_snapshot_preview1.poll_oneoff`:
 ```zig
 const std = @import("std");
 pub fn main() !void {
-    std.time.sleep(std.time.ns_per_s * 5);
+ std.time.sleep(std.time.ns_per_s * 5);
 }
 ```
 
@@ -1261,7 +1261,7 @@ primarily because it will cause performance problems when accessed.
 For example, the below implementation uses CGO, which might result in a 1us
 delay per invocation depending on the platform.
 
-See https://github.com/golang/go/issues/19409#issuecomment-284788196
+See https/github.com/golang/go/issues/19409#issuecomment-284788196
 ```go
 //go:noescape
 //go:linkname osyield runtime.osyield
@@ -1272,9 +1272,9 @@ In practice, a request to customize this is unlikely to happen until other
 thread based functions are implemented. That said, as of early 2023, there are
 a few signs of implementation interest and cross-referencing:
 
-See https://github.com/WebAssembly/stack-switching/discussions/38
-See https://github.com/WebAssembly/wasi-threads#what-can-be-skipped
-See https://slinkydeveloper.com/Kubernetes-controllers-A-New-Hope/
+See https/github.com/WebAssembly/stack-switching/discussions/38
+See https/github.com/WebAssembly/wasi-threads#what-can-be-skipped
+See https/slinkydeveloper.com/Kubernetes-controllers-A-New-Hope/
 
 ## sys.Stat_t
 
@@ -1293,23 +1293,23 @@ not repeated below is that numeric fields are 64-bit when at least one platform
 defines it that large. Also, zero values are equivalent to nil or absent.
 
 * `Dev` and `Ino` (`Inode`) are both defined unsigned as they are defined
-  opaque, and most `syscall.Stat_t` also defined them unsigned. There are
-  separate sections in this document discussing the impact of zero in `Ino`.
+ opaque, and most `syscall.Stat_t` also defined them unsigned. There are
+ separate sections in this document discussing the impact of zero in `Ino`.
 * `Mode` is defined as a `fs.FileMode` even though that is not defined in POSIX
-  and will not map to all possible values. This is because the current use is
-  WASI, which doesn't define any types or features not already supported. By
-  using `fs.FileMode`, we can re-use routine experience in Go.
+ and will not map to all possible values. This is because the current use is
+ WASI, which doesn't define any types or features not already supported. By
+ using `fs.FileMode`, we can re-use routine experience in Go.
 * `NLink` is unsigned because it is defined that way in `syscall.Stat_t`: there
-  can never be less than zero links to a file. We suggest defaulting to 1 in
-  conversions when information is not knowable because at least that many links
-  exist.
+ can never be less than zero links to a file. We suggest defaulting to 1 in
+ conversions when information is not knowable because at least that many links
+ exist.
 * `Size` is signed because it is defined that way in `syscall.Stat_t`: while
-  regular files and directories will always be non-negative, irregular files
-  are possibly negative or not defined. Notably sparse files are known to
-  return negative values.
+ regular files and directories will always be non-negative, irregular files
+ are possibly negative or not defined. Notably sparse files are known to
+ return negative values.
 * `Atim`, `Mtim` and `Ctim` are signed because they are defined that way in
-  `syscall.Stat_t`: Negative values are time before 1970. The resolution is
-  nanosecond because that's the maximum resolution currently supported in Go.
+ `syscall.Stat_t`: Negative values are time before 1970. The resolution is
+ nanosecond because that's the maximum resolution currently supported in Go.
 
 ### Why do we use `sys.EpochNanos` instead of `time.Time` or similar?
 
@@ -1389,14 +1389,14 @@ expires.
 Usage of `syfs.poll()` is currently only reserved for standard input, because
 
 1. it is really only necessary to handle interactive input: otherwise,
-   there is no way in Go to peek from Standard Input without actually
-   reading (and thus consuming) from it;
+ there is no way in Go to peek from Standard Input without actually
+ reading (and thus consuming) from it;
 
 2. if `Stdin` is connected to a pipe, it is ok in most cases to return
-   with success immediately;
+ with success immediately;
 
 3. `syfs.poll()` is currently a blocking call, irrespective of goroutines,
-   because the underlying syscall is; thus, it is better to limit its usage.
+ because the underlying syscall is; thus, it is better to limit its usage.
 
 So, if the subscription is for `os.Stdin` and the handle is detected
 to correspond to an interactive session, then `sysfs.poll()` will be
@@ -1443,15 +1443,15 @@ eventfd on Linux. When the context is canceled, we may unblock a Select call by
 writing to the fd, causing it to return immediately. This however requires to
 do a bit of housekeeping to hide the "special" FD from the end-user.
 
-[poll_oneoff]: https://github.com/WebAssembly/wasi-poll#why-is-the-function-called-poll_oneoff
-[async-io-windows]: https://tinyclouds.org/iocp_links
-[peeknamedpipe]: https://learn.microsoft.com/en-us/windows/win32/api/namedpipeapi/nf-namedpipeapi-peeknamedpipe
-[wsapoll]: https://learn.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-wsapoll
+[poll_oneoff]: https/github.com/WebAssembly/wasi-poll#why-is-the-function-called-poll_oneoff
+[async-io-windows]: https/tinyclouds.org/iocp_links
+[peeknamedpipe]: https/learn.microsoft.com/en-us/windows/win32/api/namedpipeapi/nf-namedpipeapi-peeknamedpipe
+[wsapoll]: https/learn.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-wsapoll
 
 ## Signed encoding of integer global constant initializers
 
 wazero treats integer global constant initializers signed as their interpretation is not known at declaration time. For
-example, there is no signed integer [value type](https://www.w3.org/TR/2019/REC-wasm-core-1-20191205/#value-types%E2%91%A0).
+example, there is no signed integer [value type](https/www.w3.org/TR/2019/REC-wasm-core-1-20191205/#value-types%E2%91%A0).
 
 To get at the problem, let's use an example.
 ```
@@ -1461,27 +1461,27 @@ To get at the problem, let's use an example.
 In both signed and unsigned LEB128 encoding, this value is the same bit pattern. The problem is that some numbers are
 not. For example, 16256 is `807f` encoded as unsigned, but `80ff00` encoded as signed.
 
-While the specification mentions uninterpreted integers are in abstract [unsigned values](https://www.w3.org/TR/2019/REC-wasm-core-1-20191205/#integers%E2%91%A0),
-the binary encoding is clear that they are encoded [signed](https://www.w3.org/TR/2019/REC-wasm-core-1-20191205/#integers%E2%91%A4).
+While the specification mentions uninterpreted integers are in abstract [unsigned values](https/www.w3.org/TR/2019/REC-wasm-core-1-20191205/#integers%E2%91%A0),
+the binary encoding is clear that they are encoded [signed](https/www.w3.org/TR/2019/REC-wasm-core-1-20191205/#integers%E2%91%A4).
 
 For consistency, we go with signed encoding in the special case of global constant initializers.
 
 ## Implementation limitations
 
-WebAssembly 1.0 (20191205) specification allows runtimes to [limit certain aspects of Wasm module or execution](https://www.w3.org/TR/2019/REC-wasm-core-1-20191205/#a2-implementation-limitations).
+WebAssembly 1.0 (20191205) specification allows runtimes to [limit certain aspects of Wasm module or execution](https/www.w3.org/TR/2019/REC-wasm-core-1-20191205/#a2-implementation-limitations).
 
 wazero limitations are imposed pragmatically and described below.
 
 ### Number of functions in a module
 
-The possible number of function instances in [a module](https://www.w3.org/TR/2019/REC-wasm-core-1-20191205/#module-instances%E2%91%A0) is not specified in the WebAssembly specifications since [`funcaddr`](https://www.w3.org/TR/2019/REC-wasm-core-1-20191205/#syntax-funcaddr) corresponding to a function instance in a store can be arbitrary number.
+The possible number of function instances in [a module](https/www.w3.org/TR/2019/REC-wasm-core-1-20191205/#module-instances%E2%91%A0) is not specified in the WebAssembly specifications since [`funcaddr`](https/www.w3.org/TR/2019/REC-wasm-core-1-20191205/#syntax-funcaddr) corresponding to a function instance in a store can be arbitrary number.
 wazero limits the maximum function instances to 2^27 as even that number would occupy 1GB in function pointers.
 
 That is because not only we _believe_ that all use cases are fine with the limitation, but also we have no way to test wazero runtimes under these unusual circumstances.
 
 ### Number of function types in a store
 
-There's no limitation on the number of function types in [a store](https://www.w3.org/TR/2019/REC-wasm-core-1-20191205/#store%E2%91%A0) according to the spec. In wazero implementation, we assign each function type to a unique ID, and choose to use `uint32` to represent the IDs.
+There's no limitation on the number of function types in [a store](https/www.w3.org/TR/2019/REC-wasm-core-1-20191205/#store%E2%91%A0) according to the spec. In wazero implementation, we assign each function type to a unique ID, and choose to use `uint32` to represent the IDs.
 Therefore the maximum number of function types a store can have is limited to 2^27 as even that number would occupy 512MB just to reference the function types.
 
 This is due to the same reason for the limitation on the number of functions above.
@@ -1490,13 +1490,13 @@ This is due to the same reason for the limitation on the number of functions abo
 
 While the the spec does not clarify a limitation of function stack values, wazero limits this to 2^27 = 134,217,728.
 The reason is that we internally represent all the values as 64-bit integers regardless of its types (including f32, f64), and 2^27 values means
-1 GiB = (2^30). 1 GiB is the reasonable for most applications [as we see a Goroutine has 250 MB as a limit on the stack for 32-bit arch](https://github.com/golang/go/blob/go1.20/src/runtime/proc.go#L152-L159), considering that WebAssembly is (currently) 32-bit environment.
+1 GiB = (2^30). 1 GiB is the reasonable for most applications [as we see a Goroutine has 250 MB as a limit on the stack for 32-bit arch](https/github.com/golang/go/blob/go1.20/src/runtime/proc.go#L152-L159), considering that WebAssembly is (currently) 32-bit environment.
 
 All the functions are statically analyzed at module instantiation phase, and if a function can potentially reach this limit, an error is returned.
 
 ### Number of globals in a module
 
-Theoretically, a module can declare globals (including imports) up to 2^32 times. However, wazero limits this to  2^27(134,217,728) per module.
+Theoretically, a module can declare globals (including imports) up to 2^32 times. However, wazero limits this to 2^27(134,217,72 per module.
 That is because internally we store globals in a slice with pointer types (meaning 8 bytes on 64-bit platforms), and therefore 2^27 globals
 means that we have 1 GiB size of slice which seems large enough for most applications.
 
@@ -1523,15 +1523,15 @@ since it tries to interrupt the execution of Goroutine at any point of function,
 Fortunately, our runtime-generated machine codes do not need to take the async preemption into account.
 All the assembly codes are entered via the trampoline implemented as Go Assembler Function (e.g. [arch_amd64.s](./arch_amd64.s)),
 and as of Go 1.20, these assembler functions are considered as _unsafe_ for async preemption:
-- https://github.com/golang/go/blob/go1.20rc1/src/runtime/preempt.go#L406-L407
-- https://github.com/golang/go/blob/9f0234214473dfb785a5ad84a8fc62a6a395cbc3/src/runtime/traceback.go#L227
+- https/github.com/golang/go/blob/go1.20rc1/src/runtime/preempt.go#L406-L407
+- https/github.com/golang/go/blob/9f0234214473dfb785a5ad84a8fc62a6a395cbc3/src/runtime/traceback.go#L227
 
 From the Go runtime point of view, the execution of runtime-generated machine codes is considered as a part of
 that trampoline function. Therefore, runtime-generated machine code is also correctly considered unsafe for async preemption.
 
 ## Why context cancellation is handled in Go code rather than native code
 
-Since [wazero v1.0.0-pre.9](https://github.com/tetratelabs/wazero/releases/tag/v1.0.0-pre.9), the runtime
+Since [wazero v1.0.0-pre.9](https/github.com/tetratelabs/wazero/releases/tag/v1.0.0-pre.9), the runtime
 supports integration with Go contexts to interrupt execution after a timeout, or in response to explicit cancellation.
 This support is internally implemented as a special opcode `builtinFunctionCheckExitCode` that triggers the execution of
 a Go function (`ModuleInstance.FailIfClosed`) that atomically checks a sentinel value at strategic points in the code.
@@ -1541,30 +1541,30 @@ however, because native code never preempts (see section above), this may lead t
 never get the chance to run, and thus never get the chance to set the sentinel value; effectively preventing
 cancellation from taking place.
 
-[native_check]: https://github.com/tetratelabs/wazero/issues/1409
+[native_check]: https/github.com/tetratelabs/wazero/issues/1409
 
 ## Golang patterns
 
 ### Hammer tests
 Code that uses concurrency primitives, such as locks or atomics, should include "hammer tests", which run large loops
 inside a bounded amount of goroutines, run by half that many `GOMAXPROCS`. These are named consistently "hammer", so
-they are easy to find. The name inherits from some existing tests in [golang/go](https://github.com/golang/go/search?q=hammer&type=code).
+they are easy to find. The name inherits from some existing tests in [golang/go](https/github.com/golang/go/search?q=hammer&type=code).
 
 Here is an annotated description of the key pieces of a hammer test:
 1. `P` declares the count of goroutines to use, defaulting to 8 or 4 if `testing.Short`.
-   * Half this amount are the cores used, and 4 is less than a modern laptop's CPU. This allows multiple "hammer" tests to run in parallel.
+ * Half this amount are the cores used, and 4 is less than a modern laptop's CPU. This allows multiple "hammer" tests to run in parallel.
 2. `N` declares the scale of work (loop) per goroutine, defaulting to value that finishes in ~0.1s on a modern laptop.
-   * When in doubt, try 1000 or 100 if `testing.Short`
-   * Remember, there are multiple hammer tests and CI nodes are slow. Slower tests hurt feedback loops.
+ * When in doubt, try 1000 or 100 if `testing.Short`
+ * Remember, there are multiple hammer tests and CI nodes are slow. Slower tests hurt feedback loops.
 3. `defer runtime.GOMAXPROCS(runtime.GOMAXPROCS(P/2))` makes goroutines switch cores, testing visibility of shared data.
 4. To ensure goroutines execute at the same time, block them with `sync.WaitGroup`, initialized to `Add(P)`.
-   * `sync.WaitGroup` internally uses `runtime_Semacquire` not available in any other library.
-   * `sync.WaitGroup.Add` with a negative value can unblock many goroutines at the same time, e.g. without a for loop.
+ * `sync.WaitGroup` internally uses `runtime_Semacquire` not available in any other library.
+ * `sync.WaitGroup.Add` with a negative value can unblock many goroutines at the same time, e.g. without a for loop.
 5. Track goroutines progress via `finished := make(chan int)` where each goroutine in `P` defers `finished <- 1`.
-   1. Tests use `require.XXX`, so `recover()` into `t.Fail` in a `defer` function before `finished <- 1`.
-      * This makes it easier to spot larger concurrency problems as you see each failure, not just the first.
-   2. After the `defer` function, await unblocked, then run the stateful function `N` times in a normal loop.
-      * This loop should trigger shared state problems as locks or atomics are contended by `P` goroutines.
+ 1. Tests use `require.XXX`, so `recover()` into `t.Fail` in a `defer` function before `finished <- 1`.
+ * This makes it easier to spot larger concurrency problems as you see each failure, not just the first.
+ 2. After the `defer` function, await unblocked, then run the stateful function `N` times in a normal loop.
+ * This loop should trigger shared state problems as locks or atomics are contended by `P` goroutines.
 6. After all `P` goroutines launch, atomically release all of them with `WaitGroup.Add(-P)`.
 7. Block the runner on goroutine completion, by (`<-finished`) for each `P`.
 8. When all goroutines complete, `return` if `t.Failed()`, otherwise perform follow-up state checks.
@@ -1573,7 +1573,7 @@ This is implemented in wazero in [hammer.go](internal/testing/hammer/hammer.go)
 
 ### Lock-free, cross-goroutine observations of updates
 
-How to achieve cross-goroutine reads of a variable are not explicitly defined in https://go.dev/ref/mem. wazero uses
+How to achieve cross-goroutine reads of a variable are not explicitly defined in https/go.dev/ref/mem. wazero uses
 atomics to implement this following unofficial practice. For example, a `Close` operation can be guarded to happen only
 once via compare-and-swap (CAS) against a zero value. When we use this pattern, we consistently use atomics to both
 read and update the same numeric field.
@@ -1582,6 +1582,6 @@ In lieu of formal documentation, we infer this pattern works from other sources 
  * `sync.WaitGroup` by definition must support calling `Add` from other goroutines. Internally, it uses atomics.
  * rsc in golang/go#5045 writes "atomics guarantee sequential consistency among the atomic variables".
 
-See https://github.com/golang/go/blob/go1.20/src/sync/waitgroup.go#L64
-See https://github.com/golang/go/issues/5045#issuecomment-252730563
-See https://www.youtube.com/watch?v=VmrEG-3bWyM
+See https/github.com/golang/go/blob/go1.20/src/sync/waitgroup.go#L64
+See https/github.com/golang/go/issues/5045#issuecomment-252730563
+See https/www.youtube.com/watch?v=VmrEG-3bWyM

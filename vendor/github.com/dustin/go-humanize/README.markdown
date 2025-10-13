@@ -1,11 +1,11 @@
-# Humane Units [![Build Status](https://travis-ci.org/dustin/go-humanize.svg?branch=master)](https://travis-ci.org/dustin/go-humanize) [![GoDoc](https://godoc.org/github.com/dustin/go-humanize?status.svg)](https://godoc.org/github.com/dustin/go-humanize)
+# Humane Units [![Build Status](https/travis-ci.org/dustin/go-humanize.svg?branch=master)](https/travis-ci.org/dustin/go-humanize) [![GoDoc](https/godoc.org/github.com/dustin/go-humanize?status.svg)](https/godoc.org/github.com/dustin/go-humanize)
 
 Just a few functions for helping humanize times and sizes.
 
 `go get` it as `github.com/dustin/go-humanize`, import it as
 `"github.com/dustin/go-humanize"`, use it as `humanize`.
 
-See [godoc](https://pkg.go.dev/github.com/dustin/go-humanize) for
+See [godoc](https/pkg.go.dev/github.com/dustin/go-humanize) for
 complete documentation.
 
 ## Sizes
@@ -38,12 +38,12 @@ conversation one day. It's pretty neat.
 From a [mailing list discussion][odisc] where a user wanted to be able
 to label ordinals.
 
-    0 -> 0th
-    1 -> 1st
-    2 -> 2nd
-    3 -> 3rd
-    4 -> 4th
-    [...]
+ 0 -> 0th
+ 1 -> 1st
+ 2 -> 2nd
+ 3 -> 3rd
+ 4 -> 4th
+ [...]
 
 Example:
 
@@ -55,11 +55,11 @@ fmt.Printf("You're my %s best friend.", humanize.Ordinal(193)) // You are my 193
 
 Want to shove commas into numbers? Be my guest.
 
-    0 -> 0
-    100 -> 100
-    1000 -> 1,000
-    1000000000 -> 1,000,000,000
-    -100000 -> -100,000
+ 0 -> 0
+ 100 -> 100
+ 1000 -> 1,000
+ 1000000000 -> 1,000,000,000
+ -100000 -> -100,000
 
 Example:
 
@@ -72,10 +72,10 @@ fmt.Printf("You owe $%s.\n", humanize.Comma(6582491)) // You owe $6,582,491.
 Nicer float64 formatter that removes trailing zeros.
 
 ```go
-fmt.Printf("%f", 2.24)                // 2.240000
+fmt.Printf("%f", 2.24) // 2.240000
 fmt.Printf("%s", humanize.Ftoa(2.24)) // 2.24
-fmt.Printf("%f", 2.0)                 // 2.000000
-fmt.Printf("%s", humanize.Ftoa(2.0))  // 2
+fmt.Printf("%f", 2.0) // 2.000000
+fmt.Printf("%s", humanize.Ftoa(2.0)) // 2
 ```
 
 ## SI notation
@@ -120,5 +120,5 @@ english.WordSeries([]string{"foo", "bar", "baz"}, "and") // foo, bar and baz
 english.OxfordWordSeries([]string{"foo", "bar", "baz"}, "and") // foo, bar, and baz
 ```
 
-[odisc]: https://groups.google.com/d/topic/golang-nuts/l8NhI74jl-4/discussion
-[sinotation]: http://en.wikipedia.org/wiki/Metric_prefix
+[odisc]: https/groups.google.com/d/topic/golang-nuts/l8NhI74jl-4/discussion
+[sinotation]: http/en.wikipedia.org/wiki/Metric_prefix

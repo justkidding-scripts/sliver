@@ -7,7 +7,7 @@ thread safe LRU cache. It is based on the cache in Groupcache.
 Documentation
 =============
 
-Full docs are available on [Go Packages](https://pkg.go.dev/github.com/hashicorp/golang-lru/v2)
+Full docs are available on [Go Packages](https/pkg.go.dev/github.com/hashicorp/golang-lru/v2)
 
 LRU cache example
 =================
@@ -21,12 +21,12 @@ import (
 )
 
 func main() {
-	l, _ := lru.New[int, any](128)
+	l, _ := lru.New[int, any](12
 	for i := 0; i < 256; i++ {
-		l.Add(i, nil)
+ l.Add(i, nil)
 	}
 	if l.Len() != 128 {
-		panic(fmt.Sprintf("bad len: %v", l.Len()))
+ panic(fmt.Sprintf("bad len: %v", l.Len()))
 	}
 }
 ```
@@ -57,7 +57,7 @@ func main() {
 
 	// check for OK value
 	if ok {
-		fmt.Printf("value before expiration is found: %v, value: %q\n", ok, r)
+ fmt.Printf("value before expiration is found: %v, value: %q\n", ok, r)
 	}
 
 	// wait for cache to expire

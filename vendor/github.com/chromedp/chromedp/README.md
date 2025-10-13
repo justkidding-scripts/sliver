@@ -77,18 +77,18 @@ to find out of the box.
 * [`github.com/chromedp/pdlgen`][chromedp-pdlgen] - tool used to generate `cdproto`
 * [`github.com/chromedp/chromedp-proxy`][chromedp-proxy] - a simple CDP proxy for logging CDP clients and browsers
 
-[chromedp-ci]: https://github.com/chromedp/chromedp/actions/workflows/test.yml (Test CI)
-[chromedp-ci-status]: https://github.com/chromedp/chromedp/actions/workflows/test.yml/badge.svg (Test CI)
-[chromedp-examples]: https://github.com/chromedp/examples
-[chromedp-pdlgen]: https://github.com/chromedp/pdlgen
-[chromedp-proxy]: https://github.com/chromedp/chromedp-proxy
-[devtools-protocol]: https://chromedevtools.github.io/devtools-protocol/
-[docker-headless-shell]: https://hub.docker.com/r/chromedp/headless-shell/
-[github-326]: https://github.com/chromedp/chromedp/issues/326
-[gophercon-2017-presentation]: https://www.youtube.com/watch?v=_7pWCg94sKw
-[goref-cdproto]: https://pkg.go.dev/github.com/chromedp/cdproto
-[goref-chromedp-exec-allocator]: https://pkg.go.dev/github.com/chromedp/chromedp#example-ExecAllocator
-[goref-chromedp]: https://pkg.go.dev/github.com/chromedp/chromedp
-[goref-chromedp-status]: https://pkg.go.dev/badge/github.com/chromedp/chromedp.svg
-[release-status]: https://img.shields.io/github/v/release/chromedp/chromedp?display_name=tag&sort=semver (Latest Release)
-[releases]: https://github.com/chromedp/chromedp/releases (Releases)
+[chromedp-ci]: https/github.com/chromedp/chromedp/actions/workflows/test.yml (Test CI)
+[chromedp-ci-status]: https/github.com/chromedp/chromedp/actions/workflows/test.yml/badge.svg (Test CI)
+[chromedp-examples]: https/github.com/chromedp/examples
+[chromedp-pdlgen]: https/github.com/chromedp/pdlgen
+[chromedp-proxy]: https/github.com/chromedp/chromedp-proxy
+[devtools-protocol]: https/chromedevtools.github.io/devtools-protocol/
+[docker-headless-shell]: https/hub.docker.com/r/chromedp/headless-shell/
+[github-326]: https/github.com/chromedp/chromedp/issues/326
+[gophercon-2017-presentation]: https/www.youtube.com/watch?v=_7pWCg94sKw
+[goref-cdproto]: https/pkg.go.dev/github.com/chromedp/cdproto
+[goref-chromedp-exec-allocator]: https/pkg.go.dev/github.com/chromedp/chromedp#example-ExecAllocator
+[goref-chromedp]: https/pkg.go.dev/github.com/chromedp/chromedp
+[goref-chromedp-status]: https/pkg.go.dev/badge/github.com/chromedp/chromedp.svg
+[release-status]: https/img.shields.io/github/v/release/chromedp/chromedp?display_name=tag&sort=semver (Latest Release)
+[releases]: https/github.com/chromedp/chromedp/releases (Releases)

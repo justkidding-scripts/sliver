@@ -6,14 +6,14 @@ retrieving, and processing log entries.
 # Overview
 
 HTTP requests are received at the service **base URL**
-[https://log.tailscale.io](https://log.tailscale.io), and return JSON-encoded
+[https/log.tailscale.io](https/log.tailscale.io), and return JSON-encoded
 responses using standard HTTP response codes.
 
 Authorization for the configuration and retrieval APIs is done with a secret
 API key passed as the HTTP basic auth username. Secret keys are generated via
 the web UI at base URL. An example of using basic auth with curl:
 
-    curl -u <log_api_key>: https://log.tailscale.io/collections
+ curl -u <log_api_key>: https/log.tailscale.io/collections
 
 In the future, an HTTP header will allow using MessagePack instead of JSON.
 
@@ -38,7 +38,7 @@ The public ID is the SHA-256 hash of the private ID, encoded as hex.
 
 The private ID is used to write logs. The only copy of the private ID
 should be on the machine sending logs. Ideally it is generated on the
-machine. Logs can be written as soon as a private ID is generated. 
+machine. Logs can be written as soon as a private ID is generated.
 
 The public ID is used to read and adopt logs. It is designed to be sent
 to a service that also holds a logs service API key.
@@ -71,7 +71,7 @@ The client may send any properties it wants in the JSON message, except
 for the `logtail` property which has special meaning. Inside the logtail
 object the client may only set the following properties:
 
-- `client_time` in the format of RFC3339: "2006-01-02T15:04:05.999999999Z07:00"
+- `client_time` in the format of RFC3339: "2006-01-02T1505.999999999Z07:00"
 
 A future version of the logs service API will also support:
 
@@ -80,7 +80,7 @@ A future version of the logs service API will also support:
 
 On receipt by the server the `client_time_offset` is transformed into a
 `client_time` based on the `server_time` when the first (or
-client_time_reset) event was received. 
+client_time_reset) event was received.
 
 If any other properties are set in the logtail object they are moved into
 the "error" field, the message is saved and a 4xx status code is returned.
@@ -102,10 +102,10 @@ along with a 403 status code.
 Clients are encouraged to:
 
 - POST as rapidly as possible (if not battery constrained). This minimizes
-  both the time necessary to see logs in a log viewer and the chance of
-  losing logs.
+ both the time necessary to see logs in a log viewer and the chance of
+ losing logs.
 - Use HTTP/2 when streaming logs, as it does a much better job of
-  maintaining a TLS connection to minimize overhead for subsequent posts.
+ maintaining a TLS connection to minimize overhead for subsequent posts.
 
 A future version of logs service API will support sending requests with
 `Content-Encoding: zstd`.
@@ -120,25 +120,25 @@ The caller can query-encode the following fields:
 
 - `collection-name` — limit the results to one collection
 
-    ```
-    {
-      "collections": {
-        "collection1.yourcompany.com": {
-          "instances": {
-            "<logid.PublicID>" :{
-              "first-seen": "timestamp",
-              "size": 4096
-            },
-            "<logid.PublicID>" :{
-              "first-seen": "timestamp",
-              "size": 512000,
-              "orphan": true,
-            }
-          }
-        }
-      }
-    }
-    ```
+ ```
+ {
+ "collections": {
+ "collection1.yourcompany.com": {
+ "instances": {
+ "<logid.PublicID>" :{
+ "first-seen": "timestamp",
+ "size": 4096
+ },
+ "<logid.PublicID>" :{
+ "first-seen": "timestamp",
+ "size": 512000,
+ "orphan": true,
+ }
+ }
+ }
+ }
+ }
+ ```
 
 ### `GET /c/<collection_name>` — query stored logs
 
@@ -147,17 +147,17 @@ The caller can query-encode the following fields:
 - `instances` — zero or more log collection instances to limit results to
 - `time-start` — the earliest log to include
 - One of:
-    - `time-end` — the latest log to include
-    - `max-count` — maximum number of logs to return, allows paging
-    - `stream` — boolean that keeps the response dangling, streaming in
-      logs like `tail -f`. Incompatible with logtail-time-end.
+ - `time-end` — the latest log to include
+ - `max-count` — maximum number of logs to return, allows paging
+ - `stream` — boolean that keeps the response dangling, streaming in
+ logs like `tail -f`. Incompatible with logtail-time-end.
 
 In **stream=false** mode, the response is a single JSON object:
 
-    {
-    	// TODO: header fields
-    	"logs": [ {}, {}, ... ]
-    }
+ {
+ // TODO: header fields
+ "logs": [ {}, {}, ... ]
+ }
 
 In **stream=true** mode, the response begins with a JSON header object
 similar to the storage format, and then is a sequence of JSON log

@@ -9,11 +9,11 @@ There are two interfaces, both can encode arbitrary binary data but the outputs 
 
 ## Encoders
 
-#### `Base64` 
+#### `Base64`
 
 Encodes data using `base64` encoding with a custom alphabet so that it's not interoperable with standard Base64 encoding.
 
-#### `Hex` 
+#### `Hex`
 
 Encodes data to ASCII/hex
 

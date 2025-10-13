@@ -1,4 +1,4 @@
-# v1.26.5 (2024-01-18)
+# v1.26.5 (2024-01-1
 
 * **Dependency Update**: Updated to the latest SDK module versions
 
@@ -14,7 +14,7 @@
 
 * **Dependency Update**: Updated to the latest SDK module versions
 
-# v1.26.1 (2023-12-08)
+# v1.26.1 (2023-12-0
 
 * **Bug Fix**: Correct loading of [services *] sections into shared config.
 * **Dependency Update**: Updated to the latest SDK module versions
@@ -48,7 +48,7 @@
 
 * **Dependency Update**: Updated to the latest SDK module versions
 
-# v1.25.6 (2023-11-28)
+# v1.25.6 (2023-11-2
 
 * **Dependency Update**: Updated to the latest SDK module versions
 
@@ -111,7 +111,7 @@
 
 # v1.20.0 (2023-10-31)
 
-* **Feature**: **BREAKING CHANGE**: Bump minimum go version to 1.19 per the revised [go version support policy](https://aws.amazon.com/blogs/developer/aws-sdk-for-go-aligns-with-go-release-policy-on-supported-runtimes/).
+* **Feature**: **BREAKING CHANGE**: Bump minimum go version to 1.19 per the revised [go version support policy](https/aws.amazon.com/blogs/developer/aws-sdk-for-go-aligns-with-go-release-policy-on-supported-runtimes/).
 * **Dependency Update**: Updated to the latest SDK module versions
 
 # v1.19.1 (2023-10-24)
@@ -145,7 +145,7 @@
 
 * **Dependency Update**: Updated to the latest SDK module versions
 
-# v1.18.40 (2023-09-18)
+# v1.18.40 (2023-09-1
 
 * **Dependency Update**: Updated to the latest SDK module versions
 
@@ -165,7 +165,7 @@
 
 * **Dependency Update**: Updated to the latest SDK module versions
 
-# v1.18.35 (2023-08-18)
+# v1.18.35 (2023-08-1
 
 * **Dependency Update**: Updated to the latest SDK module versions
 
@@ -185,7 +185,7 @@
 
 * **Dependency Update**: Updated to the latest SDK module versions
 
-# v1.18.30 (2023-07-28)
+# v1.18.30 (2023-07-2
 
 * **Dependency Update**: Updated to the latest SDK module versions
 
@@ -209,7 +209,7 @@
 
 * **Dependency Update**: Updated to the latest SDK module versions
 
-# v1.18.24 (2023-05-08)
+# v1.18.24 (2023-05-0
 
 * **Dependency Update**: Updated to the latest SDK module versions
 
@@ -372,7 +372,7 @@
 
 * **Dependency Update**: Updated to the latest SDK module versions
 
-# v1.15.16 (2022-08-08)
+# v1.15.16 (2022-08-0
 
 * **Dependency Update**: Updated to the latest SDK module versions
 
@@ -418,7 +418,7 @@
 
 # v1.15.5 (2022-05-09)
 
-* **Bug Fix**: Fixes a bug in LoadDefaultConfig to correctly assign ConfigSources so all config resolvers have access to the config sources. This fixes the feature/ec2/imds client not having configuration applied via config.LoadOptions such as EC2IMDSClientEnableState. PR [#1682](https://github.com/aws/aws-sdk-go-v2/pull/1682)
+* **Bug Fix**: Fixes a bug in LoadDefaultConfig to correctly assign ConfigSources so all config resolvers have access to the config sources. This fixes the feature/ec2/imds client not having configuration applied via config.LoadOptions such as EC2IMDSClientEnableState. PR [#1682](https/github.com/aws/aws-sdk-go-v2/pull/1682)
 
 # v1.15.4 (2022-04-25)
 
@@ -436,23 +436,23 @@
 
 * **Dependency Update**: Updated to the latest SDK module versions
 
-# v1.15.0 (2022-03-08)
+# v1.15.0 (2022-03-0
 
 * **Feature**: Updated `github.com/aws/smithy-go` to latest version
 * **Dependency Update**: Updated to the latest SDK module versions
 
 # v1.14.0 (2022-02-24)
 
-* **Feature**: Adds support for loading RetryMaxAttempts and RetryMod from the environment and shared configuration files. These parameters drive how the SDK's API client will initialize its default retryer, if custome retryer has not been specified. See [config](https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/config) module and [aws.Config](https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws#Config) for more information about and how to use these new options.
-* **Feature**: Adds support for the `ca_bundle` parameter in shared config and credentials files. The usage of the file is the same as environment variable, `AWS_CA_BUNDLE`, but sourced from shared config. Fixes [#1589](https://github.com/aws/aws-sdk-go-v2/issues/1589)
+* **Feature**: Adds support for loading RetryMaxAttempts and RetryMod from the environment and shared configuration files. These parameters drive how the SDK's API client will initialize its default retryer, if custome retryer has not been specified. See [config](https/pkg.go.dev/github.com/aws/aws-sdk-go-v2/config) module and [aws.Config](https/pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws#Config) for more information about and how to use these new options.
+* **Feature**: Adds support for the `ca_bundle` parameter in shared config and credentials files. The usage of the file is the same as environment variable, `AWS_CA_BUNDLE`, but sourced from shared config. Fixes [#1589](https/github.com/aws/aws-sdk-go-v2/issues/1589)
 * **Feature**: Updated `github.com/aws/smithy-go` to latest version
 * **Dependency Update**: Updated to the latest SDK module versions
 
-# v1.13.1 (2022-01-28)
+# v1.13.1 (2022-01-2
 
-* **Bug Fix**: Fixes LoadDefaultConfig handling of errors returned by passed in functional options. Previously errors returned from the LoadOptions passed into LoadDefaultConfig were incorrectly ignored. [#1562](https://github.com/aws/aws-sdk-go-v2/pull/1562). Thanks to [Pinglei Guo](https://github.com/pingleig) for submitting this PR.
-* **Bug Fix**: Fixes the SDK's handling of `duration_sections` in the shared credentials file or specified in multiple shared config and shared credentials files under the same profile. [#1568](https://github.com/aws/aws-sdk-go-v2/pull/1568). Thanks to [Amir Szekely](https://github.com/kichik) for help reproduce this bug.
-* **Bug Fix**: Updates `config` module to use os.UserHomeDir instead of hard coded environment variable for OS. [#1563](https://github.com/aws/aws-sdk-go-v2/pull/1563)
+* **Bug Fix**: Fixes LoadDefaultConfig handling of errors returned by passed in functional options. Previously errors returned from the LoadOptions passed into LoadDefaultConfig were incorrectly ignored. [#1562](https/github.com/aws/aws-sdk-go-v2/pull/1562). Thanks to [Pinglei Guo](https/github.com/pingleig) for submitting this PR.
+* **Bug Fix**: Fixes the SDK's handling of `duration_sections` in the shared credentials file or specified in multiple shared config and shared credentials files under the same profile. [#1568](https/github.com/aws/aws-sdk-go-v2/pull/156. Thanks to [Amir Szekely](https/github.com/kichik) for help reproduce this bug.
+* **Bug Fix**: Updates `config` module to use os.UserHomeDir instead of hard coded environment variable for OS. [#1563](https/github.com/aws/aws-sdk-go-v2/pull/1563)
 * **Dependency Update**: Updated to the latest SDK module versions
 
 # v1.13.0 (2022-01-14)
@@ -495,7 +495,7 @@
 
 # v1.9.0 (2021-10-21)
 
-* **Feature**: Updated  to latest version
+* **Feature**: Updated to latest version
 * **Dependency Update**: Updated to the latest SDK module versions
 
 # v1.8.3 (2021-10-11)

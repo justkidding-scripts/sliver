@@ -1,6 +1,6 @@
 # wazero: the zero dependency WebAssembly runtime for Go developers
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/tetratelabs/wazero.svg)](https://pkg.go.dev/github.com/tetratelabs/wazero) [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Go Reference](https/pkg.go.dev/badge/github.com/tetratelabs/wazero.svg)](https/pkg.go.dev/github.com/tetratelabs/wazero) [![License](https/img.shields.io/badge/License-Apache_2.0-blue.svg)](https/opensource.org/licenses/Apache-2.0)
 
 WebAssembly is a way to safely run code compiled in other languages. Runtimes
 execute WebAssembly Modules (Wasm), which are most often binaries with a `.wasm`
@@ -46,10 +46,10 @@ magnitude (10x) or more. This is done without host-specific dependencies.
 Both runtimes pass WebAssembly Core [1.0][7] and [2.0][14] specification tests
 on supported platforms:
 
-|   Runtime   |                 Usage                  | amd64 | arm64 | others |
-|:-----------:|:--------------------------------------:|:-----:|:-----:|:------:|
-| Interpreter | `wazero.NewRuntimeConfigInterpreter()` |   ✅   |   ✅   |   ✅    |
-|  Compiler   |  `wazero.NewRuntimeConfigCompiler()`   |   ✅   |   ✅   |   ❌    |
+| Runtime | Usage | amd64 | arm64 | others |
+||||||
+| Interpreter | `wazero.NewRuntimeConfigInterpreter()` | | | |
+| Compiler | `wazero.NewRuntimeConfigCompiler()` | | | |
 
 ## Support Policy
 
@@ -102,15 +102,15 @@ OpenBSD, DragonFly BSD, illumos and Solaris.
 We also test cross compilation for many `GOOS` and `GOARCH` combinations.
 
 * Interpreter
-  * Linux is tested on amd64 (native) as well arm64 and riscv64 via emulation.
-  * Windows, FreeBSD, NetBSD, OpenBSD, DragonFly BSD, illumos and Solaris are
-    tested only on amd64.
-  * macOS is tested only on arm64.
+ * Linux is tested on amd64 (native) as well arm64 and riscv64 via emulation.
+ * Windows, FreeBSD, NetBSD, OpenBSD, DragonFly BSD, illumos and Solaris are
+ tested only on amd64.
+ * macOS is tested only on arm64.
 * Compiler
-  * Linux is tested on amd64 (native) as well arm64 via emulation.
-  * Windows, FreeBSD, NetBSD, DragonFly BSD, illumos and Solaris are
-    tested only on amd64.
-  * macOS is tested only on arm64.
+ * Linux is tested on amd64 (native) as well arm64 via emulation.
+ * Windows, FreeBSD, NetBSD, DragonFly BSD, illumos and Solaris are
+ tested only on amd64.
+ * macOS is tested only on arm64.
 
 wazero has no dependencies and doesn't require CGO. This means it can also be
 embedded in an application that doesn't use an operating system. This is a main
@@ -122,18 +122,18 @@ This approach ensures compatibility with any parent image.
 -----
 wazero is a registered trademark of Tetrate.io, Inc. in the United States and/or other countries
 
-[1]: https://www.w3.org/TR/2019/REC-wasm-core-1-20191205/
-[2]: https://www.w3.org/TR/2022/WD-wasm-core-2-20220419/
-[4]: https://github.com/WebAssembly/meetings/blob/main/process/subgroups.md
-[5]: https://github.com/WebAssembly/WASI
-[6]: https://pkg.go.dev/golang.org/x/sys/unix
-[7]: https://github.com/WebAssembly/spec/tree/wg-1.0/test/core
-[9]: https://github.com/tetratelabs/wazero/issues/506
-[10]: https://go.dev/doc/devel/release
-[11]: https://github.com/actions/virtual-environments
-[12]: https://docs.docker.com/develop/develop-images/baseimages/#create-a-simple-parent-image-using-scratch
-[13]: https://github.com/WebAssembly/WASI/blob/snapshot-01/phases/snapshot/docs.md
-[14]: https://github.com/WebAssembly/spec/tree/d39195773112a22b245ffbe864bab6d1182ccb06/test/core
-[15]: https://tetrate.io/blog/introducing-wazero-from-tetrate/
-[16]: https://wazero.io/community/users/
-[17]: https://github.com/tetratelabs/wazero/stargazers
+[1]: https/www.w3.org/TR/2019/REC-wasm-core-1-20191205/
+[2]: https/www.w3.org/TR/2022/WD-wasm-core-2-20220419/
+[4]: https/github.com/WebAssembly/meetings/blob/main/process/subgroups.md
+[5]: https/github.com/WebAssembly/WASI
+[6]: https/pkg.go.dev/golang.org/x/sys/unix
+[7]: https/github.com/WebAssembly/spec/tree/wg-1.0/test/core
+[9]: https/github.com/tetratelabs/wazero/issues/506
+[10]: https/go.dev/doc/devel/release
+[11]: https/github.com/actions/virtual-environments
+[12]: https/docs.docker.com/develop/develop-images/baseimages/#create-a-simple-parent-image-using-scratch
+[13]: https/github.com/WebAssembly/WASI/blob/snapshot-01/phases/snapshot/docs.md
+[14]: https/github.com/WebAssembly/spec/tree/d39195773112a22b245ffbe864bab6d1182ccb06/test/core
+[15]: https/tetrate.io/blog/introducing-wazero-from-tetrate/
+[16]: https/wazero.io/community/users/
+[17]: https/github.com/tetratelabs/wazero/stargazers

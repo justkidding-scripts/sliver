@@ -1,22 +1,22 @@
-# Jibber Jabber [![Build Status](https://travis-ci.org/cubiest/jibberjabber.svg?branch=master)](https://travis-ci.org/cubiest/jibberjabber)
+# Jibber Jabber [![Build Status](https/travis-ci.org/cubiest/jibberjabber.svg?branch=master)](https/travis-ci.org/cubiest/jibberjabber)
 
 Jibber Jabber is a GoLang Library that can be used to detect an operating system's current language, plus helper functionalities for app development.
 
 
 ## OS Support
 
-UNIX: **GNU/Linux**, **macOS**, **FreeBSD**, **OpenBSD**, **NetBSD**  
-via the `LC_MESSAGES`, `LC_ALL` and `LANG` environment variables. They are checked in the aforementioned order.  
+UNIX: **GNU/Linux**, **macOS**, **FreeBSD**, **OpenBSD**, **NetBSD**
+via the `LC_MESSAGES`, `LC_ALL` and `LANG` environment variables. They are checked in the aforementioned order.
 These variables are used in ALL versions of UNIX for language detection.
 
-**Windows**  
-via [GetUserDefaultLocaleName](https://docs.microsoft.com/en-gb/windows/win32/api/winnls/nf-winnls-getuserdefaultlocalename) and [GetSystemDefaultLocaleName](https://docs.microsoft.com/en-gb/windows/win32/api/winnls/nf-winnls-getsystemdefaultlocalename) system calls. These calls are supported in Windows Vista and up.
+**Windows**
+via [GetUserDefaultLocaleName](https/docs.microsoft.com/en-gb/windows/win32/api/winnls/nf-winnls-getuserdefaultlocalename) and [GetSystemDefaultLocaleName](https/docs.microsoft.com/en-gb/windows/win32/api/winnls/nf-winnls-getsystemdefaultlocalename) system calls. These calls are supported in Windows Vista and up.
 
 
 
 ## DetectIETF
 
-`DetectIETF` will return the current locale as a string. The format of the locale will be the [ISO 639](http://en.wikipedia.org/wiki/ISO_639) two-letter language code, a DASH, then an [ISO 3166](http://en.wikipedia.org/wiki/ISO_3166-1) two-letter country code.
+`DetectIETF` will return the current locale as a string. The format of the locale will be the [ISO 639](http/en.wikipedia.org/wiki/ISO_639) two-letter language code, a DASH, then an [ISO 3166](http/en.wikipedia.org/wiki/ISO_3166-1) two-letter country code.
 
 **Example:**
 ```golang
@@ -26,7 +26,7 @@ via [GetUserDefaultLocaleName](https://docs.microsoft.com/en-gb/windows/win32/ap
 
 
 ## DetectLanguage
-`DetectLanguage` will return the current language as a string. The format will be the [ISO 639](http://en.wikipedia.org/wiki/ISO_639) two-letter language code.
+`DetectLanguage` will return the current language as a string. The format will be the [ISO 639](http/en.wikipedia.org/wiki/ISO_639) two-letter language code.
 
 also import the following packages for parsing the returned locale
 ```golang
@@ -42,7 +42,7 @@ also import the following packages for parsing the returned locale
 	println("Language:", userLanguage)
 	languageTag, parseErr := language.Parse(userLanguage)
 	println("Language:", display.Self.Name(languageTag))
-	
+
 ```
 
 
@@ -54,13 +54,13 @@ also import the following packages for parsing the returned locale
 ```golang
 	languageTag, parseErr := jibberjabber.DetectLanguageTag()
 	println("Language:", display.Self.Name(languageTag))
-	
+
 ```
 
 
 ## DetectTerritory
 
-`DetectTerritory` will return the current locale territory as a string. The format will be the [ISO 3166](http://en.wikipedia.org/wiki/ISO_3166-1) two-letter country code.
+`DetectTerritory` will return the current locale territory as a string. The format will be the [ISO 3166](http/en.wikipedia.org/wiki/ISO_3166-1) two-letter country code.
 
 **Example:**
 ```golang
@@ -84,12 +84,12 @@ There is a singleton you can, but don't have to, use. It helps you define and la
 ```golang
 	langServer := jibberjabber.LanguageServer()
 	langServer.SetSupportedLanguages(map[language.Tag]string{
-		language.German:  "active.de.toml",
-		language.English: "active.en.toml",
+ language.German: "active.de.toml",
+ language.English: "active.en.toml",
 	}
 	langServer.SetFallbackLanguage(language.English)
 	langLocale, err := langServer.StringToSupportedLanguageTag("something") // returns `language.English`
 	if err != nil {
-		log.Printf("failed fetching supported language locale, use fallback language locale %q\n", display.Self.Name(langLocale))
+ log.Printf("failed fetching supported language locale, use fallback language locale %q\n", display.Self.Name(langLocale))
 	}
 ```

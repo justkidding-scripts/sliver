@@ -10,12 +10,12 @@ dist: trusty
 # Select Go as the language used to run the buid.
 language: go
 go:
-  - 1.8.x
-  - 1.9.x
-  - 1.10.x
+ - 1.8.x
+ - 1.9.x
+ - 1.10.x
 go_import_path: github.com/akutz/memconn
 
 install: true
 script:
-  - make test
-  - make benchmark
+ - make test
+ - make benchmark

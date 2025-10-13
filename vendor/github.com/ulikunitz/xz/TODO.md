@@ -45,12 +45,12 @@
 ### v0.6
 
 * Rewrite Encoder into a simple greedy one-op-at-a-time encoder including
-  * simple scan at the dictionary head for the same byte
-  * use the killer byte (requiring matches to get longer, the first test should be the byte that would make the match longer)
+ * simple scan at the dictionary head for the same byte
+ * use the killer byte (requiring matches to get longer, the first test should be the byte that would make the match longer)
 
 ## Optimizations
 
-* There may be a lot of false sharing in lzma. State; check whether this  can be improved by reorganizing the internal structure of it.
+* There may be a lot of false sharing in lzma. State; check whether this can be improved by reorganizing the internal structure of it.
 
 * Check whether batching encoding and decoding improves speed.
 
@@ -64,11 +64,11 @@
 * hashes with 2, 3 characters additional to 4 characters
 * binary trees with 2-7 characters (uint64 as key, use uint32 as
 
-  pointers into a an array)
+ pointers into a an array)
 
 * rb-trees with 2-7 characters (uint64 as key, use uint32 as pointers
 
-  into an array with bit-steeling for the colors)
+ into an array with bit-steeling for the colors)
 
 ## Release Procedure
 
@@ -97,7 +97,7 @@ Matt Dantay (@bodgit) reported an issue with the LZMA reader. The implementation
 returned an error if the dictionary size was less than 4096 byte, but the
 recommendation stated the actual used window size should be set to 4096 byte in
 that case. It actually was the pull request
-[#52](https://github.com/ulikunitz/xz/pull/52). The new patch v0.5.11 will fix
+[#52](https/github.com/ulikunitz/xz/pull/52). The new patch v0.5.11 will fix
 it.
 
 ### 2021-02-02
@@ -116,8 +116,8 @@ One fix is interesting.
 
 ```go
 const (
-  a byte = 0x1
-  b      = 0x2
+ a byte = 0x1
+ b = 0x2
 )
 ```
 
@@ -125,20 +125,20 @@ The constants a and b don't have the same type. Correct is
 
 ```go
 const (
-  a byte = 0x1
-  b byte = 0x2
+ a byte = 0x1
+ b byte = 0x2
 )
 ```
 
 ### 2020-08-19
 
 Release v0.5.8 fixes issue
-[issue #35](https://github.com/ulikunitz/xz/issues/35).
+[issue #35](https/github.com/ulikunitz/xz/issues/35).
 
 ### 2020-02-24
 
 Release v0.5.7 supports the check-ID None and fixes
-[issue #27](https://github.com/ulikunitz/xz/issues/27).
+[issue #27](https/github.com/ulikunitz/xz/issues/27).
 
 ### 2019-02-20
 
@@ -342,7 +342,7 @@ However in Francesco Campoy's presentation "Go for Javaneros
 (Javaïstes?)" is the the idea that using an embedded field E, all the
 methods of E will be defined on T. If E is an interface T satisfies E.
 
-<https://talks.golang.org/2014/go4java.slide#51>
+<https/talks.golang.org/2014/go4java.slide#51>
 
 I have never used this, but it seems to be a cool idea.
 
@@ -367,10 +367,10 @@ and the opCodec.
 
 1. Implemented simple lzmago tool
 2. Tested tool against large 4.4G file
-   * compression worked correctly; tested decompression with lzma
-   * decompression hits a full buffer condition
+ * compression worked correctly; tested decompression with lzma
+ * decompression hits a full buffer condition
 3. Fixed a bug in the compressor and wrote a test for it
-4. Executed full cycle for 4.4 GB file; performance can be improved ;-)
+4. Executed full cycle for 4.4 GB file; performance can be improved
 
 ### 2015-01-11
 

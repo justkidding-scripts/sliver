@@ -1,4 +1,4 @@
-rtnetlink ![Linux Integration](https://github.com/jsimonetti/rtnetlink/workflows/Go/badge.svg) [![GoDoc](https://godoc.org/github.com/jsimonetti/rtnetlink?status.svg)](https://godoc.org/github.com/jsimonetti/rtnetlink) [![Go Report Card](https://goreportcard.com/badge/github.com/jsimonetti/rtnetlink)](https://goreportcard.com/report/github.com/jsimonetti/rtnetlink)
+rtnetlink ![Linux Integration](https/github.com/jsimonetti/rtnetlink/workflows/Go/badge.svg) [![GoDoc](https/godoc.org/github.com/jsimonetti/rtnetlink?status.svg)](https/godoc.org/github.com/jsimonetti/rtnetlink) [![Go Report Card](https/goreportcard.com/badge/github.com/jsimonetti/rtnetlink)](https/goreportcard.com/report/github.com/jsimonetti/rtnetlink)
 =======
 
 Package `rtnetlink` allows the kernel's routing tables to be read and
@@ -7,7 +7,7 @@ Queueing disciplines, Traffic classes and Packet classifiers may all be
 controlled. It is based on netlink messages.
 
 A convenient, high-level API wrapper is available using package
-[`rtnl`](https://godoc.org/github.com/jsimonetti/rtnetlink/rtnl).
+[`rtnl`](https/godoc.org/github.com/jsimonetti/rtnetlink/rtnl).
 
 The base `rtnetlink` library explicitly only exposes a limited low-level API to
 rtnetlink. It is not the intention (nor wish) to create an iproute2
@@ -39,5 +39,5 @@ all netlink traffic.
 Have a look at the examples for common uses of rtnetlink.
 
 If you have any questions or you'd like some guidance, please join us on
-[Gophers Slack](https://invite.slack.golangbridge.org) in the `#networking`
+[Gophers Slack](https/invite.slack.golangbridge.org) in the `#networking`
 channel!

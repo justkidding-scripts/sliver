@@ -17,7 +17,7 @@ This directory contains the Sliver server implementation, and is structured as f
  * `gogo/` - Go wrappers around the Go compiler tool chain
  * `handlers/` - Methods invoke-able by implants without user interaction
  * `log/` - Wrappers around Logrus
- * `loot/` - Server's local 'loot' implementation 
+ * `loot/` - Server's local 'loot' implementation
  * `msf/` - Metasploit helper functions
  * `netstack/` - WireGuard server network stack
  * `rpc/` - Remote procedure call implementations, generally called by the `/client/` code

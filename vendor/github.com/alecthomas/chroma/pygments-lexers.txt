@@ -1,10 +1,10 @@
 Generated with:
 
-  g 'class.*RegexLexer' | pawk --strict -F: '"pygments.lexers.%s.%s" % (f[0].split(".")[0], f[2].split()[1].split("(")[0])' > lexers.txt
+ g 'class.*RegexLexer' | pawk --strict -F: '"pygments.lexers.%s.%s" % (f[0].split(".")[0], f[2].split()[1].split("(")[0])' > lexers.txt
 
 kotlin:
-  invalid unicode escape sequences
-  FIXED: Have to disable wide Unicode characters in unistring.py
+ invalid unicode escape sequences
+ FIXED: Have to disable wide Unicode characters in unistring.py
 
 pygments.lexers.ambient.AmbientTalkLexer
 pygments.lexers.ampl.AmplLexer
